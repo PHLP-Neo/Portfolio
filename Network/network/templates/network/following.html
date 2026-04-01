@@ -1,0 +1,35 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<b>
+    <p>Followed Posts</p>
+</b>
+<hr>
+
+{% for post in Posts %}
+<p><b>{{post.title}}</b></p>
+<p><a href="{% url 'userstats' post.owner.id %}">{{post.owner}}</a></p>
+<p>{{post.timestamp}}</p>
+<p>{{post.body}}</p>
+<a href="#" class="like_button {% if user in post.liked_person.all %}liked{% endif %}" data-post-id="{{ post.id }}">
+    like ({{ post.likes }})
+</a>
+<hr>
+{% empty %}
+<p>No Post</p>
+<hr>
+{%endfor%}
+
+<div class="pagination">
+    {% if Posts.has_previous %}
+    <a href="?page={{ Posts.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    <span>Page {{ Posts.number }} of {{ Posts.paginator.num_pages }}</span>
+
+    {% if Posts.has_next %}
+    <a href="?page={{ Posts.next_page_number }}">Next</a>
+    {% endif %}
+</div>
+
+{% endblock %}

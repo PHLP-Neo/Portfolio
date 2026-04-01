@@ -1,0 +1,51 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <b><p>All Posts</p></b>
+        <hr>
+
+        {% for post in Posts %}
+            <p><b>{{post.title}}</b></p>
+            <p><a href="{% url 'userstats' post.owner.id %}">{{post.owner}}</a></p>
+            <p>{{post.timestamp}}</p>
+            
+            <p class="post-content" data-post-id="{{ post.id }}">{{post.body}}</p>
+            <textarea class="edit-textarea" data-post-id="{{ post.id }}" style="display: none; width: 75%; padding: 20px;">{{ post.body }}</textarea>
+            
+            <!-- for like button -->
+            <a href="#" class="like_button {% if user in post.liked_person.all %}liked{% endif %}" data-post-id="{{ post.id }}" >
+                like ({{ post.likes }})
+            </a>
+            <!-- for edit button -->
+            
+            {% if post.owner.id == request.user.id %}
+                <div class='post-actions'>
+                    <a href="#" class="edit-btn" data-post-id="{{ post.id }}">
+                        Edit
+                    </a>
+                    <div class="post-actions save-actions" data-post-id="{{ post.id }}" style="display: none">
+                        <a href="#" class="save-btn" data-post-id="{{ post.id }}">Save</a>
+                        <a href="#" class="cancel-btn" data-post-id="{{ post.id }}">Cancel</a>
+                    </div>
+                </div>
+            {% endif %}
+            
+            <hr>
+        {% empty %}
+            <p>No Post</p>
+            <hr>
+        {%endfor%}
+
+        <div class="pagination">
+            {% if Posts.has_previous %}
+            <a href="?page={{ Posts.previous_page_number }}">Previous</a>
+            {% endif %}
+        
+            <span>Page {{ Posts.number }} of {{ Posts.paginator.num_pages }}</span>
+        
+            {% if Posts.has_next %}
+            <a href="?page={{ Posts.next_page_number }}">Next</a>
+            {% endif %}  
+        </div>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <p><b>User_stat for {{ viewing_user.username }}</b></p>
+    <p>Follower Count: {{follow_count}}</p>
+    <p>Being followed by: {{followed_count}}</p>
+    {% if viewing_user.id != request_user.id %}
+        {% if following %}
+            <a href="{% url 'toggle_follow' viewing_user.id %}">Unfollow</a>
+        {% else %}
+            <a href="{% url 'toggle_follow' viewing_user.id %}">Follow</a>
+        {% endif %}
+    {% endif %}
+    <hr>
+    <p><b>Following</b></p>
+    {% for user in followings %}
+        <p><a href="{% url 'userstats' user.id %}">{{user.username}}</a></p>
+    {% empty %}
+        <p>Currently Empty</p>
+    {% endfor %}
+    <hr>    
+    <p><b>Posts</b></p>
+    {% for post in posts %}
+        <p><b>{{post.title}}</b></p>
+        <p><a href="{% url 'userstats' post.owner.id %}">{{post.owner}}</a></p>
+        <p>{{post.timestamp}}</p>
+
+        <p class="post-content" data-post-id="{{ post.id }}">{{post.body}}</p>
+        <textarea class="edit-textarea" data-post-id="{{ post.id }}" style="display: none; width: 75%; padding: 20px;" >{{ post.body }}</textarea>
+         
+        <!-- for like button -->
+        <a href="#" class="like_button {% if user in post.liked_person.all %}liked{% endif %}" data-post-id = "{{ post.id }}">
+            like ({{ post.likes }})
+        </a>
+        <!-- for edit button -->
+
+        {% if post.owner.id == request_user.id %}
+            <div class='post-actions'>
+                <a href="#" class="edit-btn" data-post-id="{{ post.id }}">
+                    Edit
+                </a>
+                <div class="post-actions save-actions" data-post-id="{{ post.id }}" style="display: none">
+                    <a href="#" class="save-btn" data-post-id="{{ post.id }}">Save</a>
+                    <a href="#" class="cancel-btn" data-post-id="{{ post.id }}">Cancel</a>
+                </div>
+            </div>
+        {% endif %}
+
+        <hr>
+    {% empty %}
+        <p>No Post</p>
+        <hr>
+    {%endfor%}
+
+    <div class="pagination">
+        {% if posts.has_previous %}
+        <a href="?page={{ posts.previous_page_number }}">Previous</a>
+        {% endif %}
+    
+        <span>Page {{ posts.number }} of {{ posts.paginator.num_pages }}</span>
+    
+        {% if posts.has_next %}
+        <a href="?page={{ posts.next_page_number }}">Next</a>
+        {% endif %}
+    </div>
+
+{% endblock %}

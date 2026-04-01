@@ -1,0 +1,11 @@
+.like_button {
+    color: gray;
+}
+
+.like_button.liked {
+    color: red;
+}
+
+.post-content {
+    white-space: pre-wrap;
+}

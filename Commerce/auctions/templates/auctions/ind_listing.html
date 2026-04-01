@@ -1,0 +1,109 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<h2>{{listing.title}}</h2>
+<p>{{listing.description}}</p>
+
+{% if listing.listing_image_link is not None and listing.listing_image_link != ""%}
+<img src="{{ listing.listing_image_link }}">
+{% endif %}
+
+{% if listing.category_image_link is not None and listing.category_image_link != "" %}
+<img src="{{ listing.category_image_link }}">
+<p>{{listing.category_image_link}}</p>
+{% endif %}
+
+<h4>Current Price: {{listing.bid_price}} USD!</h4>
+<h5>Owner: {{listing.owner}}</h5>
+
+{% if user.is_authenticated %}
+    {% if not watchlist %}
+    <form action="{% url 'add_to_fav' %}" method="post">
+        {% csrf_token %}<input type="hidden" name="bid_id" value={{listing.id}}>
+        <div>
+            <input class="btn btn-primary" type="Submit" value="Add to Favorite">
+        </div>
+    </form>
+    {% else %}
+    <form action="{% url 'remove_from_fav' %}" method="post">
+        {% csrf_token %}<input type="hidden" name="bid_id" value={{listing.id}}>
+        <div>
+            <input class="btn btn-primary" type="Submit" value="Remove From Favorite">
+        </div>
+    </form>
+    {% endif %}
+
+    {% if listing.winner is None %}
+
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+
+        <form action="{% url 'new_bids' %}" method="post">
+        {% csrf_token %}
+            <p>Bid price:</p>
+            <div class="form-group">
+                <input size = "10" autofocus type="number" name="bid_price" placeholder={{listing.bid_price}} required>
+            </div>
+            <input type="hidden" name="bid_id" value={{listing.id}}>
+            <div>
+                <input class="btn btn-primary" type="Submit" value="Bid!">
+            </div>
+        </form>
+    
+    {% else %}
+        
+        <H3>Bid has ended, winner is {{listing.winner}}</H3>
+        
+    {%endif %}
+
+    {% if listing.owner == user %}
+        {% if listing.winner is None %}
+        <form action="{% url 'close_poll' %}" method="post">
+            {% csrf_token %}<input type="hidden" name="bid_id" value={{listing.id}}>
+            <div>
+                <input class="btn btn-primary" type="Submit" value="Close Poll">
+            </div>
+        </form>
+        {% endif %}
+    {% endif %}
+<!--  -->
+
+{% else %}
+    <p><a href="{% url 'login' %}">log in to bid</a></p>
+{% endif %}
+
+
+<hr>
+<h4>Comment Section</h4>
+<hr>
+{% if comments %}
+{% for comment in comments %}
+<p><b>{{comment.comment_owner}}</b> ({{comment.comment_time}})</p>
+<p>{{comment.comment_text}}</p>
+<hr>
+{% endfor %}
+{% else %}
+<p>The comment section is empty</p>
+{% endif %}
+
+{% if user.is_authenticated %}
+<form action="{% url 'new_comment' %}" method="post">
+    {% csrf_token %}
+    <p>Comment:</p>
+    <div class="form-group">
+        <textarea id="content" name="content" rows="20" cols="100"
+            placeholder="Enter the description (markdown format) here..."></textarea>
+    </div>
+    <input type="hidden" name="current_price" value={{listing.bid_price}}>
+    <input type="hidden" name="bid_id" value={{listing.id}}>
+    <div>
+        <input class="btn btn-primary" type="submit" value="Submit">
+    </div>
+</form>
+{% else %}
+<p><a href="{% url 'login' %}">log in to comment</a></p>
+{% endif %}
+
+
+{% endblock %}

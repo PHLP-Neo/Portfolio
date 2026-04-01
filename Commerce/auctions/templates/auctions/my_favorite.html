@@ -1,0 +1,17 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+{% if user.is_authenticated %}
+
+<ul>
+    {% for favorite in favorites%}
+    <li><a href="{% url 'show_listing' favorite.id %}">{{favorite}}</a></li>
+    {% empty %}
+    <li>No favorite yet.</li>
+    {%endfor%}
+</ul>
+
+{% endif %}
+
+{% endblock %}
