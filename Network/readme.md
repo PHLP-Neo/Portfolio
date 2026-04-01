@@ -1,7 +1,5 @@
 # CS50 Web - Network Social Platform
 
-![Screenshot or demo GIF](screenshot.png)
-
 **Twitter-like social network** with Django/JS: posts/follow/likes/pagination/edit.
 
 ## Features Implemented
