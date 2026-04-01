@@ -1,7 +1,5 @@
 # CS50 Web - Commerce Auction Site
 
-![Screenshot or demo GIF](screenshot.png)
-
 **eBay-like auction platform** in Django: listings/bids/comments/watchlists/categories/admin.
 
 ## Features Implemented
