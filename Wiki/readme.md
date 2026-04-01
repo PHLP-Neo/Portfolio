@@ -1,7 +1,5 @@
 # CS50 Web - Wiki Encyclopedia
 
-![Screenshot or demo GIF](screenshot.png)
-
 **Full-stack Wikipedia clone** built with Django: Markdown-powered entries, search/edit/random pages, HTML rendering.
 
 ## Features Implemented
