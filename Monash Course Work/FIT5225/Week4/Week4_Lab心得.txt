@@ -126,6 +126,53 @@ $ kubectl apply -f my-deployment.yml --namespace=<your-namespace>
 $ kubectl logs <pod-name> --namespace=<your-namespace>
 查看具体的一个pod
 
+$ kubectl exec -it <pod-name>  --namespace=<your-namespace> -- /bin/bash
+kubectl exec: 在pod容器内执行命令
+-it: -i,--stdin	保持标准输入打开,允许你输入命令（键盘敲 ls、cat 等）,-t,--tty，分配伪终端，提供终端界面
+<pod-name>: pod名
+--namespace=<your-namespace>: namespace名
+--: 分隔符
+/bin/bash: 要执行的命令
+
+$ kubectl scale deployment nginx-deployment --replicas=4 --namespace=<your-namespace>
+kubectl scale: 调整副本数量
+deployment nginx-deployment: 目标是nginx-deployment
+--replicas=4 新副本数量
+--namespace=<your-namespace> namespace名
+
+$ kubectl delete deployment nginx-deployment --namespace=<your-namespace>
+没啥好说的，删除deployment
+
+
+=== Task 4 ===
+$ curl <pod-ipaddress>:80 检查是否能连接到pod
+如果不行那么安装
+$ sudo apt install -y socat
+socat似乎是一个可以管理tcp udp转发的工具
+
+创建一个叫my-servce.yml的文件
+apiVersion: v1 
+kind: Service
+metadata:
+  name: my-service # Service name, used for internal DNS
+spec:
+  type: NodePort # Exposes a fixed port on every node
+  selector:
+    app: nginx # Routes traffic to Pods with label app=nginx
+  ports:
+    - protocol: TCP # Protocol type
+      port: 8080 # Service port, internal access via my-service:8080
+      targetPort: 80 # Container's listening port (nginx default 80)
+      nodePort: 30003 # External access via NodeIP:30003
+
+$ kubectl apply -f my-service.yml --namespace=<your-namespace>
+这个是不是前面弄过类似的，对啊
+
+$ kubectl get svc --namespace=<your-namespace> -o wide
+用来获取service的信息，svc应该就是service的意思
+
+$ curl <service-ip-address>:8080
+如果之前deployment删了的话这里得再加，要不然没有pod在工作啊
 
 
 
