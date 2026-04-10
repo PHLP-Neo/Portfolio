@@ -87,6 +87,8 @@ java Something
 .java: source code
 .class: complied bytecode
 
+===========================================================
+
 2.1.1
 
 <Access Modifier> class <Class Name>
@@ -356,6 +358,8 @@ public class Car
     }
 }
 
+========================================================
+
 3.1.1
 3.1.2
 3.1.3
@@ -482,5 +486,116 @@ Integer.parseInt()
 15. every person need to be credited
 16. each method need to have comment on top
 17. inline comment should be include when and only when necessary
+
+======================================================================
+
+4.1.1
+
+A loop contain:
+ - Initialization of a counter or flag
+ - Boolean condition
+ - Increment/decrement or reset
+
+4.1.2
+
+for (<initialization counter/flag>;<boolean condition>;<increment.decrement/reset>)
+{
+	//instructions to iterate
+}
+
+<initialization counter/flag>
+while (<boolean condition>)
+{
+	//instructions to iterate
+	<increment/decrement/reset>
+}
+
+4.1.3
+
+<initialization counter/flag>
+do
+{
+	//instructions to iterate
+	<increment/decrement/reset>
+} while (<boolean condition>)
+
+4.1.4
+
+pass
+
+4.2.1
+
+A collection in java is a data structure to store sets of the same type of object
+
+4.2.2
+
+Array:
+Init empty array (element value inside is null):
+<Datatype>[] <Variable name> = new <Datatype>[x];
+
+init the elements in array:
+
+String[] daysOfWeek = {"Subday","Monday","Tuesday","Wednesday","Thursday","Friday"};
+or
+String[] daysOfWeek = new String[7];
+for (int i = 0; i < daysOfWeek.length ; i++)
+{
+	daysOfWeek[i] = value;
+}
+
+4.2.3
+
+Size of array:
+use array.length
+Length of String
+string.length()
+
+4.2.4
+
+Two of the most common errors new programmers make when working with arrays (and collections) are:
+-Not initialising the object of the array (or collection class).
+-Not initialising the objects within the array (or collection) itself.
+
+4.3.1
+
+An object of the String class is used to store a sequence of characters.
+
+4.3.2
+
+String Operations:
+
+Concat: + sign
+if one operand is a string and the other is not then the other operand is converted to a string and then the strings are concatenated.
+
+String Length:
+aString.length()
+
+Substring:
+aString.substring(startIndex) // returns the substring from the specified index
+aString.substring(startIndex, endIndex) // returns the substring from the specified
+
+Access a character:
+aString.charAt(index) // returns the character at the specified index
+
+Trimming:
+aString.trim() // returns a copy of aString with leading and trailing whitespace omitted
+
+Changing the case:
+aString.toUpperCase()
+aString.toLowerCase()
+
+Equality:
+DO NOT USE ==
+USE 
+astring.equals(anotherString) instead
+or
+aString.equalsIgnoreCase(anotherString)
+
+4.4.1
+4.4.2
+4.4.3
+Class Diagram and Object Diagram
+
+====================================
 
 
