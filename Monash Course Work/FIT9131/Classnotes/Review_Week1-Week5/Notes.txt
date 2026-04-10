@@ -88,3 +88,284 @@ java Something
 .class: complied bytecode
 
 2.1.1
+
+<Access Modifier> class <Class Name>
+{
+    Field
+    Constructor
+    Methods
+}
+
+camel case: lowerUpperLower
+
+2.1.2
+
+Access modifier is also known as visibility modifier (all lower case)
+
+Three Modifiers:
++Public
+-Private
+#Protected
+
+2.1.3
+
+How to write Fields:
+<Access Modifier> <Datatype> <Variable Name>;
+The access modifier is usually private
+Java is STRONG TYPED LANGUAGE which means ONLY VALUE MATCHED THE DATA TYPE WILL BE STORED
+For now, don't worry about the public fields.
+
+2.1.4
+
+Constructor is a special type of methods.
+
+public <Class Name>()
+{
+    //Initialize Fields here
+}
+
+public <Class Name>(<Atleast One Parameter>)
+{
+
+}
+
+How to write parameter?:
+<type parameter, type parameter, type paraeter>
+
+2.1.5
+
+Syntax for Mathod:
+
+<Access Modifier> <Return Value Type> <Method Name>(<Parameter List>)
+{
+    method instructions
+}
+
+Display Method:
+System.out.println();
+
+2.1.6
+
+Class Templates:
+
+//Class Header must appear here
+{
+    //Fields must be defined here, immediately after the class header
+
+    //Non-parameterised Constructor must appear here
+
+    //Parameterised Constructor(s) must appear here, if applicable
+
+    //Other methods appear here.
+    //      This should include the display() method
+    //      This should include the main() method
+}
+
+A few conventions that are good practice and are also specified in our FIT9131 Coding Guidelines:
+-Fields are placed first.
+-The non-parameterised constructor is placed next.
+-Parameterised constructors are placed in increasing order of the number of formal parameters they accept.
+-All other methods must be arranged alphabetically.
+-Leave exactly one blank line between methods.
+
+2.2.1
+
+Methods:
+
+<Access Modifier> <Return Type> <Method Name> ( <Optional Parameter> )
+{
+    //Insert code here
+}
+
+Method name must start with lowercase character
+
+Method Overload:
+
+If two methods have the same name then the signature of both methods MUST be different, so that the computing system can identify which method is being requested.
+
+2.2.2
+
+The return type as defined in the method header specifies a data type (primitive or object) that is returned to the calling object, method, or user.
+
+If the method is able to provide the user with the required functionality directly upon completion of execution, generally it will return void.
+
+Do not use a return statement in a void method as this can lead to code that is hard to debug.(At least for this semester)
+
+2.2.3
+
+Local variable – A variable that is defined within the body of a method and is accessible within that method only.
+Formal parameter – A variable defined with a specific data type that acts as a placeholder in the header of a method.
+An actual argument is a value that is passed to a method when a method is executed. The actual argument(s)  are substituted in the place of the formal parameters.
+
+2.2.4
+
+nothing important
+
+2.2.5
+
+public static void main(String[] args)
+{
+    //Insert code here
+}
+
+2.2.6
+
+The terms execute, invoke, call, and run, are synonymous in programming.
+
+2.3.1
+
+Any given class can have unlimited number of objects that belong to it; however, each object that is created must belong to one class only.
+
+2.3.2
+
+Instantiating an object:
+<class name> <variable name> = new <class name (parameter-list)>
+
+2.3.3
+
+The scope of a variable defines the section of source code from which the variable can be accessed.
+There are two scope: class scope and block scope
+
+A block can be placed anywhere in the code; however, they should only be used when the syntax mandates the use of a block. Some of the most common places to define a block include:
+body of a class
+body of a method
+selection constructs (we will see these later)
+loops (we will see these later as well).
+
+Fields
+-Definition: Defined outside constructors and methods.
+-Scope: Within any methods or constructors of the class in which they are defined.
+
+Parameters
+-Definition: Defined in the header of the method or constructor.
+-Scope: Within the body of the method in which they are defined.
+
+Local variables
+-Definition: Defined within the body of a method or constructor.
+-Scope: Within the block in which they are defined, starting from the line where they are defined.
+
+2.3.4
+
+2.3.6
+
+When writing computer programs, there is one very dangerous value that exists called null. The null value refers to "No Object" in Java.
+
+2.3.7
+
+if a programmer wishes to be consistent and use the dot notation for all method calls, irrespective if they are internal or external, then the programmer can use the this keyword on the left of the dot notation followed by the method name.
+
+public Car(String newMake, String newModel, int newYear, String newColor)
+{
+    this.make = newMake;
+    this.model = newModel;
+    this.year = newYear;
+    this.color = newColor;
+    this.display;
+}
+
+2.3.8
+
+All primitive data types are passed between methods using a concept known as pass by value. When a primitive variable is passed as an argument, a copy of that variable is made and the copy is then passed to the subsequent method. The implication of this is that any modifications made to the copy of the variable do not impact the original variable. Let's see an example of this in code using the Car example from earlier.
+
+All object data types are passed between methods using a concept known as pass by reference and as such, object variables are sometime referred to as reference variables. Unlike primitive types that have a fixed size of memory allocated to the variable, object type variables are often more complex, comprising multiple fields. It can be very cumbersome to pass these complex objects around. As such, Java uses a concept whereby a reference or address of the object is passed around rather than the object itself.
+
+public class Car
+{
+    private String make;
+    private String model;
+    private int year;
+    private String color;
+
+    public Car()
+    {
+        make = "Unknown";
+        model = "Unknown";
+        year = 1900;
+        color = "Unknown";
+    }
+
+    public Car(String newMake, String newModel, int newYear, String newColor)
+    {
+        make = newMake;
+        model = newModel;
+        year = newYear;
+        color = newColor;
+    }
+
+    public void display()
+    {
+        System.out.println(year + " " + color + " " + make + " " + model);
+    }
+
+    public String getColor()
+    {
+        return color;
+    }
+
+    public String getMake()
+    {
+        return make;
+    }
+
+    public String getModel()
+    {
+        return model;
+    }
+
+    public int getYear()
+    {
+        return year;
+    }
+
+    public static void main(String[] args)
+    {
+        Car objCar = new Car("Lamborghini", "Diablo", 2000, "Yellow");
+        System.out.println("Lets make a copy of the car object now in a new variable");
+        Car objCar2 = objCar;
+        System.out.println("Lets call the display() method using the first object");
+        objCar.display();
+        System.out.println("Lets call the display() method using the second object");
+        objCar2.display();
+        System.out.println("Modifying the second object, changing the model only");
+        objCar2.setModel("Aventador");
+        System.out.println("Lets call the display() method using the first object again");
+        objCar.display();
+        System.out.println("Lets call the display() method using the second object again");
+        objCar2.display();
+        System.out.println("Note how each object variable is NOT a copy but actually point to the same object in memory");
+    }
+
+    public void setColor(String newColor)
+    {
+        color = newColor;
+    }
+
+    public void setMake(String newMake)
+    {
+        make = newMake;
+    }
+
+    public void setModel(String newModel)
+    {
+        model = newModel;
+    }
+
+    public void setYear(int newYear)
+    {
+        year = newYear;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
