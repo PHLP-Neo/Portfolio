@@ -356,16 +356,131 @@ public class Car
     }
 }
 
+3.1.1
+3.1.2
+3.1.3
+3.1.4
 
+Increment.decrement Operator
+int a = 1;          //currently a = 1
+a++;                //post-increment, a is now 2
+++a;                //pre-increment, a is now 3
+a--;                //post-decrement, a is now 2
+--a;                //pre-decrement, a is now 1
 
+3.1.5
 
+Operator Precedence Table:
 
+1. () []
+2. ++ -- (post-increment)
+3. ++ -- (pre-increment)
+4. + - ! (Sign)
+5. * / %
+6. + -
+7. < <= > >=
+8. == !=
+9. &&
+10. ||
+11. ? :
+12. = += -= *= /= %=
 
+3.1.6
 
+Inplicit: 
+int a = 10;
+double b = a + 10.0;
+int b = 'a' + 'a';
 
+Explicit:
+int b = (int)10.25
 
+3.2.1
 
+if (condition)
+{
+	consequence;
+}
+else
+{
+	alternative;
+}
 
+3.2.2
 
+switch (expression)
+{
+	case value1:
+		statements;
+		break;
+	case value2:
+		statements;
+		break;
+	default:
+		statements;
+		break;
+}
+
+3.2.3
+
+<expression> ? <Value if true> : <Value if false>
+
+3.3.1
+
+print() and println()
+
+printf("%.2f%n", val);
+The format string contains the symbol %.
+The .2f format tells Java to use the argument val and format it to a two decimal place floating point number.
+The %n at the end is to tell Java to go to the next line, similar to println() method.
+
+3.3.2
+
+The Scanner class is part of the java.util package and isn't included by default when writing a Java program. As such, we must remember to import this package prior to using the Scanner class in our code.
+
+import java.util.Scanner;
+
+Scanner console = new Scanner(System.in);
+
+scanner methods:
+next():			read a single word until whitespace
+nextLine():		read a single sentence until next line
+nextInt():		read an int value
+nextDouble():	read a double value
+nextFloat():	read a float value
+nextBoolean():	read a boolean value
+
+3.3.3
+
+just in case
+Double.parseDouble()
+Integer.parseInt()
+
+3.3.4
+
+9131 Coding Standard:
+
+1. dont use abbreviation
+2. camelCase
+3. single space between and after operator
+4. field must be initialized in construtor
+5. local var must be initialized when declared
+6. var name must not have '_'
+7. method must have exactly 1 blank line between
+8. mutator name is setXXX, accessor is getXXX or isXXX
+9. class name must be nouns and singular
+10. a class need to have
+ - 1 default constructor
+ - 1+ non default constructor (if has fields)
+ - accessor for each field
+ - mutator for each field
+ - display/toString method
+11. need indentation
+12. max code length:80
+13. each statement on separate line
+14. class should have comment on top with general description of the class
+15. every person need to be credited
+16. each method need to have comment on top
+17. inline comment should be include when and only when necessary
 
 
