@@ -1,0 +1,90 @@
+Week 1:
+1.1.1
+
+First store-program electronic computer: Manchester Baby (1948)
+
+Computer System has 5 componenents:
+-Hardware
+-Software
+-Procedures
+-Data
+-Users
+
+Computer Hardware has:
+-CPU
+-Memory
+-Input/Output
+
+1.1.2
+
+Program: ordered instructions written in a programming language's syntax.
+Code must be ordered, logical, and may involve i/o
+
+Language level and example:
+Machine Code:	000100C
+Assembly:	LDA#5
+High-Level:	Java,C++
+4GL:		SQL
+5GL:		Prolog
+
+higher = easier/more readable but less control
+lower = precise but tedious
+
+1.2.1
+
+Advantage of OOP:
+-Resuability
+-Avoid code duplication (Though inheritance)
+-Easier maintaince
+-Extendibility
+-Greater security
+
+Disadvantage of OOP:
+-Size of program
+-More design effort
+-Lower performance
+
+1.2.2
+
+A CLASS groups together objects that share common attributes and behaviors, each actual object is an instance of it
+An OBJECT is an instance of a class and a class is a pattern or template that describe the attribute and behavior shared by its objects.
+ATTRIBUTE is property or state of an OBJECT
+BEHAVIOR are the actions it can perform
+
+1.2.3
+
+State: The current value of an object's attribute at any moment
+Identity: What makes an object distinct from another even if their states match exactly
+For me it would be their memory address
+
+1.3.1
+
+Program only understand machine code so translation is needed to translate high level language into machine code for CPU to execute
+
+There are two approaches:
+
+Compiler: Translate the entire program at once into machine code
+Interpreter: Translate the code line by line
+
+1.3.2
+
+Java use both:
+Javac: complier -> turn into .class (byte code)
+JVM: .class bytecode -> machine code
+
+1.3.3
+
+Steps:
+1.Write the high-level code
+2.Compiling the high level code to machine code
+ - Also debug the code in the process
+3.Execute the machine code
+
+1.3.4
+
+javac Something.java
+java Something
+.java: source code
+.class: complied bytecode
+
+2.1.1
