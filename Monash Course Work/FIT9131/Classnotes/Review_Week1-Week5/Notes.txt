@@ -598,4 +598,66 @@ Class Diagram and Object Diagram
 
 ====================================
 
+5.1.1
+
+Comment Types:
+-Inline comments:
+//This is inline comment
+
+-Multiline comments: Include things that may flow over the screen
+/*
+This is multiline comment
+It can span multiple lines
+*/
+
+-Documentation comments:
+/**
+* This class demonstrates the use of documentation comments
+* @author Mark Creado
+* @version ver 1.0.0
+*/
+
+5.1.2
+
+Class documentation:
+Important tags:
+@author
+@param: parameter
+@return: return
+@version: we dont write code all at once, so version history is good
+@deprecated: this syntax is no longer used by java anymore
+
+5.1.3
+
+For documentation, remember two astrik ** not one
+
+to generate documentation, use the following command:
+javadoc -d ./docs *.java
+
+-d here means a new directory
+*.java is wildcard matching, it means all java files
+
+5.1.4
+5.2.1
+5.2.2
+
+Import
+
+import java.util.*
+
+5.2.3
+
+The interface of a class describes the what a class does and how it can be used, without showing the implementation. Interfaces are an example of abstraction, one of the main theoretical principles of object oriented programming.
+
+By contrast, the source code that forms the main body of the class is termed the implementation of the class.
+
+We use the term interface to express the external appearance of a system.
+We use the term implementation to express the internal workings of a system.
+
+5.3.1
+
+Java treats Strings as 'immutable'.
+
+You dont need to import StringBuffer class
+
 
