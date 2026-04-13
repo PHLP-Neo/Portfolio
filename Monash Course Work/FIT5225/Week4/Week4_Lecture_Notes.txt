@@ -1,0 +1,27 @@
+Container Orchestration:
+
+rchestrator:
+ - Manage both host and docker container running on a cluster
+ - Keep track of where container can be scheduleld, as well as nodes and scale
+
+Orchestration tools:
+ - Kubernetes(K8s)
+ - Apache Mesos
+ - Docker Swarm
+
+Features:
+ - Networking
+ - Scaling
+ - Service discovery
+ - Load balancing
+ - Health check + self healing
+ - Security
+ - Rolling updates
+
+Docker Swarm:
+ - Contains:
+  - Secure cluster
+  - Orchestration engine
+ - Consistes of one or more docker nodes.
+
+
