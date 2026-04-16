@@ -1,0 +1,40 @@
+Task 3:
+
+1.
+install pulumi in local pc
+https://www.pulumi.com/docs/iac/download-install/
+
+2: Create a folder, then open it in a terminal, then run
+$ pulumi login --local 
+$ pulumi new python
+
+3:see lab since depends on different version
+
+... bypass many steps because they are all local.
+bypass dockerfile and requirements.txt as well since no correct answer exist.
+
+To execute the Pulumi IaC code in ssh,
+
+$ curl -fsSL https://get.pulumi.com | sh
+ - we have touched this in week3 or week 4 when using docker
+
+$ docker login
+
+$ pulumi login --local && pulumi new python
+ - pulumi login --local: login, but save all data to local VM
+ - pulumi new python: setup basic pulumi python template
+
+$ source venv/bin/activate
+ - to setup virtual python environment
+
+$ pip install -r requirements.txt
+ - you wrote this file!
+
+$ pulumi up
+ - pulumi run __main__.py python locally and check what need to be done
+ - then ask for your comfirmation, then actually start setup online
+ - it is actually doing similar things to Ansible, but more advanced.
+
+
+
+
