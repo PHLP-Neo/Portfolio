@@ -1,0 +1,39 @@
+Task 2
+1.
+$ unzip ansible-k8s-demo.zip && cd ansible-k8s-demo
+-nothing special here
+
+2.
+create a k8s-hosts.ini file
+
+[masters]
+SERVER_1_IP_HERE
+
+
+[workers]
+SERVER_2_IP_HERE 
+
+2.
+$ ansible -i k8s-hosts.ini all -m ping --private-key=$PRI_KEY_PATH -u ubuntu
+ -i k8s-hosts.ini: we are running a new ini file now.
+ all: do it for all ip in ini file
+ -m ping: the same as task 1
+
+3.
+3. 如何从命令行转换成 YAML？（逆向思维）如果你在命令行里知道怎么操作，想把它变成 Ansible 的 YAML，可以遵循这个**“三步对应法”**：第一步：确定你的“动作”属于哪个模块如果你在敲 apt install... $\rightarrow$ 使用 apt 模块。如果你在敲 vim /etc/config $\rightarrow$ 使用 lineinfile 或 copy 模块。如果你在敲 systemctl start... $\rightarrow$ 使用 service 模块。第二步：寻找参数Ansible 的参数通常对应命令行的选项。命令行：apt install apache2 --yesYAML：YAMLapt:
+  name: apache2
+  state: present
+第三步：使用 ansible-doc 工具这是最强的转换助手。如果你知道你想改文件，但不记得 lineinfile 怎么写，直接在终端输入：Bashansible-doc lineinfile
+它会列出所有的参数定义和最下方的 EXAMPLES（示例）。你只需要把那些示例复制出来，改改路径和内容即可。
+
+$ ansible-playbook -i k8s-hosts.ini --private-key=$PRI_KEY_PATH 1_users.yml -u ubuntu
+$ ansible-playbook -i k8s-hosts.ini --private-key=$PRI_KEY_PATH 2_install_k8s.yml
+$ ansible-playbook -i k8s-hosts.ini --private-key=$PRI_KEY_PATH 3_create_master.yml -u ubuntu
+$ ansible-playbook -i k8s-hosts.ini --private-key=$PRI_KEY_PATH 4_join_worker.yml -u ubuntu
+
+all of these are just executing yml files, just like running shell scrict from week 4
+
+use ssh to connect to master node
+and run
+$ kubectl get nodes
+to check.
