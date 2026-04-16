@@ -1,0 +1,74 @@
+Generic Class:
+public class GenericClass<Type>
+{
+    private Type attributeOne;
+
+    public Type getAttributeOne()
+    {
+        return attributeOne;
+    }
+
+    public String display()
+    {
+        return "" + attributeOne;
+    }
+    
+    public void setAttributeOne(Type attributeOne)
+    {
+        this.attributeOne = attributeOne;
+    }
+
+    public static void main(String[] args)
+    {
+        GenericClass<Integer> objOne = new GenericClass<Integer>();
+        objOne.setAttributeOne(10);
+        System.out.println("First generic value = " + objOne.display());
+        GenericClass<String> objTwo = new GenericClass<String>();
+        objTwo.setAttributeOne("Hello");
+        System.out.println("Second generic value = " + objTwo.display());
+    }
+
+}
+
+6.1.3 ArrayList:
+
+create arraylist using a template
+
+6.1
+
+collect example, book class, library class
+array[]
+
+6.1.1
+
+We need to modify the default constructor to initialize the arraylist
+
+we will need to put the keyword arraylist, then the datatype
+
+ClassName<Type> ObjectName = new ClassName<Type>()
+
+how to initialize the arraylist?
+
+booklist = new ArrayList<String>();
+
+
+6.3 String API:
+
+val = " HelloWorld "
+
+1.  val.length() 		 -> 12
+2.  val.substring(3, 5)  -> "ll"
+3.  val.substring(4) 	 -> "loWorld "
+4.  val.indexOf(4) 		 -> -1
+5.  val.indexOf('r')	 -> 8
+		Why does 5 work but 4 does not? Did you spot the error?
+		4 actually represent EoT, and we cannot find it here
+6.  val.lastIndexOf('l') -> 9
+7.  val.charAt(3)		 -> l
+8.  val.equals("Helloworld") 			-> false
+		Why do you get this value. Explain
+9.  val.equalsIgnoreCase("HeLlOwOrLd") 	-> false
+10. val.toUpperCase() 	 -> " HELLOWORLD "
+11. val.toLowerCase() 	 -> " helloworld "
+12. val.trim()			 -> "HelloWorld"
+
