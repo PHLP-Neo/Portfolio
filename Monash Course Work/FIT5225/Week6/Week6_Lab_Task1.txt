@@ -1,0 +1,140 @@
+Task 1: Using Ansible to Automate Resource Creation and Configuration
+
+1. download and upload ansible-demo.zip and ansible-k8s-demo.zip
+
+using ssh as well.
+
+upload your private key while you are at it.
+
+2.
+$ export PRI_KEY_PATH=<path-of-your-private-key>
+sample path:/home/ubuntu/id_ed25519
+
+same as task0, save location as variable so dont need to write for many times.
+
+you also need to change the permission of the key.(Week1)
+
+3.
+$ cd <key path>
+$ chmod 600 <key path> means only user can read and write (not execute since this is not an exe file)
+    r w x
+6 = 1 1 0
+
+4.
+$ sudo apt update && sudo apt install -y python3-pip unzip vim python3-shade
+
+install 
+ - python3-pip for install python library (Ansible and Openstack SDK)
+ - unzip because we need to unzup files
+ - vim for text editing
+ - python3-shade to ignore the difference between different cloud platforms
+  - basically a translator between Nectar and Ansible
+  - Ansible does not recognize Nectar, it need middleware(!learnt from week1) to communicate
+   - Ansible Playbook
+   - Ansible OpenStack Module
+   - Shade/Openstack SDK (What we are installing): convert Ansible logic inito language that can be understand by OpenStackAPI
+   - OpenStackAPI(Nectar): receiver, build VM
+
+5.
+Install Ansible and OpenstackAPI:
+$ sudo pip3 install -U ansible openstacksdk openstackclient && sudo ansible-galaxy collection install openstack.cloud
+First half:
+ - U: Upgrade(so if you already installed, will check for upgrade instead)
+Second half:
+ - ansible-galaxy: user terminal for ansible, you can use it as an appstore to download differet ansible plugin and add-on
+ - collection: a file format for ansible module, plugins and roles
+ - openstack.cloud: the add-on we want to install
+
+Ansible does not natively support communication with nectar, so we need to install corresponding add-on first.
+
+basically: 
+first half: install ansible and openstack
+second half: install plugin for ansible, so it can communicate with openstack
+
+6.
+$ unzip ~/ansible-demo.zip && cp ~/FIT5225-Cloud-openrc.sh ~/ansible-demo/ && cd ~/ansible-demo
+
+basically unzip the file and go to the folder
+
+7.
+go to host_vars, edit nectar.yaml
+
+YAML file:
+
+# Common vars
+availability_zone: monash-02
+
+
+# Security group
+security_groups:
+  - name: demo_web_server
+    description: "security group for HTTP access"
+    protocol: tcp
+    port_range_min: 80
+    port_range_max: 80
+    remote_ip_prefix: 0.0.0.0/0
+
+# Instance
+instances:
+  - name: web-server-1-{{ my_name }}
+  - name: web-server-2-{{ my_name }}
+
+instance_image:c0250c96-98a4-4bfa-b67c-51874808337f
+
+
+
+change available_zone to monash_02
+change instance flavor to r3.small
+change instance image to c0250c96-98a4-4bfa-b67c-51874808337f
+
+
+8.
+change to ansible-demo, run this:
+
+$ source ./FIT5225-Cloud-openrc.sh
+source: shell command, can run shell script
+
+FIT5225-Cloud-openrc.sh: shell command offered by nectar, include important information to access the server.
+
+why use source? the script wont terminate after running (did not run in sub process either), it will run in this terminal directly.
+
+
+9.
+run
+$ openstack server list
+to check if it is working and 
+$ ansible-playbook -e "my_name=<your-name>" -e "key_name=<your-key-name-in-nectar>" nectar.yaml
+ - ansible-playbook: ansible read a YAML file(nectar.yaml) and run the tasks inside
+ - e: extra-vars, since we have {{ my_name }} and {{ key_name }} in the nectar.yaml file, we need to pass the value
+
+10. create hosts.ini file
+
+[web_servers]
+SERVER_1_IP_HERE
+SERVER_2_IP_HERE 
+
+find server ip address from nectar dashboard is fine i think
+
+$ ansible -i hosts.ini -v web_servers -m ping --private-key=$PRI_KEY_PATH -u ubuntu
+ -i hosts.ini: inventory, nectar need this to know who to send
+ -v verbose: if fails, print detailed logs (for debug)
+ -m ping: use ping module from Ansible, to ensure it can ssh to the remote mathine, check for python and remote control
+ --pricate-key=$PRI_KEY_PATH: need private key for ssh
+ -u ubuntu, basically the first half of the ubuntu:<ip-address>
+
+11.
+run this line:
+$ ansible -i hosts.ini -v web_servers -m apt -a "name=apache2 state=latest" --private-key=$PRI_KEY_PATH -u ubuntu --become
+ -m apt: use module apt, the same "apt" in "sudo apt install", to manage package installation
+ -a "...": arguments, what you want to do with apt module.
+ name=apache2: tell apt to install Apache2
+ state=latest: tell apt if the apache2 does not exist, install it, if exist, check for update
+ --become: tell Ansible to add "sudo" when running apt command
+ 
+Idempotency:
+ - since we have state=latest, the program will not crash no matter how many times it runs, even if it is already installed on the server.
+
+
+
+use this command to start apache http service:
+ansible -i hosts.ini -v web_servers -a "systemctl start apache2" --private-key=$PRI_KEY_PATH -u ubuntu --become
