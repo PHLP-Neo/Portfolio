@@ -1,0 +1,15 @@
+Pre-requisite:
+ - m3.xsmall
+ - ubuntu 22.04
+
+openstackRC file from week5 * 2
+nectar password from week 5
+
+you can use scp command
+$ scp -i <key_location> <file_location> ubuntu@<ip_address>:<destination_filepath>
+
+
+$sudo apt update && sudo apt install -y software-properties-common git curl python3 && sudo apt install -y python3-pip && export PATH=$PATH:/home/ubuntu/.local/bin
+ - software-properties-common: covered in week3 lab.
+ - git, curl, python3也是week3
+ - PATH=$PATH:/home/ubuntu/.local/bin: save path as a variable, so dont need to input everytime.:
