@@ -1,0 +1,14 @@
+__MACOSX/
+.DS_Store
+
+venv/
+__pycache__/
+*.py[cod]
+
+*.pt
+
+runs/
+Screenshots/
+
+.config/
+*.pem
