@@ -1,0 +1,41 @@
+====== Compute ======
+
+Compute is generic term
+
+for example, when running ML algorithm
+ - the CPU, RAM, GPU are called compute resources
+ - the application will be compute-intensive applications
+
+Microservices:
+
+Enterprise application usually are build into three parts
+ - a client side user interface (likely HTML page)
+ - a database
+ - a server-side application (backend)
+
+This is hard to modify and inflexible. thats why we need microservice
+a microservice address a single concern
+deployed independently, use own compute resources, and communicate with each other
+
+VM:
+
+AWS EC2 provide virtual machine instances.
+
+it has:
+ - Compute optmized instances: financial, scientific, big data, bi
+ - Accelerated computing instances: float point cal, graph, data pattern matching
+ - Memory optmized instances: open source database, big data analytics
+ - Storage optimized instances
+
+Container:
+
+A way to package an app rode and run on any system
+code + dependency
+
+Amazon Elastic Container Service(ECS) allows for Docker container
+
+====== Amazon Relational Database Service ======
+
+Can use database you are already familiar with
+
+
