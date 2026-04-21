@@ -8,7 +8,7 @@ from ultralytics import YOLO
 app = FastAPI()
 
 # 1. 
-model = YOLO("runs/detect/train/weights/best.pt")
+model = YOLO("model.pt")
 
 # 2.  [cite: 206, 207]
 class PredictRequest(BaseModel):
@@ -17,11 +17,6 @@ class PredictRequest(BaseModel):
 
 @app.post("/api/predict")
 async def predict(request: PredictRequest):
-    # 3. 
-    # header, encoded = request.image.split(",", 1) if "," in request.image else ("", request.image)
-    # img_bytes = base64.b64decode(encoded)
-    # nparr = np.frombuffer(img_bytes, np.uint8)
-    # img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
     try:
         # 1. 
         header, encoded = request.image.split(",", 1) if "," in request.image else ("", request.image)
