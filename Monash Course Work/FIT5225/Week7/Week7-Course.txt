@@ -86,4 +86,73 @@ How to minimize the response time of accessing to the pictures globally?
 Snowball:
  - transder large amount of data in and out of AWS cloud (physically)
 
+29. Storage Gateway
+
+30. Compute Services
+for example, instance(VM)
+Amazon Elastic Compute Cloud (Amazon EC2):
+ - a web service provide secure recycline in the cloud
+
+31.
+You can setup threashold to expand-contract your services
+Amazon Elastic Container Servce(Amazon ECS): feel like K8s and docker
+Amazon Elastic Kuberbetes Service(Amazon EKS):
+AWS Batch
+
+32. EC2
+Reserved Instances, reduce cost significantly.
+Spot Instances:
+ - see in applied session
+
+33. EC2 instances type:
+two types that is not good for you.
+ - 1. if you know more, you should provide more for your quiz and justify your exam
+ - 2. 
+
+34. EC2 life cycle:
+you are being charged only when you are using the instance
+
+35. Amazon Machine Image(AMI)
+like flavor
+there are different class of AMI, many options you can pick, much much more options.
+
+36. EBS:
+Elastic Block Store
+is a volume
+can be encrypted
+
+37. EBS types;
+
+38. CloudWatch
+a very important service
+help you to monitor the services you have in AWS
+send notification or trigger action when certain criteria is met
+
+39. Role:
+
+40. Boot Strapping:
+When you launch an AWS resource, you will have an instance with a default configuration. 
+Then, you have to install software and do custom configuration to bring it to a certain state.
+Bootstrapping enables you to script software installation and configuration and execute it while launching the instance.
+Instance Metadata and User Data (Information about an instance)
+	curl http://169.254.169.254/latest/user-data/ -> your bootstrapping data
+	curl http://169.254.169.254/latest/meta-data/ -> examples: public-ipv4, hostname and etc.
+The IP address 169.254.169.254 is a link-local address and is valid only from the instance.
+
+feels like ansible?
+
+42: Amazon Elastic File System
+ - automatic growing/shrinking
+ - Pay-as-go, thousands of concurrent NFS connections, Multiple availability zone, Read after write consistency
+
+43. EC2 Placement Policy:
+Clustered Placement Group
+	Low Network Latency & High Network Throughput
+	- The services need very fast connection (like real time application)
+Spread Placement Group
+	Individual Critical instances
+	- Creates and try to distribute instances
+Partitioned Placement Group
+	Multiple instance, HBASE, HDFS
+	- big data processing, HPC processing, etc.
 
