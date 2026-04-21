@@ -1,0 +1,4 @@
+id_ed25519
+venv/
+__pycache__/
+.git/
