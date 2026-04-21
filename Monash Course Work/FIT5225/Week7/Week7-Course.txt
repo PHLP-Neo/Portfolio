@@ -1,0 +1,89 @@
+16. Identity Access Management:
+Assume you have a few service running, you need an Identity Access management to let the service communicate together.
+Start from 2022(2023), AWS set a specific IAM and restrict access for all the students, then you are going to learn that wat type of service (overall) all the students can get access to. and any other services that is not part of the IAM cannot be acccessed by the student. its unfortunate but it is what it is.
+In applied session the tutor will talk about the IAM (which is pre-defined).
+You need an IAM role to access other services, and unfortunately you cannot play with the IAM role.
+Feature: 
+ - centualized control:
+	- control of all student account
+ - in week 12 applied session you will be able to play with the concepts
+ - PCI DSS: support payment and chips
+
+17. IAM Terminology
+you can define roles and based on roles define permission
+You need access key and secrect access to play with api and so on
+I will try to go over the services and play some scenarios (describe a scenario and we discuss what service we can use, similar to what we have in quiz 1)
+
+18. Storage:
+ - Amazon S3: Amazon Simple Storage Service
+	- soon you will know how AWS is differeent from other resources providers
+ - AWS srotage gateway:
+	- you have some application that is hosted in your organiaztion, but rather than changing everyhitng and put it in AWS, AWS provide a service that help you translate your data to integrate into AWS storage data and other services.
+ - Amazon Elastic Block Store (Amazon EBS)
+	- Can consider as kind of physical harddrive
+ - Amazon Elastic File System (Amazon EFS)
+	- What is a file system, anyway?
+		- the way you store, and access to file folder (name resolution, etc)
+	- this one is made for linux system
+
+19. S3:
+ - Simple Storage Service
+ - allow you to upload at most 5TB
+ - unlimited (?) storage (can scale for you)
+ - file stored in buckets (in applied session)
+	- bucket is like folders
+	- name of the bucket should be unique GLOBALLY
+	- name of the object name can have the same name
+ - consistency:
+	- what is read after write consistency for puts:
+		- as soon as you put your file on S3, everyone can read it immediately
+		- instant update
+	- what is eventual consistency for overwrite puts and deletes?
+		- as somepoint in the future can you get it (maybe some delay)
+			- maybe short, maybe long, but not instant
+
+20. S3 Storage Classes:
+ - Tierd Storage:
+	- There are different configuration and tier for S3, you cann pick which one of the tier you can pick
+	- what is S3 infrequent accessed (S3IA)? 
+		- for some data you dont need to access very often.
+	- what is S3-One Zone-IA? 
+		- (everything is storaged in one available zone), reduce cost, but no failure recovery
+ - Support Versioning like github
+	- if enable might bloat your storage space significantly, use with caution!
+ - Encryption
+	- somehow allow quantom now
+ - Bucket Policies:
+	- allow you to add policy on each file inside the bucket as well. 
+
+21. S3 Storage Tiers
+
+22. S3-comparision
+
+24. S3-Access
+Access Control Lists(ACL)
+ - as applied session you will try this
+
+Bucket Policis:
+A bucket policy is a resource-based AWS Identity and Access Management (IAM) policy. 
+ - help provide access to different type of users
+
+in your assignment:
+many student say it is working in their system but we cannot see that, one of the reason is the bucket policies is set up wrong, the two part bucket policy ACL is incorrect. it shouldnt be too open but not too restricted either
+
+25. cloudfront
+what is a content delivery network (CDN)?
+ - we have some data, we want to get access to it immediately (like video streaming, music sharing, communication, etc)
+ - provide geo distributed area all over the world, cache the data, and deliver the 
+ - of course, the faster you want the more expensive it gets
+
+27. Case Study:
+How to store our web book store pictures in Amazon S3?
+How to minimize the response time of accessing to the pictures globally?
+ - you can use S3-Standard or S3-int tiering
+
+28. S3 migration and data transder
+Snowball:
+ - transder large amount of data in and out of AWS cloud (physically)
+
+

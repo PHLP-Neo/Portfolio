@@ -1,0 +1,98 @@
+Software Quality and Three most important Aspects.
+
+1. Functional Quality
+2. Non-Functional/Structural Quality
+3. Process Quality
+
+Four components of Profuct Quality Management
+1. Quality Planning
+ - you want to plan what do you want to consider as quality attribute
+2. Quality assurance
+3. Quality control:
+4. quality imprvement plan:
+ - after release version 1, we know the area that has issue, so you should do reflection and collect them as the quality improvement plan.
+ - we can develop, for example, every junor dev in the future must be watched by a senior.
+
+Software Quality Assurance Planning(SQAP)
+
+Planning is about the plan
+ - functonal correctness, software planning , etc
+
+Key questions to answer in SQAP:
+ - Who is responsible for overseeing SQA activities
+ - what sqa activities need to be performed
+ - who need to be involved
+ - how evtensive
+ - and many mode
+ - you need a document
+
+First step, software quality attribute (ISO/IEC 25010)
+ - one of the common standatd attribute
+
+
+SQA
+ - Functional Suitability
+	- Functional Correctness
+	- Functional Completeness
+	- Function Appropriateness
+ - Performance Effiency
+	- Time Behavior
+	- Resource Utilization
+	- Capacity
+ - Compatability
+	- Co-existence
+	- Interoperability
+
+Non functional Quality attributes
+ - something
+
+
+how can we test and assure the quality of the system?
+ - the calssic appraoch is software VaV, which stand for verification and validation
+	- Verification: Are we building profuct right?
+	- Validation: Are we building the right product?
+
+Waterfall style SQA
+ - requirement analysis
+ - Test planning
+ - Test case development
+ - Environment setup
+ - test execution
+ - test cycle closure
+
+problem:
+ - silo communication:
+	sometime when requirement change it is not properly updated
+	tester are not involved in the beginning of the process
+
+Agile testing
+ - this is something every group should follow
+ - in agile testing testing is not a phase
+ - it is one of the many activies in software development along with coding planning design architecture operation and more
+ - the practice support the idea of WHOLE TEAM RESPONSIBILITY FOR QUALITY
+
+what does it mean?
+ - it is not only the rester who are responsible for quality
+ - quality is integrated as the job of the whole team
+
+testing throughout 			OVER 	testing at the end
+proventing bugs 			OVER 	finding bugs
+testing understanding 		OVER 	checking functionality
+building the best system 	OVER 	breaking the system
+ - build the system that is easy to maintain
+team responsibility 		OVER 	tester responsibility
+
+Agile testing methodologies:
+
+DevOp testing
+ - Holistic testing strategies for agile team
+	- Testing done early in the cycle
+		- test the idea and determine value
+	- Create shared understanding
+	- Test to prevenr defects
+		- test prototypes
+	- Automate tests, Instrument the code, etec
+
+Agile testing principle
+
+
