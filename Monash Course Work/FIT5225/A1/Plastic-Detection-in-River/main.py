@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import base64
 import numpy as np
@@ -18,11 +18,24 @@ class PredictRequest(BaseModel):
 @app.post("/api/predict")
 async def predict(request: PredictRequest):
     # 3. 
-    header, encoded = request.image.split(",", 1) if "," in request.image else ("", request.image)
-    img_bytes = base64.b64decode(encoded)
-    nparr = np.frombuffer(img_bytes, np.uint8)
-    img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    # header, encoded = request.image.split(",", 1) if "," in request.image else ("", request.image)
+    # img_bytes = base64.b64decode(encoded)
+    # nparr = np.frombuffer(img_bytes, np.uint8)
+    # img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    try:
+        # 1. 
+        header, encoded = request.image.split(",", 1) if "," in request.image else ("", request.image)
+        img_bytes = base64.b64decode(encoded)
+        
+        # 2. 
+        nparr = np.frombuffer(img_bytes, np.uint8)
+        img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+        
+        if img is None:
+            raise ValueError("Not a valid image")
 
+    except Exception as e:
+        raise HTTPException(status_code=400, detail="Invalid image encoding or format")
     # 4. 
     results = model.predict(source=img)
     res = results[0]
