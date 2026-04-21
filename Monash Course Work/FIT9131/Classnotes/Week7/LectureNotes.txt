@@ -1,0 +1,27 @@
+Tommy1 examplpe:
+An interview not get many marks.
+ - You cannot read your note, all you have is access to your program.
+
+Variable size collections
+
+ArrayList is a variable size collection, item cann be removed from the collection dynamically during runtime.
+methods:
+ - size()
+ - add(value)
+ - set(index, value)
+ - get(index)
+ - remove(index)
+
+Other collection:
+
+Map - a collection that store key and value pair as entries, value can be access by providing the key
+Set - a collection that stores each individual element at most once. It does not maintain any specific order.
+
+Wrapper class provide a way to use primitive data types where object types are required.
+
+Exercise:
+
+7.2
+
+1. remove() method does not have argument.
+2. 
