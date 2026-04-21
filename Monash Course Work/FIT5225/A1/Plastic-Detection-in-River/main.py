@@ -15,27 +15,25 @@ class PredictRequest(BaseModel):
     uuid: str
     image: str  # 
 
-@app.post("/api/predict")
-async def predict(request: PredictRequest):
+def get_inference_result(image_b64: str):
     try:
-        # 1. 
-        header, encoded = request.image.split(",", 1) if "," in request.image else ("", request.image)
+        header, encoded = image_b64.split(",", 1) if "," in image_b64 else ("", image_b64)
         img_bytes = base64.b64decode(encoded)
-        
-        # 2. 
         nparr = np.frombuffer(img_bytes, np.uint8)
         img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-        
         if img is None:
-            raise ValueError("Not a valid image")
-
-    except Exception as e:
+            raise ValueError()
+        
+        results = model.predict(source=img, conf=0.25)
+        return img, results[0]
+    except Exception:
         raise HTTPException(status_code=400, detail="Invalid image encoding or format")
-    # 4. 
-    results = model.predict(source=img)
-    res = results[0]
 
-    # 5. 
+@app.post("/api/predict")
+async def predict(request: PredictRequest):
+
+    _, res = get_inference_result(request.image)
+
     response = {
         "uuid": request.uuid,
         "count": len(res.boxes),
@@ -53,3 +51,19 @@ async def predict(request: PredictRequest):
     }
     
     return response
+
+@app.post("/api/annotate")
+async def annotate(request: PredictRequest):
+
+    _, res = get_inference_result(request.image)
+    
+    annotated_img = res.plot() 
+    
+    _, buffer = cv2.imencode('.jpg', annotated_img)
+
+    annotated_b64 = base64.b64encode(buffer).decode('utf-8')
+    
+    return {
+        "uuid": request.uuid,
+        "image": annotated_b64  # 
+    }
