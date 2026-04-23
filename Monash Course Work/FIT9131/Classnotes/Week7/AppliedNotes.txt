@@ -1,0 +1,28 @@
+7.2.2. Unit testing
+
+Unit: smallest thing
+When you write code you have thousands of function and method
+when you do unit test, you will test on only one function
+you are checking that method independently
+
+integrated testing:
+you are check in a way that the integrating in a possitive result
+
+System testing:
+testing for the entire system together.
+
+interface testing:
+testing api and things
+
+regression testing:
+when you make change to your methods, you want to make sure other methods still works
+
+beta testing::
+
+Functional Testing:
+
+7.2.3 Testing Heuristics
+
+Boundary testing
+
+

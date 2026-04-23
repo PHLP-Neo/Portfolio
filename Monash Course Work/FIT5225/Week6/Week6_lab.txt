@@ -1,0 +1,247 @@
+Pre-requisite:
+ - m3.xsmall
+ - ubuntu 22.04
+
+openstackRC file from week5 * 2
+nectar password from week 5
+
+you can use scp command
+$ scp -i <key_location> <file_location> ubuntu@<ip_address>:<destination_filepath>
+
+
+$sudo apt update && sudo apt install -y software-properties-common git curl python3 && sudo apt install -y python3-pip && export PATH=$PATH:/home/ubuntu/.local/bin
+ - software-properties-common: covered in week3 lab.
+ - git, curl, python3也是week3
+ - PATH=$PATH:/home/ubuntu/.local/bin: save path as a variable, so dont need to input everytime.:
+
+
+
+Task 1: Using Ansible to Automate Resource Creation and Configuration
+
+1. download and upload ansible-demo.zip and ansible-k8s-demo.zip
+
+using ssh as well.
+
+upload your private key while you are at it.
+
+2.
+$ export PRI_KEY_PATH=<path-of-your-private-key>
+sample path:/home/ubuntu/id_ed25519
+
+same as task0, save location as variable so dont need to write for many times.
+
+you also need to change the permission of the key.(Week1)
+
+3.
+$ cd <key path>
+$ chmod 600 <key path> means only user can read and write (not execute since this is not an exe file)
+    r w x
+6 = 1 1 0
+
+4.
+$ sudo apt update && sudo apt install -y python3-pip unzip vim python3-shade
+
+install 
+ - python3-pip for install python library (Ansible and Openstack SDK)
+ - unzip because we need to unzup files
+ - vim for text editing
+ - python3-shade to ignore the difference between different cloud platforms
+  - basically a translator between Nectar and Ansible
+  - Ansible does not recognize Nectar, it need middleware(!learnt from week1) to communicate
+   - Ansible Playbook
+   - Ansible OpenStack Module
+   - Shade/Openstack SDK (What we are installing): convert Ansible logic inito language that can be understand by OpenStackAPI
+   - OpenStackAPI(Nectar): receiver, build VM
+
+5.
+Install Ansible and OpenstackAPI:
+$ sudo pip3 install -U ansible openstacksdk openstackclient && sudo ansible-galaxy collection install openstack.cloud
+First half:
+ - U: Upgrade(so if you already installed, will check for upgrade instead)
+Second half:
+ - ansible-galaxy: user terminal for ansible, you can use it as an appstore to download differet ansible plugin and add-on
+ - collection: a file format for ansible module, plugins and roles
+ - openstack.cloud: the add-on we want to install
+
+Ansible does not natively support communication with nectar, so we need to install corresponding add-on first.
+
+basically: 
+first half: install ansible and openstack
+second half: install plugin for ansible, so it can communicate with openstack
+
+6.
+$ unzip ~/ansible-demo.zip && cp ~/FIT5225-Cloud-openrc.sh ~/ansible-demo/ && cd ~/ansible-demo
+
+basically unzip the file and go to the folder
+
+7.
+go to host_vars, edit nectar.yaml
+
+YAML file:
+
+# Common vars
+availability_zone: monash-02
+
+
+# Security group
+security_groups:
+  - name: demo_web_server
+    description: "security group for HTTP access"
+    protocol: tcp
+    port_range_min: 80
+    port_range_max: 80
+    remote_ip_prefix: 0.0.0.0/0
+
+# Instance
+instances:
+  - name: web-server-1-{{ my_name }}
+  - name: web-server-2-{{ my_name }}
+
+instance_image:c0250c96-98a4-4bfa-b67c-51874808337f
+
+
+
+change available_zone to monash_02
+change instance flavor to r3.small
+change instance image to c0250c96-98a4-4bfa-b67c-51874808337f
+
+
+8.
+change to ansible-demo, run this:
+
+$ source ./FIT5225-Cloud-openrc.sh
+source: shell command, can run shell script
+
+FIT5225-Cloud-openrc.sh: shell command offered by nectar, include important information to access the server.
+
+why use source? the script wont terminate after running (did not run in sub process either), it will run in this terminal directly.
+
+
+9.
+run
+$ openstack server list
+to check if it is working and 
+$ ansible-playbook -e "my_name=<your-name>" -e "key_name=<your-key-name-in-nectar>" nectar.yaml
+ - ansible-playbook: ansible read a YAML file(nectar.yaml) and run the tasks inside
+ - e: extra-vars, since we have {{ my_name }} and {{ key_name }} in the nectar.yaml file, we need to pass the value
+
+10. create hosts.ini file
+
+[web_servers]
+SERVER_1_IP_HERE
+SERVER_2_IP_HERE 
+
+find server ip address from nectar dashboard is fine i think
+
+$ ansible -i hosts.ini -v web_servers -m ping --private-key=$PRI_KEY_PATH -u ubuntu
+ -i hosts.ini: inventory, nectar need this to know who to send
+ -v verbose: if fails, print detailed logs (for debug)
+ -m ping: use ping module from Ansible, to ensure it can ssh to the remote mathine, check for python and remote control
+ --pricate-key=$PRI_KEY_PATH: need private key for ssh
+ -u ubuntu, basically the first half of the ubuntu:<ip-address>
+
+11.
+run this line:
+$ ansible -i hosts.ini -v web_servers -m apt -a "name=apache2 state=latest" --private-key=$PRI_KEY_PATH -u ubuntu --become
+ -m apt: use module apt, the same "apt" in "sudo apt install", to manage package installation
+ -a "...": arguments, what you want to do with apt module.
+ name=apache2: tell apt to install Apache2
+ state=latest: tell apt if the apache2 does not exist, install it, if exist, check for update
+ --become: tell Ansible to add "sudo" when running apt command
+ 
+Idempotency:
+ - since we have state=latest, the program will not crash no matter how many times it runs, even if it is already installed on the server.
+
+
+
+use this command to start apache http service:
+ansible -i hosts.ini -v web_servers -a "systemctl start apache2" --private-key=$PRI_KEY_PATH -u ubuntu --become
+
+
+
+
+Task 2
+1.
+$ unzip ansible-k8s-demo.zip && cd ansible-k8s-demo
+-nothing special here
+
+2.
+create a k8s-hosts.ini file
+
+[masters]
+SERVER_1_IP_HERE
+
+
+[workers]
+SERVER_2_IP_HERE 
+
+2.
+$ ansible -i k8s-hosts.ini all -m ping --private-key=$PRI_KEY_PATH -u ubuntu
+ -i k8s-hosts.ini: we are running a new ini file now.
+ all: do it for all ip in ini file
+ -m ping: the same as task 1
+
+3.
+3. 如何从命令行转换成 YAML？（逆向思维）如果你在命令行里知道怎么操作，想把它变成 Ansible 的 YAML，可以遵循这个**“三步对应法”**：第一步：确定你的“动作”属于哪个模块如果你在敲 apt install... $\rightarrow$ 使用 apt 模块。如果你在敲 vim /etc/config $\rightarrow$ 使用 lineinfile 或 copy 模块。如果你在敲 systemctl start... $\rightarrow$ 使用 service 模块。第二步：寻找参数Ansible 的参数通常对应命令行的选项。命令行：apt install apache2 --yesYAML：YAMLapt:
+  name: apache2
+  state: present
+第三步：使用 ansible-doc 工具这是最强的转换助手。如果你知道你想改文件，但不记得 lineinfile 怎么写，直接在终端输入：Bashansible-doc lineinfile
+它会列出所有的参数定义和最下方的 EXAMPLES（示例）。你只需要把那些示例复制出来，改改路径和内容即可。
+
+$ ansible-playbook -i k8s-hosts.ini --private-key=$PRI_KEY_PATH 1_users.yml -u ubuntu
+$ ansible-playbook -i k8s-hosts.ini --private-key=$PRI_KEY_PATH 2_install_k8s.yml
+$ ansible-playbook -i k8s-hosts.ini --private-key=$PRI_KEY_PATH 3_create_master.yml -u ubuntu
+$ ansible-playbook -i k8s-hosts.ini --private-key=$PRI_KEY_PATH 4_join_worker.yml -u ubuntu
+
+all of these are just executing yml files, just like running shell scrict from week 4
+
+use ssh to connect to master node
+and run
+$ kubectl get nodes
+to check.
+
+
+
+
+
+
+Task 3:
+
+1.
+install pulumi in local pc
+https://www.pulumi.com/docs/iac/download-install/
+
+2: Create a folder, then open it in a terminal, then run
+$ pulumi login --local 
+$ pulumi new python
+
+3:see lab since depends on different version
+
+... bypass many steps because they are all local.
+bypass dockerfile and requirements.txt as well since no correct answer exist.
+
+To execute the Pulumi IaC code in ssh,
+
+$ curl -fsSL https://get.pulumi.com | sh
+ - we have touched this in week3 or week 4 when using docker
+
+$ docker login
+
+$ pulumi login --local && pulumi new python
+ - pulumi login --local: login, but save all data to local VM
+ - pulumi new python: setup basic pulumi python template
+
+$ source venv/bin/activate
+ - to setup virtual python environment
+
+$ pip install -r requirements.txt
+ - you wrote this file!
+
+$ pulumi up
+ - pulumi run __main__.py python locally and check what need to be done
+ - then ask for your comfirmation, then actually start setup online
+ - it is actually doing similar things to Ansible, but more advanced.
+
+
+
+
