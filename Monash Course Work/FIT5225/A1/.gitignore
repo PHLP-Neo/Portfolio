@@ -14,5 +14,5 @@ Screenshots/
 *.pem
 
 gcp-key.json
-
 id_ed25519
+id_ed25519.pub
