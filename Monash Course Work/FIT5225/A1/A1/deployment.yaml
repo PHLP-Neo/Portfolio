@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plastic-api-deployment
+spec:
+  replicas: 1  # 实验开始时设为 1，之后手动改为 2, 4, 8
+  selector:
+    matchLabels:
+      app: plastic-api
+  template:
+    metadata:
+      labels:
+        app: plastic-api
+    spec:
+      containers:
+      - name: plastic-api
+        image: ynii0028/plastic-api:v1
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: plastic-api-service
+spec:
+  type: NodePort
+  selector:
+    app: plastic-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+      nodePort: 30001

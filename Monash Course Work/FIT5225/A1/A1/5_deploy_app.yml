@@ -1,0 +1,25 @@
+---
+- name: Deploy App for Benchmarking
+  hosts: masters
+  become: yes
+  remote_user: ubuntu
+  tasks:
+    - name: Upload Deployment configuration
+      copy:
+        src: deployment.yaml
+        dest: /home/ubuntu/deployment.yaml
+        owner: ubuntu
+        group: ubuntu
+        mode: '0644'
+
+    - name: Apply Deployment
+      become: no
+      shell: kubectl apply -f /home/ubuntu/deployment.yaml
+
+    - name: Check Pod Status
+      become: no
+      shell: kubectl get pods
+      register: pod_output
+
+    - debug:
+        var: pod_output.stdout_lines
