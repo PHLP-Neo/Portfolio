@@ -3,8 +3,7 @@ FROM python:3.10-slim AS builder
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \
-    PIP_DISABLE_PIP_VERSION_CHECK=1 \
-    VENV_PATH=/opt/venv
+    PIP_DISABLE_PIP_VERSION_CHECK=1
 
 WORKDIR /app
 
@@ -13,8 +12,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-dev \
     && rm -rf /var/lib/apt/lists/*
 
-RUN python -m venv ${VENV_PATH}
-ENV PATH="${VENV_PATH}/bin:${PATH}"
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 COPY requirements.txt .
 RUN pip install --upgrade pip setuptools wheel && \
@@ -24,8 +23,7 @@ FROM python:3.10-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    VENV_PATH=/opt/venv \
-    PATH="${VENV_PATH}/bin:${PATH}"
+    PATH="/opt/venv/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 WORKDIR /app
 

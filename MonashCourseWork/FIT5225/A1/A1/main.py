@@ -14,8 +14,8 @@ from ultralytics import YOLO
 
 MODEL_PATH = os.getenv("MODEL_PATH", "model.pt")
 CONF_THRESHOLD = float(os.getenv("CONF_THRESHOLD", "0.25"))
-INFER_IMGSZ = int(os.getenv("INFER_IMGSZ", "416"))
-MAX_IMAGE_SIDE = int(os.getenv("MAX_IMAGE_SIDE", "1280"))
+INFER_IMGSZ = int(os.getenv("INFER_IMGSZ", "320"))
+MAX_IMAGE_SIDE = int(os.getenv("MAX_IMAGE_SIDE", "640"))
 JPEG_QUALITY = int(os.getenv("JPEG_QUALITY", "85"))
 MAX_INFLIGHT = int(os.getenv("MAX_INFLIGHT", "2"))
 

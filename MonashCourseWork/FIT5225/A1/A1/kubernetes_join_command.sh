@@ -1,0 +1,1 @@
+kubeadm join 10.152.0.14:6443 --token xownv9.txazgj93w3prxkh8 --discovery-token-ca-cert-hash sha256:286139296e75b58534eaa1b1d2d6daeff24f7a2bd545de04d47819d33cf5c353  --ignore-preflight-errors=all

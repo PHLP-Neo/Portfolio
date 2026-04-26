@@ -3,7 +3,12 @@ kind: Deployment
 metadata:
   name: plastic-api-deployment
 spec:
-  replicas: 8  # 实验开始时设为 1，之后手动改为 2, 4, 8
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
   selector:
     matchLabels:
       app: plastic-api
@@ -13,17 +18,52 @@ spec:
         app: plastic-api
     spec:
       containers:
-      - name: plastic-api
-        image: ynii0028/plastic-api:v1
-        ports:
-        - containerPort: 8000
-        resources:
-          requests:
-            cpu: "200m"
-            memory: "512Mi"
-          limits:
-            cpu: "1"
-            memory: "1Gi"
+        - name: plastic-api
+          image: ynii0028/plastic-api:v6
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          env:
+            - name: MODEL_PATH
+              value: "model.pt"
+            - name: CONF_THRESHOLD
+              value: "0.25"
+            - name: INFER_IMGSZ
+              value: "320"
+            - name: MAX_IMAGE_SIDE
+              value: "640"
+            - name: JPEG_QUALITY
+              value: "85"
+            - name: MAX_INFLIGHT
+              value: "1"
+          resources:
+            requests:
+              cpu: "1"
+              memory: "1Gi"
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+          startupProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 24
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
 ---
 apiVersion: v1
 kind: Service
