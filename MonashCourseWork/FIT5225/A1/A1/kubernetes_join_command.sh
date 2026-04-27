@@ -1,0 +1,1 @@
+kubeadm join 10.152.0.38:6443 --token sbmjl2.5f7s0uurkfsykor5 --discovery-token-ca-cert-hash sha256:cacec516215bce166facffbe31c3b26491bf45c531222a51e3a8ee7947c7a96e  --ignore-preflight-errors=all
