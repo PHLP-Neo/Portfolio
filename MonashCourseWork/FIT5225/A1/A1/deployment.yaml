@@ -18,52 +18,56 @@ spec:
         app: plastic-api
     spec:
       containers:
-        - name: plastic-api
-          image: ynii0028/plastic-api:v6
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 8000
-          env:
-            - name: MODEL_PATH
-              value: "model.pt"
-            - name: CONF_THRESHOLD
-              value: "0.25"
-            - name: INFER_IMGSZ
-              value: "320"
-            - name: MAX_IMAGE_SIDE
-              value: "640"
-            - name: JPEG_QUALITY
-              value: "85"
-            - name: MAX_INFLIGHT
-              value: "1"
-          resources:
-            requests:
-              cpu: "1"
-              memory: "1Gi"
-            limits:
-              cpu: "1"
-              memory: "1Gi"
-          startupProbe:
-            httpGet:
-              path: /health
-              port: 8000
-            periodSeconds: 5
-            timeoutSeconds: 2
-            failureThreshold: 24
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: 8000
-            periodSeconds: 5
-            timeoutSeconds: 2
-            failureThreshold: 3
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: 8000
-            periodSeconds: 10
-            timeoutSeconds: 2
-            failureThreshold: 3
+      - name: plastic-api
+        image: ynii0028/plastic-api:v7
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+        env:
+        - name: MODEL_PATH
+          value: "model.pt"
+        - name: CONF_THRESHOLD
+          value: "0.25"
+        - name: INFER_IMGSZ
+          value: "320"
+        - name: MAX_IMAGE_SIDE
+          value: "640"
+        - name: JPEG_QUALITY
+          value: "85"
+        - name: BATCH_MAX_SIZE
+          value: "2"
+        - name: BATCH_TIMEOUT_MS
+          value: "15"
+        - name: ANNOTATE_INFLIGHT
+          value: "1"
+        resources:
+          requests:
+            cpu: "1"
+            memory: "1Gi"
+          limits:
+            cpu: "1"
+            memory: "1Gi"
+        startupProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          periodSeconds: 5
+          timeoutSeconds: 2
+          failureThreshold: 24
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          periodSeconds: 5
+          timeoutSeconds: 2
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          periodSeconds: 10
+          timeoutSeconds: 2
+          failureThreshold: 3
 ---
 apiVersion: v1
 kind: Service
@@ -74,7 +78,7 @@ spec:
   selector:
     app: plastic-api
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 8000
-      nodePort: 30001
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
+    nodePort: 30001

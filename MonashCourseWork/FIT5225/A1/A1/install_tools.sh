@@ -1,9 +1,9 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
 echo "--- Updating system packages ---"
 sudo apt-get update
-sudo apt-get install -y \
+sudo apt-get install -y --no-install-recommends \
   software-properties-common \
   git \
   curl \
@@ -13,25 +13,27 @@ sudo apt-get install -y \
   python3 \
   python3-pip \
   gnupg \
-  jq
+  jq \
+  lsb-release
 
 echo "--- Adding HashiCorp GPG key ---"
-wget -O- https://apt.releases.hashicorp.com/gpg | \
+wget -qO- https://apt.releases.hashicorp.com/gpg | \
   gpg --dearmor | \
   sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
 
 echo "--- Adding HashiCorp repository ---"
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
-  sudo tee /etc/apt/sources.list.d/hashicorp.list
+  sudo tee /etc/apt/sources.list.d/hashicorp.list > /dev/null
 
 echo "--- Installing Terraform and Ansible ---"
 sudo apt-get update
-sudo apt-get install -y terraform ansible
+sudo apt-get install -y --no-install-recommends terraform ansible
 
 echo "--- Ensuring local bin path is available ---"
 export PATH="$PATH:$HOME/.local/bin"
-grep -qxF 'export PATH="$PATH:$HOME/.local/bin"' ~/.bashrc || \
+if ! grep -qxF 'export PATH="$PATH:$HOME/.local/bin"' ~/.bashrc; then
   echo 'export PATH="$PATH:$HOME/.local/bin"' >> ~/.bashrc
+fi
 
 echo "--- Verification ---"
 terraform -version
