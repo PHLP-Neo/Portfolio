@@ -1,0 +1,46 @@
+Activity 7.1 software design
+
+Disaster: NASA Mariner 1
+Consequences: 18.5 million dollar
+
+Disaster: Ozone Hole Discovery
+Consequences: the form of Montreal Protocol
+
+Disaster: Therac-25 Radiation Therapy Machine
+Consequences: six death, lawsuit
+
+Disaster: Morris Worm
+Consequences: delay, econimic loss (several billion)
+
+Disaster: AT&T long-distance network crash
+Consequences: 60 million loss in revenue, reduction in market share
+
+Disaster: Ariane 5
+Consequences: 370 million loss, no longer able to launch large satellite
+
+Disaster: NASA Mars Climate Orbiter
+Consequences: 328 million, 
+
+Disaster: Y2K bug
+Consequences: largely without incident(?)
+
+Disaster: Air Traffic Control System in LA Airport
+Consequences: Major desruption, safety concern, delay
+
+Disaster: Knight Capital Group stock trading disruption
+Consequences: 440 million loss (75% of equalty value), eventual collapse
+
+Disaster: Heartbleed Bug
+Consequences: million dollar of cost, damage trust in openSSL 
+
+Disaster: Boeing 747 power failure
+Consequences: panic but fortunatlety no loss
+
+Boundary testing:
+
+Control Flow testing
+
+7.2 Activity
+
+-10,-1,0,32,33,65,66,100,101
+no boundary testing on 0 and 100.
