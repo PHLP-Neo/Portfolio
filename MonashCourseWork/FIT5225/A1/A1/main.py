@@ -32,6 +32,9 @@ CONF_THRESHOLD = float(os.getenv("CONF_THRESHOLD", "0.25"))
 INFER_IMGSZ = int(os.getenv("INFER_IMGSZ", "160"))
 MAX_IMAGE_SIDE = int(os.getenv("MAX_IMAGE_SIDE", "256"))
 JPEG_QUALITY = int(os.getenv("JPEG_QUALITY", "80"))
+ANNOTATE_FONT_SIZE = float(os.getenv("ANNOTATE_FONT_SIZE", "0.35"))
+ANNOTATE_LINE_WIDTH = int(os.getenv("ANNOTATE_LINE_WIDTH", "1"))
+ANNOTATE_SHOW_CONF = os.getenv("ANNOTATE_SHOW_CONF", "false").lower() in {"1", "true", "yes"}
 BATCH_MAX_SIZE = max(1, int(os.getenv("BATCH_MAX_SIZE", "1")))
 BATCH_TIMEOUT_MS = max(0, int(os.getenv("BATCH_TIMEOUT_MS", "0")))
 ANNOTATE_INFLIGHT = max(1, int(os.getenv("ANNOTATE_INFLIGHT", "1")))
@@ -217,7 +220,14 @@ def build_predict_response(uuid: str, result: Any) -> dict[str, Any]:
 
 
 def encode_annotated_image(result: Any) -> str:
-    annotated = result.plot()
+    # Small benchmark images make Ultralytics' default annotation text too large.
+    # Keep labels for interpretability, hide confidence values, and use thin boxes.
+    annotated = result.plot(
+        labels=True,
+        conf=ANNOTATE_SHOW_CONF,
+        font_size=ANNOTATE_FONT_SIZE,
+        line_width=ANNOTATE_LINE_WIDTH,
+    )
     ok, buffer = cv2.imencode(
         ".jpg",
         annotated,
@@ -239,6 +249,9 @@ async def health() -> dict[str, Any]:
         "batch_max_size": BATCH_MAX_SIZE,
         "batch_timeout_ms": BATCH_TIMEOUT_MS,
         "annotate_inflight": ANNOTATE_INFLIGHT,
+        "annotate_font_size": ANNOTATE_FONT_SIZE,
+        "annotate_line_width": ANNOTATE_LINE_WIDTH,
+        "annotate_show_conf": ANNOTATE_SHOW_CONF,
         "queue_depth": queued,
         "queue_max_size": QUEUE_MAX_SIZE,
     }
@@ -265,4 +278,3 @@ async def annotate(request: PredictRequest) -> dict[str, Any]:
     payload = build_predict_response(request.uuid, result)
     payload["image"] = annotated_b64
     return payload
-
