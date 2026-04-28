@@ -1,0 +1,183 @@
+Pg 44.
+
+Database
+
+Relational Database:
+ - Mostly tabular
+Non-Relational Database: 
+ - No fixed structure/flexable
+ - usually key-value pairs
+
+========================
+
+pg 45
+
+Amazon AuroraL optimized for like 5x faster
+
+DynamoDB: key-value pairs, noSQL
+ - single digit performance, extremely fast
+
+Quiz no 2: a client want to store graph, what kind of database does he want to use?
+
+Redshift OLAP
+Datawarehouse: a database that is less efficient (likely not normalized), but better suited for analysis
+
+=======================
+
+pg 47
+
+multiple azailable zones -> most for disaster recovery
+
+
+====================
+
+pg 48
+
+for each data you put in the database, you probably have 6 copies
+
+why?
+disaster recovery
+improvee performance
+
+
+=========================
+
+pg 49
+
+what is a snapshot? week 2 applied?
+
+when you delete backup you will still keep snapshot
+
+
+==========================
+
+pg 50
+
+==========================
+
+pg 51
+
+deliver single digit performance at ANY scale.
+
+how is this possible?
+
+powerful hash table? sharding?
+
+==========================
+
+pg 52
+
+eventual consistent reads -> ~1s
+strongly consistent reads -> less than 1s
+
+========================
+
+OLTP and OLAP
+
+OLTP(Online Transactional Processing)
+ - example: onlin banking , purchase book online, book airplane ticket
+
+OLAP(Online Analytical Processing)
+ - business reporting for sales, marketing ,management reporting, financial reporting
+ - more data, but not necessary need faster
+
+==========================
+
+pg 53
+
+Redshift, datawarehouse service
+
+==========================
+
+pg 57
+
+===================
+
+pg 58
+
+different routing methods
+
+Simple Routing:
+This is the most basic routing method. A domain name is mapped directly to a single resource (like an IP address or a web server) without any intelligent traffic distribution. It's used when you have only one resource to route traffic to.
+
+Weighted Routing:
+In this method, you can assign weights to different resources. Traffic is distributed across multiple resources based on the specified weights. For example, if you want to send 70% of the traffic to one server and 30% to another, you can configure it using weighted routing.
+
+Latency-based Routing:
+This method sends traffic to the resource that has the lowest network latency (i.e., the fastest response) for the user. It's useful for improving application performance globally, by directing users to the fastest available endpoint.
+
+Failover Routing:
+Failover routing is used to automatically route traffic to a healthy resource if the primary resource becomes unhealthy. It helps in building highly available systems by switching to a backup if the main system fails.
+
+Geolocation Routing:
+In this method, users are routed based on their geographic location. For example, users from Europe can be directed to European servers, and users from Asia can be sent to Asian servers.
+
+Geo-proximity Routing:
+Geo-proximity routing routes traffic based on the geographic location of users and the proximity to AWS resources. You can also bias routing to increase or decrease the size of the region from which traffic is routed to a resource.
+
+Multivalue Answer Routing:
+When a user queries the DNS, multiple healthy IP addresses are returned. This is somewhat like simple routing but with basic load balancing and health checks built-in — if one IP becomes unhealthy, it is automatically removed from the responses.
+
+======================================
+
+pg 60:
+
+VPC
+launch AWS resources in virtual network
+
+61 Public subnet vs private subnet?
+public subnet, you can communicate with the internet, you can ssh directly to the service
+private subnet, you cannot ssh into it directly
+
+=====================================
+
+65 
+
+SQS
+Simple Queue Service
+
+a web service that give you access to a message queue that can be used to store messages while for a computer to process them.
+
+===================================
+
+69
+
+Kinesis
+
+also support analysis of data
+
+==================================
+
+how to access?
+
+Management Console, CLI interface, SDK(software development kits)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
