@@ -1,0 +1,50 @@
+Unit Testing
+testing individual
+for example, when test a car, you test the wheel
+
+Integration test:
+test if steering the week can turn the wheel
+
+System Test a car: Driving down the highway with the air conditioning on works....
+
+======================
+pg 12:
+some time you need assumption/pre-condition, e,g login is successful
+
+input:
+The variables and their values in the test case. 
+For an email login, it would be the username and password for the acco
+
+======================
+pg 19:
+effective test case:
+minimize tests but maximize coverage
+
+======================
+Example 2: Gym Eligibility
+
+Gym Eligibility Specification: 
+	Return True if a person age (integer) is between 18-65, or False otherwise. 
+
+Possible Categories: Age < 0, 0 <= Age < 18, 18 <= Age <= 65, Age > 65 
+
+Test Scenarios/Test Cases: ----
+	Negative Scenario: Age(-5) = False (Invalid, age cannot be negative) 
+	Positive Scenario: Age(10) = False (Valid, falls in the range 0-17) 
+	Positive Scenario: Age(25) = True (Valid, falls in the range 18-65) 
+	Positive Scenario: Age(75) = False (Valid, falls in the range 65+)
+
+======================
+pg 26
+
+Unit Testing in Python: (Step 1) Write a PyUnit Test Case
+
+assert()
+
+detail see 9136 slides.
+
+======================
+
+
+
+
