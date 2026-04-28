@@ -1,0 +1,13 @@
+---
+- name: Configure passwordless sudo for ubuntu user
+  hosts: masters,workers
+  become: yes
+
+  tasks:
+    - name: Ensure ubuntu has passwordless sudo
+      lineinfile:
+        path: /etc/sudoers
+        regexp: '^ubuntu\s+ALL='
+        line: 'ubuntu ALL=(ALL) NOPASSWD: ALL'
+        state: present
+        validate: '/usr/sbin/visudo -cf %s'

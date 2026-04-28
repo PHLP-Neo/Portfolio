@@ -1,0 +1,31 @@
+---
+- name: Join worker nodes to Kubernetes cluster
+  hosts: workers
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Copy join command script to worker nodes
+      copy:
+        src: ./kubernetes_join_command.sh
+        dest: /tmp/kubernetes_join_command.sh
+        mode: '0700'
+
+    - name: Join worker nodes to the cluster
+      command: sh /tmp/kubernetes_join_command.sh
+      args:
+        creates: /etc/kubernetes/kubelet.conf
+
+- name: Install pod network on master
+  hosts: masters
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Apply Weave CNI network plugin
+      become: yes
+      become_user: ubuntu
+      shell: kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+      environment:
+        KUBECONFIG: /home/ubuntu/.kube/config
+      changed_when: false

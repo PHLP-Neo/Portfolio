@@ -1,0 +1,56 @@
+---
+- name: Initialize Kubernetes control plane
+  hosts: masters
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Initialize the Kubernetes cluster
+      command: kubeadm init --pod-network-cidr=10.244.0.0/16
+      args:
+        creates: /etc/kubernetes/admin.conf
+
+    - name: Ensure root kube config directory exists
+      file:
+        path: /root/.kube
+        state: directory
+        mode: '0755'
+
+    - name: Copy admin.conf to root kube config
+      copy:
+        src: /etc/kubernetes/admin.conf
+        dest: /root/.kube/config
+        remote_src: yes
+        owner: root
+        group: root
+        mode: '0600'
+
+    - name: Ensure ubuntu kube config directory exists
+      become: yes
+      become_user: ubuntu
+      file:
+        path: /home/ubuntu/.kube
+        state: directory
+        mode: '0755'
+
+    - name: Copy admin.conf to ubuntu kube config
+      copy:
+        src: /etc/kubernetes/admin.conf
+        dest: /home/ubuntu/.kube/config
+        remote_src: yes
+        owner: ubuntu
+        group: ubuntu
+        mode: '0600'
+
+    - name: Generate worker join command
+      command: kubeadm token create --print-join-command
+      register: kubernetes_join_command
+      changed_when: false
+
+    - name: Save join command on Ansible controller
+      copy:
+        content: "{{ kubernetes_join_command.stdout }} --ignore-preflight-errors=all"
+        dest: ./kubernetes_join_command.sh
+        mode: '0700'
+      delegate_to: localhost
+      become: no
