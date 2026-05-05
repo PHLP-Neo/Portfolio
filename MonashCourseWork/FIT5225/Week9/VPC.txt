@@ -1,0 +1,41 @@
+VPC
+
+Virtual Private CLoud(VPC) and Cognito
+
+
+We already briefly talked about VPC, some you mighg thave heard some from last Week9
+
+
+Whata is VPC?
+
+Logically private and isolated
+You can hahve a virtual network in an aws
+
+by default the aws create a vpc for you.
+
+usually have a public subnet and a private subnet
+
+in AWS we are designing a VPC from scratch, and play with the most important configuration there
+
+
+subnet, route table, network gateways...
+sounds like 9137....
+
+(Next slide)
+
+may ha
+
+we are going to discuss the difference between security group and Network ACLs
+
+
+(next)
+
+Bastion host
+
+security group is stateful, but NACL is stateless
+
+
+VPC Flow Logs
+
+- when you have such detailed information, you can use it for monitoring and debugging.
+

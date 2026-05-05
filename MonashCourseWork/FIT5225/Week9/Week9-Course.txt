@@ -1,0 +1,300 @@
+1.Serverless and FaaS
+
+realistic scenario, build solution based on it. EXTRA MARK!
+
+week12 solution architect interview.
+
+you should know the capability of the services, the configurations, 
+and thus the best approach after considering them.
+
+pg2.
+
+What is Serverless?
+- Paul Castro et al in the "The Rise of Serverless Computing":
+"Serverless computing is a platform that hides server usage from developers and runs code on-demand 
+automatically scaled and billed only for the time the code is running."
+
+- Mike Roberts partner, and co-founder, of Symphonia
+In Serverless "server-side logic is still written by the application developer, but, unlike traditional 
+architectures, it's run in stateless compute containers that are event-triggered, ephemeral (may only last for 
+one invocation), and fully managed by a third party. One way to think of this is "Functions as a Service" 
+or "FaaS".
+
+
+what we have worked with so far are with server and VM, however in serverless...
+to some extent, what if someone is not good with program, they need someone to run the solution for them
+all the deployment will be done automatically.
+
+define in the function what you need, and the rest will be managed by AWS,
+a not so good example, think about agents, you only need to provide high level instructions
+
+
+
+pg3.
+
+What is FaaS - Function as a Service?
+- "Focus on your application, not the infrastructure"
+- Function-as-a-Service, is a serverless computing platform where the unit of  computation is a function 
+that is executed in response to triggers such as events or HTTP requests.
+- Fully-managed compute, Provisioning, patching, scaling, monitoring, logging are provided
+out-of-the-box
+- Deploy your code, Just package and upload the code
+- Pay for actual usage, Getting charged only upon code execution
+
+
+FAAS is part of serverless
+function is atomic, just like pod in k8s
+function response to triggers
+
+function not running all the time 
+    - good? it will save Costs
+    - bad? maybe longer startup time? (since need to be deployed)
+    - bad? function has to be stateless, cant keep state for long time
+    - performance not much better
+    - might be more expensive in some scenario since it is based on the request usage.
+
+
+
+pg4.
+
+FaaS is only a subset of serverless.
+
+
+
+pg5.
+
+less Abstraction
+
+Bare Metal Server
+Virtual Machines
+Containers
+Functions
+(Agents)
+
+More Abstraction
+
+
+
+pg6.
+
+
+
+
+
+pg7.
+
+
+
+pg8.
+
+A function written in JavaScript.
+function main(params, context) { return {payload: 'Hello, ' + 
+params.name + ' from ' + params.place}; }
+
+
+
+
+
+pg9.
+
+Example of Events
+- HTTP requests
+- Storage (e.g. file upload)
+- DB (e.g. row insert)
+- Events stream
+- Queue/Messaging
+- Scheduled job
+- Monitoring
+- Infrastructure events
+- Code build events
+Many more
+
+
+
+pg10.
+
+Limitations
+- Stateless : Instances are ephemeral (memory, storage) but not necessarily disposable
+- No sticky sessions
+- Provider limits: Execution Time (5mins), Memory (1.5GB), Disk (500MB), Package (zip): 50MB
+- Latency: Cold start on first or infrequent calls, inconsistent latency
+- Vendor lock-in: The real lock-in is the integrated services, A trade-off: control vs. convenience
+- Costs
+
++-------------------+------------------------
+| Duration          | Per 100ms
+| Cost of Ownership | Low
+| Additional Costs  | Requests
+| Cist effective    |
+
+
+pg11.
+
+Use Cases
+- Multimedia processing: The implementation of functions that execute a transformational process in response to a 
+file upload
+- Database changes or change data capture: auditing or ensuring changes meet quality standards
+- IoT sensor input messages: The ability to respond to messages and scale in response
+- Stream processing at scale: processing data within a potentially infinite stream of messages
+- Chat bots: scaling automatically for peak demands
+- Batch jobs scheduled tasks: Jobs that require intense parallel computation, IO or network access
+- HTTP REST APIs and web apps: traditional request and response workloads
+- Mobile back ends: ability to build on the REST API backend workload above the BaaS APIs
+- Business logic: The orchestration of microservice workloads that execute a series of steps
+- Continuous integration pipeline: The ability to remove the need for pre-provisioned hosts
+
+
+
+pg12.
+
+Where is serverless used? What do they use serverless computing for?
+
+Aegex 
+Xamarin application that customers can use to monitor real-time sensor data from 
+IoT devices.
+
+Abilisense 
+Manages an IoT messaging platform for people with hearing difficulties. They 
+estimated they could handle all the monthly load for less than $15 a month.
+
+A Cloud Guru 
+Uses functions to perform protected actions such as payment processing and 
+triggering group emails. In 2017 they had around 200K users and estimated $0.14 
+to deliver video course to a user.
+
+Coca-Cola 
+Serverless Framework is a core component of the Coca-Cola Company's initiative 
+to reduce IT operational costs and deploy services faster. One particular use case is 
+the use of serverless in their vending machine and loyalty program, which 
+managed to have 65% cost savings at 30 million hits per month.
+
+Expedia 
+Expedia did "over 2.3 billion Lambda calls per month" back in December 2016. 
+That number jumped 4.5 times year-over-year in 2017 (to 6.2 billion requests) and 
+continues to rise in 2018. Example applications include integration of events for 
+their CI/CD platforms, infrastructure governance and autoscaling.
+
+Glucon 
+Serverless mobile backend to reduce client app code size and avoid disruptions.
+
+Heavywater Inc 
+Runs Website and training courses using serverless (majority of cost per user is not 
+serverless but storage of video). Serverless reduced their costs by 70%
+
+
+
+pg13.
+
+AWS Lambda
+Google Function
+Azure Functions
+
+
+
+pg14.
+
+Case Study: AWS Lambda
+AWS Lambda is a serverless compute service that runs your code in response to events and automatically 
+manages the underlying compute resources for you. --
+    - run code without provisioning or managing servers. 
+    - pay only for the compute time you consume.
+    - zero administration. Upload your code and Lambda takes care of everything required to run and scale 
+      your code with high availability. 
+    - No worries about operating systems, patching, scaling, availability, etc.
+
+
+
+pg15.
+
+How can you use Lambda?
+    - As an event-driven compute service
+        - In response to events
+            - Changes in data of an Amazon S3 Bucket
+            - Changes Amazon DynamoDB table
+    - As a compute service
+        - in response to HTTP requests 
+            - Amazon API Gateway
+            - AWS SDK
+
+if image come to s3 bucket, you can trigger a lambda function
+
+
+
+pg16.
+
+Amazon API Gateway
+- Amazon API Gateway is a fully managed service that makes it easy for developers to create, publish, 
+  maintain, monitor, and secure APIs at any scale.
+- APIs act as the "front door" for applications to access data, business logic, or functionality from your 
+  backend services. 
+- Using API Gateway, you can create RESTful APIs and WebSocket APIs that enable real-time two-way 
+  communication applications. 
+- API Gateway supports containerized and serverless workloads, as well as web applications.
+
+
+
+pg17.
+
+API Gateway
+
+API Gateway creates RESTful APIs that:
+- Are HTTP-based.
+- Enable stateless client-server 
+communication.
+- Implement standard HTTP methods such as GET, POST, PUT, PATCH, and DELETE
+
+
+
+pg18.
+
+an example of event driven compute service
+
+
+
+pg19.
+
+pg20.
+
+more request will cause lambda function to scale
+
+
+
+pg 21.
+
+Traditional vs Serverless Architecture
+
+User send some request to lad balancer, the load balancer send request to EC2 instance, 
+EC2 will communicate with any relational database you have, here we are playing with oadbalancer,
+EC2 and database
+
+In the serverless scenario, user will send request to api gateway, api gateway will trigger lambda function,
+will perform the logic , and communicate with the database
+
+
+
+Pg22.
+
+Languages AWS lambda supports
+- Node.js
+- Java
+- Python
+- C#
+- Go
+- PowerShell
+
+in any case it support many different Languages
+
+
+pg23.
+
+How is it priced?
+- Number of requests
+    - Per million requests payment
+    - First 1,000,000 requests are free
+- Duration
+    - How long your function runs (100ms, 1mins, etc.)
+
+
+
+Lambda Limitations
+ - Memory and GPU
