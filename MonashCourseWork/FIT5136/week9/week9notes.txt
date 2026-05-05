@@ -1,0 +1,30 @@
+Week9 Blackbox Testing
+
+test the program without knowing what is inside the coded
+
+software Testing
+    - Dynamic
+        - White Box
+            - Unit Testing
+            - Integration Testing
+        - AD Hoc
+        - Black Box
+            - System Testing
+            - UAT
+    - Static
+        - Informal Review
+        - Inspection
+        - Tech Review
+
+Different ways for test case
+    - Random Testing
+    - Equivalence Partitioning
+        - divide the input domain into valid/invalid equivalences 
+          "disjoint" class partitions, then select representative 
+          values
+    - Boundary Value Analysis
+        - Continuous input value in ranges with each range exhibiting a particular functionality
+    - Category-Partitioning
+        - multiple input variables
+    - Decision Table
+        - Discrete input values dictated by certain conditions
