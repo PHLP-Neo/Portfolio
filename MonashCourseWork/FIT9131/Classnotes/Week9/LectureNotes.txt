@@ -1,0 +1,83 @@
+Week9 is important, since you will no longer be hand-holded.
+
+Key concepts:
+Design principles
+ - Abstraction
+  - In our assignment, for our dam class, we only add things that is important for our assignment
+  - Waterlevel, release count in our class, not things like material or length.
+ - Modularization
+  - divide complex things into sub parts, like methods
+ - encapsulation
+  - grouping related fields/data and behavior/methods in a single unit.
+ - information hiding
+  - hiding and protecting fields from the outside world
+
+Design Approach
+ - Responsibility driven Design
+  - design appraoach in OOP, what is going on in this class, what is this class for, encapsulation
+  - in our Dam class, the dam only look after the dam, if the dam want to access the rainfall level,
+  - it need to call the methods in the rainfall class.
+
+Design Techinique:
+ - Noun & Verbs
+  - Noun to get potential class
+  - verb to get potential behaviors
+ - CRC Cards
+  - 
+ - Scenarios
+  - use to refine/ceck your design/CRC cards.
+  - scenario is a description of things to happen, and you can check if your design would work
+
+Activity 1
+
+Metropolitan bank offers the following types of accounts
+to its customers: savings accounts, fixed deposit accounts, and
+credit accounts. Customers may deposit money into an
+account or withdraw money from an account. At the end of
+each month interest is calculated for each account and
+added to the account balance. Annual fees are charged to
+the credit account and deducted from the balance.
+
+Nouns:
+- Bank
+    - has Customer
+        - has Account
+            - has balance
+            - has money
+            - has interest
+            - has Annual fees
+            - is savings accounts
+            - is fixed deposit accounts
+            - is credit account
+- month
+
+
+Verbs:
+- deposit
+- withdraw
+- (interest) calculated
+- charged
+- deducted
+
+
+Task 2
+Scenarios
+
+Bank
+    - Register new customers
+    - Delete old customers
+    - allow customers login/logout
+link with customer
+
+Customer
+    - allow create new account
+    - allow remove old account
+    - allow switch to account
+    - allow display all accounts
+    - allow deposit/withdraw money to/from account
+link with account
+
+Account
+    - allow update account money information
+    - allow retrieve money information
+    - allow display information
