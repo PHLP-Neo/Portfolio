@@ -1,0 +1,126 @@
+Assignment B:
+ - More heavy (35%)
+ - Due by Week12
+
+background, mega-fauna sighting
+
+test strategy:
+week 7
+
+week 10 Species and animal class, test plan for animal class
+ - positive test, negative test, etc
+
+interview, week13
+
+in A1 you are given the diagram, not in this class though.
+
+
+
+
+
+8.2.2
+
+Abstration:
+
+Important considerations when designing a class are deciding what attributes and behaviours the 
+class should have and what should be made available to a user of the class. To do this we use a 
+process of abstraction. Abstraction is concerned with the reduction of detail to achieve a 
+simplified representation of the whole. The process of abstraction in Java involves selecting the
+essential characteristics for a class, ignoring any irrelevant details, and then displaying only 
+the required details to the user.  
+
+Using the process of abstraction we create a model that is a simplification of the real situation,
+which is strictly relevant to the problem to be solved. Abstraction in Java brings a focus to what
+information the object must contain and what must be displayed to the user. Abstraction provides a
+way to deal with complexity and is one of the main theoretical principles of object-oriented 
+programming.
+
+
+
+Think about a "car" class, what do you need for abstration?
+	- it depends on context, I think
+		- if for sales, might be:
+			- model
+			- colour
+			- year of manufacture
+			- price
+		- if for adriving sim, might be:
+			- accelation
+			- weight
+			- brake
+			- off road
+			- handling
+			- etc.
+
+8.2.3 Modularisation:
+
+Complementing the concept of abstraction, which we discussed in the previous slide, is the concep
+of modularisation. Modularisation is the process of dividing a problem to be solved into smaller 
+and well-defined parts that can be built and tested separately and can interact in well defined 
+ways. 
+
+Modularisation is a way of dealing with complexity. In a large software application, it is 
+impossible for one person to know all the details of the application or have the expertise 
+necessary to solve all the aspects of the application. Using modularisation, a problem can be 
+broken down into components that can be solved by one or a small group of programmers with 
+expertise in that particular area.
+
+Definition: Modularisation is the process of dividing a whole into well-defined parts that can be 
+built and examined separately, and that interact in well-defined ways.
+
+To illustrate the concept of modularisation we will look at an example of how it might be applied 
+in the design of a car.  A car is a complicated piece of machinery. Designing a car involves 
+people with different expertise, for example, mechanical engineers, electrical engineers, paint 
+technicians, and interior designers. However, a car is made up of a number of components that can 
+be considered separately. For example:
+
+	- engine
+	- gearbox
+	- radiator
+	- wheels
+	- interior
+
+Collectively, all the components represent a single entity of a car. However, using modularisation
+, we can break down the complex car into smaller components that can be designed by a small team 
+with expertise in that component.
+
+The reason for using this type of approach when writing a computer program is that it allows for 
+large and often complex programs to be split into smaller independent components that can work 
+independently to satisfy a specific purpose, but also collectively fulfil a higher purpose.
+
+In programming, modularisation and abstraction are often used to deal with complexity. As programs
+become larger and more complicated these techniques become increasingly important. As new 
+programmers, we will be adopting the concept of modularisation a lot more than abstraction as our 
+programs are not going to be as complex. However, it is important to understand both concepts and 
+how they can work together to ensure our program is well designed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
