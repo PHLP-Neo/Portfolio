@@ -116,7 +116,7 @@ Geo-proximity Routing:
 Geo-proximity routing routes traffic based on the geographic location of users and the proximity to AWS resources. You can also bias routing to increase or decrease the size of the region from which traffic is routed to a resource.
 
 Multivalue Answer Routing:
-When a user queries the DNS, multiple healthy IP addresses are returned. This is somewhat like simple routing but with basic load balancing and health checks built-in — if one IP becomes unhealthy, it is automatically removed from the responses.
+When a user queries the DNS, multiple healthy IP addresses are returned. This is somewhat like simple routing but with basic load balancing and health checks built-in - if one IP becomes unhealthy, it is automatically removed from the responses.
 
 ======================================
 
