@@ -1,0 +1,61 @@
+---
+- name: Deploy plastic API to Kubernetes
+  hosts: masters
+  become: yes
+  remote_user: ubuntu
+  gather_facts: yes
+
+  tasks:
+    - name: Copy Kubernetes deployment manifest to master
+      copy:
+        src: ./deployment.yaml
+        dest: /home/ubuntu/deployment.yaml
+        owner: ubuntu
+        group: ubuntu
+        mode: '0644'
+
+    - name: Apply deployment manifest
+      become: yes
+      become_user: ubuntu
+      shell: kubectl apply -f /home/ubuntu/deployment.yaml
+      environment:
+        KUBECONFIG: /home/ubuntu/.kube/config
+
+    - name: Get deployment status
+      become: yes
+      become_user: ubuntu
+      shell: kubectl rollout status deployment/plastic-api-deployment --timeout=180s
+      environment:
+        KUBECONFIG: /home/ubuntu/.kube/config
+      register: rollout_status
+      changed_when: false
+
+    - name: Show rollout status
+      debug:
+        var: rollout_status.stdout_lines
+
+    - name: Show pod status
+      become: yes
+      become_user: ubuntu
+      shell: kubectl get pods -o wide
+      environment:
+        KUBECONFIG: /home/ubuntu/.kube/config
+      register: pod_output
+      changed_when: false
+
+    - name: Show service status
+      become: yes
+      become_user: ubuntu
+      shell: kubectl get svc plastic-api-service
+      environment:
+        KUBECONFIG: /home/ubuntu/.kube/config
+      register: svc_output
+      changed_when: false
+
+    - name: Print pod status
+      debug:
+        var: pod_output.stdout_lines
+
+    - name: Print service status
+      debug:
+        var: svc_output.stdout_lines
