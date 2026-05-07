@@ -96,31 +96,26 @@ how they can work together to ensure our program is well designed.
 
 
 
+8.2.4 Encapsulation and information hiding
+
+why do we need mutators?
+
+we can add validation inside mutator, we have better control how they can change.
+
+information hiding.
+
+8.1
+
+client and server class
+
+tutorial -> student -> book
+
+book and student are server class
+
+tutorial and student are client class
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+9.1 class variable
 
 
 
