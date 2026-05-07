@@ -24,11 +24,5 @@ A key component of this project was an **empirical benchmark study** using **Loc
 * **Horizontal Scaling:** Evaluated system behavior across 1, 2, 4, and 8 pod configurations to measure scaling efficiency and latency degradation.
 * **Optimization:** Implemented efficient **event-loop management** to prevent CPU-bound YOLO inference from blocking the FastAPI asynchronous event loop, ensuring minimal latency queuing.
 
-##  Repository Structure
-* `/api`: FastAPI source code and YOLO integration.
-* `/terraform`: IaC scripts for cloud resource provisioning.
-* `/k8s`: Kubernetes Deployment and Service manifests.
-* `/benchmarks`: Locust load-generation scripts and the **Empirical Benchmark Report**.
-
 ---
 *This project was developed for FIT5225 at Monash University and validated through a live technical interview demonstrating mastery of cloud architecture and container optimization.*
