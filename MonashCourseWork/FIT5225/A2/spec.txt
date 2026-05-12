@@ -1,0 +1,38 @@
+Notes:
+Due: June 8
+Multiple cloud! (AWS + another cloud)
+
+use pre-trained model to detect and tag image
+you can also manually add tag
+
+you can scale up and scale down service 
+
+Team of 3-4.
+>4: not allowed
+
+no extension!
+
+3.1
+
+Multicloud setup: 
+- MUST use AWS cognito
+
+4.1
+flexible enough to use it without changing your source code/lambda function.
+
+4.2
+Need to detect and remove dupelicated file
+
+can handle image file and video file.
+
+Find images and videos based on the tags: 
+Find files based on species: 
+Find files based on the thumbnail's URL: 
+Find files based on the tags of a file:
+Manual addition or removal of tags with bulk tagging: 
+Delete files:
+
+Group Report: 1000 word
+Ind report: 500 word
+
+
