@@ -1,0 +1,39 @@
+pg14:
+
+pg15:
+the net gateway (this week applied class)
+- EC2 instance aws manage for us and, 
+In Au data center quite expensive
+
+For netgate way it charge bi-directional
+So we are using net instance instead of net gateway
+cheaper
+
+pg16:
+pg17:
+VPC can span 
+
+pg18:
+The main focus of e-commerce company is product, so they have experience
+manage user data at scale.
+
+In traditional application you need to design your database, however in 
+Cognito you dont need to do these.
+
+Web ID Provider -> Authentication token -> 
+Temporary AWS Credentials -> Access AWS services.
+
+User pools are for authentication (identify verification). 
+Identity pools are for authorization (access control).
+
+we will try this next week.
+
+Summary
+- VPC is a logical data center in AWS.
+- VPC consists of Internet Gateways, Route Tables, Network Access Control Lists, Subnets, 
+    and Security Group
+- NACL -> stateless, Security Groups -> stateful
+- Nat Gateway and Nat Instance
+- Bastion Host (SSH and RDP) -> Jump box
+- AWS Network Costs
+- Cognito (User Pool and Identity Pool)
