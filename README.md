@@ -1,23 +1,57 @@
-# PHLP Neo - Aspiring Data Scientist & Web Developer
+# PHLP Neo
 
-Master of IT student at **Monash University** (Melbourne). Building backend APIs as well as web applications with **Django/Flask**, CLI interface projects. Currently Pursuing AWS SAA Certificate and PHP. Dwarf Fortress Fan and translator, Monster Hunter Fan, dabbling modder.
+Master of Information Technology student at Monash University (Melbourne), focused on backend systems and cloud-based application deployment.
 
-## Skills
-- **Languages**: Python (Int), SQL (Int), JavaScript/HTML/CSS (Int), Java (Prog), C (Basics)
-- **Backend/Web**: Django, Flask, REST APIs, CS50W projects
-- **Databases**: Oracle, MongoDB, SQLite, 3NF/ERD design
-- **Tools**: Git/GitHub, Agile/Scrum, AWS (pursuing), Excel (Adv), Jupyter
+Experience implementing asynchronous APIs, handling concurrent workloads, and deploying containerised applications using Kubernetes and Infrastructure as Code.
 
-## Featured Projects
+---
 
-### [Wiki Encyclopedia](Wiki/)
-CS50 Django Wikipedia: Markdown entries, search/edit/random pages, HTML rendering.
+## Technical Skills
 
-### [Mail Client](Mail/) 
-CS50 SPA email app: inbox/sent/archive, compose/reply, async JS API calls.
+**Backend & Systems**
+- Python, FastAPI, REST APIs
+- Asynchronous programming, concurrency control (threadpool, batching, queues)
 
-### [Commerce Auctions](Commerce/) 
-CS50 eBay clone: listings/bids/comments/watchlists, Django models/forms.
+**Cloud & Infrastructure**
+- Docker, Kubernetes, Terraform (GCP)
+- Ansible (deployment automation)
 
-### [Social Network](Network/) 
-CS50 Twitter: posts/follow/likes/pagination/edit, async JS updates.
+**Data**
+- SQL, Oracle, database design (3NF, ERD)
+
+**Tools**
+- Git/GitHub, Linux, kubectl
+
+---
+
+## Featured Project
+
+### Distributed ML Inference API
+FastAPI, PyTorch, Docker, Kubernetes, Terraform
+
+- Implemented asynchronous API service for image inference with CPU-bound workload isolation using threadpool execution  
+- Built bounded request queue with batching to improve throughput under concurrent load  
+- Applied backpressure control to maintain stability under high traffic  
+- Deployed containerised service to Kubernetes with resource constraints (1 vCPU / 2GB per pod)  
+- Conducted load testing with Locust, achieving ~5–6 QPS per pod with stable scaling behaviour  
+- Automated infrastructure provisioning and deployment using Terraform and Ansible  
+
+---
+
+## Other Projects
+
+### Social Network Web Application
+Django, JavaScript, SQLite  
+- Full-stack web application with authentication, pagination, and asynchronous UI updates  
+
+### Relational Database Design Project
+Oracle SQL, ERD  
+- Designed 3NF schema and implemented queries with joins and aggregation  
+
+---
+
+## Current Focus
+
+- Strengthening backend system design and concurrency understanding  
+- Expanding cloud knowledge (Kubernetes, infrastructure automation)  
+- Preparing for AWS Solutions Architect Associate certification  
