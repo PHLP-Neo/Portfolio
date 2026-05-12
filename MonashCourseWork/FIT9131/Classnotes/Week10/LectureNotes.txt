@@ -1,0 +1,110 @@
+Some test questions:
+Why does the following code does not work?\
+
+String string = " Java ";
+string trim();
+System.out.println(string)
+
+problem occurs on line 4, string is not mutable
+
+Last question:
+
+Write a method:
+
+public int sumEvenNumber(int m, int a)
+{
+	int sum = 0;
+	
+	while (m <= n)
+	{
+		if (m % 2 == 0)
+		{
+			sum += m;
+		}
+		m++;
+	}
+	return sum;
+}
+
+
+in the retake exam we asks you to write whie loop;
+(somewhere in the test you are asked to write for loop)
+
+
+Problem with assignment A
+
+- Missing assignment coversheet
+- Code documentation missing - JacaDoc not used
+- not following coding standard
+	- very long line of code
+	- class template note followed
+	- method not sorted
+- missing validation in mutator
+- use of while true without break statement
+- program crash with invalid input
+- message not informative, for day 9 and 10 user should be informed
+- long method doing mutiple tasks
+
+
+The interview:
+Issue:
+- identify core concepts, object type, parameter, visibility modifier, selection,loop, constructor
+- identidication of code
+- explaination of code
+- conversion of a for loop to a while loop
+
+
+
+Week 10 workshop:
+
+
+Code quality, 10.1
+
+to achieve good quality, you need to consider:
+- abstraction
+- modulatisation
+- encapsulation
+- information
+- responsibility driven design
+Code quality indicator
+- coupling
+- cohesion
+- code duplication
+
+A bad class design, why is it bad?
++-----------------------------------------------+	
+| Account										|	
++-----------------------------------------------+	
+| +accountType: String							|	poor information hiding
+| +balance: double								|	high cooupling
++-----------------------------------------------+	
+| +Account()									| 	
+| +Account(String, double)						|	
+| +addCustomer(Customer)						|	encapsulation issue and coupling 
+| +calculateFeeAndDeductFromBalance(): boolean	|	two goals, poor cohesion, duplication1
+| +calculateInterest(): duble					|	
+| +deposit(double)								|	
+| +displayTotalNumberOfAccounts()				|	
+| +getAccountType(): string						|	
+| +getBalance(): double							|	
+| +setAccountType(String)						|	
+| +setBalance(double)							|	
+| +validateAccountType(String): boolean			|	probably be private as well
+| +withdrawal(double): boolean					|	
+| +toString(): string							|	
++-----------------------------------------------+	
+
+
+1. Why is account type and balance public?
+ - information hiding, also bad coupling
+2. why is there addCustomer? 
+ - bad coheision
+3. calculateFeeAndDeductFromBalance():
+ - modularization
+4. displayTotalNumberOfAccounts()
+ - bad encapsulation, and high coupling, 
+
+
+
+
+
