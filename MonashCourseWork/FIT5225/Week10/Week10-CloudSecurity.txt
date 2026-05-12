@@ -1,0 +1,233 @@
+Cloud Security
+
+pg2:
+
+Agenda
+- Security overview: definition, applications, and importance of security in Cloud 
+Computing
+- Cloud infrastructure security threats and challenges, shared responsibility models
+- Threat modelling, risk assessment, and supply chain management
+- Application-level threats, mitigation strategies and best practices
+- Data security, availability, and integrity
+- Auditing and regulatory compliance
+
+============================================================
+
+pg3:
+
+What is Security
+- The terms "Security" and "Secure" carry a broad and abstract meaning by default
+(shift base on domain and enviromental context, IT guy might have different idea compare to accounting or CEO, we are focus on the techinical context though, cloud security)
+- Based on the application domain and the context they are applied to, can convey different meanings
+- Security is not binary, and falls within a fuzzy/grey landscape
+(depends on different context, a system that is secure from small scale attack might not be able to withstand large scale attack)
+- secure technology != secure system
+(it is a relative term, depends on the context, and has trade off)
+- Collective Knowledge
+(security team, people from different background. )
+
+a system is only as secure as the weakest link and the current threat intelligence.
+The human factor
+Collective knowledge is the bride between secure technology and a secure system.
+
+============================================================
+
+pg4:
+
+Security Complications
+
+- Security is inconvenient by nature, inconvenience paradox
+(every barrier add overhead, e.g multifactor)
+    - Complicates simple processes
+    - Overhead to performance and cost trade-offs
+- Computers are becoming more complex and powerful, yet users are unsophisticated.
+(you need to protect the data, plan what data to collect, what data to keep, and how to protect them before even start collecting data)
+- The current trend is to share, not to protect, or to protect later
+- Pervasive computing has caused data to be accessible from anywhere
+- Malicious users and potential attackers are highly-skilled and sophisticated
+(The Adversary Advantage, it is easier for hacker to attack than for system to defend).
+- Management treats security as a drain at the bottom
+(additional function does not add any business value)
+
+why is secutity often at the bottom>
+because in fast paced development, with MVP, the trend is to share now and protect later, this will create a security debt and becomes harder to pay as complexity increase.
+
+The Unsiphisticated User:
+The weakest link isnt always the code, it is the gap between the powerful technology and the people who use it without fully understanding the risks.
+
+
+
+============================================================
+
+pg5:
+
+Importance of Security in the Cloud Era
+
+For CSPs and Businesses
+- Trust, Compliance, Cost, Obligation For You
+- Dev -> DevOps(2010-) -> DevSecOps (2018-)
+- 4+ Million unfilled roles
+
+============================================================
+
+pg6:
+
+Some Recent Security Breaches in Australia
+
+Latitude(March 2023):
+- 100K ID, 225K Customer Data, $10-$15M
+Medibank(Oct 2022):
+- 9.7M customer data, $25-$35M
+Optus(Sep 2022): 
+- 9.5M customer data, > $140M
+Banking Hack(April 2025, ongoing)
+- At least 14,000 CBA customers, 7,000 ANZ customers, 5,000 NAB and 4,000 Westpac 
+customers' passwords are available on Telegram and the dark web.
+*Reputation damage and potential future issues are unaccounted for.
+
+
+============================================================
+
+pg7:
+
+3W2H About Security
+
+- Who are we trying to protect our system from? 
+    - end user, domain specialist, administrator, a manager with little technical knowledge, etc.
+    (based on differernt user you may want to design different components)
+- What are we trying to secure? 
+    - physical asset, software, intellectual property, human resources(for example chef architect, someone who has inside knowledge), etc.
+- When do the security measurements start and when do they terminate?
+(for old unused data, when to stop security, and when to destroy data)
+- How to measure, monitor, report security events and maintain security levels
+(like playbook, what to do when event happens, how to report in a timely manner)
+- How to comply with security compliance and obligations
+(define policy and procedure, identify refulation, execute implement controls, monitory ongoing program metrics)
+
+============================================================
+
+pg8:
+
+Common Classes of Security Threats
+
+Data Leakage and Tempering: Unauthorized users access
+Man in the Middle(MitM), Session hijacking, Eavesdropping/Replay Attack(have a wireless signal in your car key, someone can copy that signal), Spoofing Password Attack(try to use fake Identity to steal your info), Permission Elevation Attack(try to escape VM and affect host due to bug in hypervisor)
+
+Vandalism(just try to destroy, not for benefit, bring down your server)
+DoS/DDoS(Botnets, ICMP Smurf, TCP SYN flood)
+
+Malware, Spyware, Ransomware
+Social Engineering Attack(Phishing, Homograph attack, e.g. commonwealth vs commonwea1th bank)
+
+============================================================
+
+pg10:
+
+Technical Realm of Security in Cloud 
+Computing
+- 4 As
+    - Authentication - prove who you are
+    - Authorization - what you can do?
+    - Access - locks, keys, ACL, black/whitelist, etc.
+    (differnet level of access between different users)
+    - Audit - are you doing the right thing?
+    (for example, cloudwatch)
+Or AAA (Access + Audit -> Accounting)
+- Privacy
+- Confidentiality
+- Trust
+- Liability
+- Licensing
+
+
+============================================================
+
+pg4:
+
+Typical Threats and Mitigation Techniques
+
++-------------------------------+---------------------------------+
+|Threat Type                    | Mitigation Technique            |
++-------------------------------+---------------------------------+
+|Spoofing identity              | -Authentication                 |
+|                               | -Do not store secrets           |
++-------------------------------+---------------------------------+
+|Tampering with data            | -Authorization                  |
+|                               | -Hashing                        |
+|                               | -Digital signatures             |
++-------------------------------+---------------------------------+
+|Information disclosure         | -Authorization                  |
+|                               | -Encryption                     |
++-------------------------------+---------------------------------+
+|Denial of service              | -Authentication                 |
+|                               | -Authorization                  |
+|                               | -Quality of service, Throttling |
++-------------------------------+---------------------------------+
+|Elevation of privilege         | -Run with least privilege       |
++-------------------------------+---------------------------------+
+
+============================================================
+
+pg4:
+
+Authentication and Authorisation
+- Authentication refers to the process of user identity establishment and propagation 
+    - Centralised vs decentralized 
+    - Challenges in secure implementation: public key infrastructure (PKI), single sign-on, secure password 
+policies, biometric info (privacy issues) 
+- Authorisation policies determine the resources that the authenticated can access. They also enforce permissions (read, write, execute, etc.) when accessing those resources based on predefined policies
+    - Role-based access control (RBAC): Enforced through a hierarchy of roles 
+    - Identity-based access control
+    - Group-based access control
+    - Attribute-based access control (ABAC)
+    - Authorisation in cloud is often through a collection of distributed shared resources by users from one or more organisations
+
+============================================================
+
+pg4:
+
+Privacy
+- The concept of privacy varies widely among (and sometimes within) countries, cultures, and jurisdictions
+- Generally Accepted Privacy Principles (GAPP) standard: 
+    - "The rights and obligations of individuals and organizations with respect to the collection, use, retention, and disclosure of personal information" [7]
+- No universal consensus about what constitutes personal data
+
+============================================================
+
+pg4:
+
+Cloud Privacy Concerns
+- Data access:
+    Organisation's ability to provide individuals access to their personal data and to comply with stated requests
+- Compliance:
+    In Cloud, data can be stores in different datacenters that might be in different states or countries, each having their own laws and regulations, need to consider especially when rolling out product globally
+- Storage:
+    Where is the data stored? How and where is it transferred to/from? Is it commingled with information from other clients that use the same service provider?
+- Retention:
+    How long is personal data retained? What retention policies are used? Who owns the data? How are policy exceptions managed?
+- Destruction:
+    When retention period is expired, how is the data destroyed? How can the clients make sure that data sanitization has been done properly? What about backups and other replications of data? 
+- Audit and monitoring:
+    How can organizations monitor their CSP(Cloud Service Provider) and provide assurance to relevant stakeholders that privacy requirements are met?
+- Privacy breaches:
+    How breaches are handled? How and when the clients are notified?
+
+============================================================
+
+pg4:
+
+============================================================
+
+pg4:
+
+============================================================
+
+pg4:
+
+============================================================
+
+pg4:
+
+============================================================
+
+pg4:
