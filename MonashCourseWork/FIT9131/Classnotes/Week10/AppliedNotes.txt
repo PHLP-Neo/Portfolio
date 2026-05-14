@@ -1,0 +1,107 @@
+10.1.1
+Defensive Programming
+
+small difference between error and exceptions.
+ - exceptions are things you can handle
+ - error might not be something you can handle
+
+Error Reporting
+ - when reporting an error, most of the time it should be done in the server class, it might pass the error to the client class to handle.
+
+Error Handling
+
+
+10.1.2
+
+A checked exception is one that occurs when an operation fails that can be anticipated.
+They are checked by java compiler
+
+An unchecked exception is something that cannot be caught by java compiler, like
+Null pointer exception
+Index out of bound exception
+Input mismatch exception
+
+10.1.3
+
+Throwable
+    - Error
+    - exception
+        - MyCheckedException
+        - RuntimeException
+            - MyUncheckedException
+
+what happens when exception occurs?
+
+throw and throws
+
+throw goes inside the methods (method body)
+
+if ( <some condition> )
+{
+    throw new <Exception Class Name> ( <Error Message> );
+}
+
+and will forcefully terminate the method it is in.
+
+throws
+
+catches the check exception back to the complier to handle it.aa
+
+I will write the code to the server class, once exception happens, it will throw it back to the client.
+
+10.1.5 Error Handling
+
+Try, catch, finally
+
+
+
+
+import java.util.Scanner;
+import java.io.FileWriter;
+
+public class WriteFile
+{
+    public static void main(String[] args)
+    {
+        boolean flag = true;
+        Scanner console = new Scanner(System.in);
+       
+        try
+        {
+            FileWriter writer = new FileWriter("temp.txt");
+            do
+            {
+                System.out.println("Enter text to append to file...");
+                String value = console.nextLine();
+                value += "\n";
+                writer.append(value);
+                try
+                {
+                    System.out.println("Continue adding text to file (y or n)?");
+                    char response = console.nextLine().trim().toLowerCase().charAt(0);
+                    if (response == 'n')
+                    {
+                        flag = false;
+                        writer.close();
+                    }
+                }
+                catch (Exception e)
+                {
+                    System.out.println("Please enter y or n only!");
+                }
+            } while (flag);
+        }
+        catch (Exception e)
+        {
+            System.out.println("Error in writing to file! Exiting...");
+        }
+    }
+}
+
+
+
+
+
+
+
+
