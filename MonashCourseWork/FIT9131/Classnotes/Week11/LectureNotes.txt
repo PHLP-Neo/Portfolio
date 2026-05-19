@@ -1,0 +1,21 @@
+Class Relationship
+
+"uses"
+Game class and dice class has a "use" Relationship
+
+Game class about animal and animal has a "has" Relationship
+
+
+New Relationship: Inheritance
+
+inherientice allows one class to inherit the properties of another class
+common fields and methods put in parent class and then ued by child class
+
+The class that is being inherited from is called the super/parent/base class, and the class that exptnds the suoer class is called the sub/child/derived class.
+
+
+
+sheep (eat grass, grow wool)
+fish (swim, breath water)
+
+fishsheep (grow wool, swim)
