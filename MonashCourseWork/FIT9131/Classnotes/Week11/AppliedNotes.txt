@@ -1,0 +1,67 @@
+One main advantage of OOP is reusaiblity, including using components in suce a way that we can rewrite and reuse them. Inheriente allows us to do that
+
+1. one important aspect of inherientance is the is a repation, we use an EMPTY arrow to show that.
+
+2. inherientance
+        |___inherits
+                |____from some other entity
+
+3. example, we have
+
++-----------+   +-----------+   +-----------+
+| Student   |   | Lecturer  |   | Admin     |
++-----------+   +-----------+   +-----------+
+| name      |   | name      |   | name      |
+| address   |   | address   |   | address   |
+| contact   |   | contact   |   | contact   |
++-----------+   +-----------+   +-----------+
+
+if a student is a lecturer, then in this design, when i want to change the student's address, i also need to change the lecturer's address
+
+however this is a bad design and we can do better
+
+                +-----------+
+                | Person    |
+                +-----------+
+                | name      |   "Parent class"
+                | address   |
+                | contact   |
+                +-----------+
+                      ^
+           "is a"     |    "is a"
+      +---------------+----------------+
+      |               |                |
++-----------+   +-----------+   +-----------+
+| Student   |   | Lecturer  |   | Admin     |
++-----------+   +-----------+   +-----------+   "child class"
+| student_id|   |           |   |           |
++-----------+   +-----------+   +-----------+
+
+a question:
+
+student st = new student();
+how many fields does this student have?
+4 (name, address, contact, student_id)
+
+java only allow single parent inherientance
+
+concrete class and abstract class
+
+if the parent is a concrete class, then it is a complete class, so I can complete the 
+
+but that is bad design, so we are turning person into abstract class.
+
+abstract means it is incomplete.
+
+second property of polymorhism:
+- dynamic binding (of object at runtime)
+
+
+
+
+
+
+
+
+
+

@@ -136,7 +136,7 @@ private subnet, you cannot ssh into it directly
 SQS
 Simple Queue Service
 
-a web service that give you access to a message queue that can be used to store messages while for a computer to process them.
+a web service that give you access to a message queue, that can be used to store messages, for a computer to process them.
 
 ===================================
 

@@ -1,0 +1,348 @@
+pg 14 
+
+Shared Security Responsibility Model:
+
+Pg 15:
+
+- Taking full responsibility for security
+    - Infrastructure security: physical access and data leakage concerns, energy supply and facility security, network, hardware, storage, OS, and hypervisor security
+    - Platform security: user experience (UX) security, data, application frameworks, and update security
+    - Software security: application security (multiple tenants, partitioning, access control, etc.)
+    - Service delivery security: connection security (authentication, SSL) and end-to-end service security
+    - User security: ensuring only trusted and authorized users can access the private cloud
+    - Legal concerns: governance and compliance issues
+
+pg 16:
+
+Host-Level Security Threats
+- SaaS and PaaS: 
+    CSPs are responsible for providing a secure and reliable infrastructure to host your application. 
+Clients need to develop a secure application.
+- IaaS
+    - Hypervisor security
+        - 0-day vulnerabilities
+        - Subversion attacks, e.g. "Blue Pill" attack
+        - Insider malicious access and tampering
+        - VM hopping
+        - VM-based rootkits and malware
+    - Virtual machine and guest OS security
+    - Malicious Use Cases:
+        - Attackers can use clouds to host botnets 
+        - Can be used as a mechanism to spread malware.
+
+pg 17:
+
+Threats Targeting Virtual Servers 
+    - Theft and misuse of private SSH keys
+    - Attacks against unpatched, misconfigured, and vulnerable services listing on standard ports (FTP, SSH, HTTP, etc.)
+    - Account hijacking (weak passwords, default passwords, security bugs, etc.)
+    - Attack against systems that are not protected by a firewall
+    - Deploy trojans or rootkits that are embedded in the guest OS images
+A few mitigation techniques
+    - Use host-based IDS such as OSSEC or Samhain and use a host firewall only opens required ports
+    (firewall and security group)
+    - Enable system auditing and event logging
+    - Use secure passwords and change them frequently- Safeguard your SSH private key files
+    - Harden VM images and always check the image's checksum to make sure it's not tampered
+    - Require passwords for sudo * or role-based access (e.g., Solaris, SELinux)
+
+
+pg 18:
+
+Cloud Security Challenges
+- Secure data deletion
+    - How to successfully purge huge amount of data on a remote server in a way that no one can recover it
+    - Deleting large volume of data can be a tedious and time-consuming task, due to indirect data access
+- Auditing
+    - Log size can potentially grow substantially and in a fast pace
+    - What to log? (7 years, apparantly) Where to securely store the log? How long to store them? How to securely access and rotate them?(if you store them in S3, you might need to move old logs to glacier, for example)
+    - Aggregate log data from various resources across cloud federations.
+- Single sign-on and centralized access management
+(we need to use AWS cognito)
+
+
+pg 19:
+
+Cloud Security Issues and Mitigations
+- Loss of Control
+(concerns over data and application ownership and lack of consumer influence)
+    - Take back control
+        - Data and apps may still need to be on the cloud
+        - But can they be managed in some way by the consumer?
+- Lack of trust
+(Skepticism about provider security, prolcy adherence and contarctual obligations)
+    - Increase trust (mechanisms)
+        - Technology
+        - Policy, regulation
+        - Contracts (incentives): topic of a future talk
+- Multi-tenancy
+(shared resources lead to concern about data leakage, isolation failure and side-channel attack)
+    - Private cloud
+        - Takes away the reasons to use a cloud in the first place
+    - VPC: it's still not a separate system 
+    - Strong separation
+
+
+pg 20:
+
+Threats for Cloud Service Users
+- Responsibility ambiguity
+- Loss of governance
+- Non-secure cloud service user access
+- Loss of trust 
+- Lack of asset management 
+- Service provider lock-in
+- Data loss and leakage 
+
+
+pg 21:
+
+Threat Modeling and Risk Assessment
+
+- Method, Opportunity and Motive 
+(systematic identification of security problems)
+- Threat modeling is identifying security problems and potential threats
+- in a systematic way to develop requirements, test plans and testing tools
+    - Who might maliciously target our system? Identify internal and external attackers/threats
+    - What assets can be targeted and to what extend
+    - Rank threats based on their impact and criticality
+- What suitable tools and strategies we can leverage to mitigate those threats?
+    - e.g., encryption, firewall and intrusion detection systems, authentication, etc.
+- Three common approaches for threat modeling: 
+    - attack focused, 
+    - asset focused, 
+    - design focused
+- Threat models can be represented UML diagrams, attack trees, and several other formats
+
+
+pg 23:
+
+Security Management in Cloud
+- Understand trust boundary of services (network, application, storage, web services, identity services, etc.) and scope of IT system management and monitoring (availability, configuration, patch, access, and vulnerability management, plus incident response)  
+- Renown Standards: 
+    - Information Technology Infrastructure Library (ITIL)
+    - ISO/IEC 27001 and 27002
+
+
+pg 24:
+
+Cloud Infrastructure Security------
+- Enforcing and ensuring proper access control
+- Issue of non-aged IP addresses, IP reuse, and stale DNS caches 
+- Ensuring availability of internet-facing resources 
+    - BGP prefix hijacking
+    - DNS attacks
+    - DoS/DDoS attacks
+- Use Network Zones and Tiers: security groups, VPCs, separate hosts, security domains, etc. 
+- Hosting several isolated environments (test, production, dev, staging, etc.)
+- Network-level risk and threat mitigation
+    - Properly-configured firewall, Intrusion Detection/Prevention System (IDS/IPS)
+    - Encryption of data in transit using SSL, IPSec
+
+
+pg 25:
+
+pg 26:
+
+Security Design Principles
+- Implement a strong identity foundation (IAM)
+- Least Privilege (only give user what they need)
+- Enable Traceability
+- Apply security at all layers (lambda function and cloudwatch everywhere)
+- Automate security best practices
+- Protect data in transit and at rest (proper encryption, try to keep people away from data)
+- Keep people away from data
+- Prepare for security events 
+
+
+pg 27:
+
+Cloud Security Best Practices
+- Identify and Prioritize Risks using a threat model
+- Identify and validate control objectives
+- Keep up to date with security threats and recommendations
+- Evaluate and implement new security service and features regularly
+- Automate testing and validation of security controls in pipelines
+
+
+pg 28:
+
+IAM Best Practice
+- Use a centralized identity provider
+- Leverage user groups and attributes
+- Least privileges principle
+- Use strong sign-in mechanisms, especially for root account, maybe with physical keys, etc
+- Use temporary credentials
+- Audit and rotate credentials regularly
+- Store and user secrets securely (never share)
+
+
+pg 29:
+
+Infrastructure & Network Protection
+- Create Network Layers
+- Control Traffic at all layers (VPC + SG + NACL)
+- Implement Inspection and Protection
+- Automate network/compute protection
+- Perform Vulnerability Management
+- Reduce Attack Surface (only open port you need for the application)
+- Implement managed services
+- Validate software integrity
+
+
+pg 31:
+
+Detection Best Practice
+- Configure Service and application logging
+- Analyse logs findings and metrics centrally
+- Implement actionable security events (playbooks)
+- Automate response to events
+
+integrated detction pipelines:
+
+Infrastructure logs, Application logs, Service logs
+                        |
+                        V
+                
+
+pg 32:
+
+Incident Response
+- Establish Response Objectives
+- Document plans
+- Know what you have and what you need
+- Use redeployment mechanisms
+- Automate where possible
+- Learn and improve your process 
+- Educate, prepare, simulate and iterate
+
+
+Most COmmon Compliance Risks
+
+Avoid the 4 common compliance Risks
+- HIPAA: healthcare
+- PCI-DSS: company provide transactions and creditcards, had to hire 3rd party to perform penetrate test
+- GDPR: Europe region, europeian data center, disaster recover plan, etc
+
+
+pg 33:
+
+Steps for Securing an Organisation (Summary)
+- Evaluate the Risks and Threats
+- Beware of Common Misconceptions 
+- Provide Security Training for Staff - Now and Forever
+- Think "Outside the Box"
+- Playbooks and Gameday (Chaos Engineering/Chaos Security Engineering/Pentest)
+- Identify and Utilize Built-In Security Features of the Operating System and Applications
+- Monitor Systems
+- Hire a Third Party to Audit Security
+- Don"t Forget the Basics 
+- Vulnerability testing and patching
+- Automate Token Management, detection control
+
+
+pg 34:
+
+Data Security Aspects
+- Data in transit (using secure protocols such as SSL, IPSec, FTPS, Secure Copy Program (SCP), etc.) 
+- Data at rest (use end-to-end encryption)
+- Data processing, including multi tenancy
+- Data availability
+- Data lineage: following the path of data
+- Data provenance
+- Data remanence
+
+phases:
+1: generation
+2: use              - what this data is use for?
+3: transfer         - use ssh? scp? how to transder securely
+4: Transformation   - transform raw data into more valuable Information
+5: storage          - encryption, etc
+6: Archival         - 
+7: Destruction      -  
+
+
+pg 30:
+
+Data Protection
+- Identify the data within your workload
+- Define data protection controls
+- Define data lifecycle management
+- Automate identification and classification
+- Implement secure key and certificate management (KMS, HSM, user-managed)
+- Enforce encryption at rest and in transit
+- Enforce access control
+- Audit the use of encryption keys and unintended data access
+- Use mechanism to keep people away from data
+- Automate data at rest protection
+
+
+pg 35:
+
+Protecting Data at Rest
+- Use end-to-end encryption to make sure data is encrypted at source and stored securely at the destination
+    - Symmetric encryption technologies such as AES, Triple DES, etc. with secure keys (256-bits and more) 
+    - Asymmetric encryption technologies
+    - Public key infrastructure (PKI)
+- In June 2009, IBM announced that they have found way to process encrypted data without decrypting it first (homomorphic encryption)
+    - Requires immense computational capacity 
+- Data integrity protection and verification (hash-based checksums, CRC codes, message authentication codes (MAC), manual verification, etc.)  
+
+
+pg 36:
+
+Data Remanence Steps
+
+Data Remanence: residual representation of data that has been in some way nominally erased or removed
+    - Residue might be left because of unsuccessful delete operation or be a result of storage device's physical properties
+    - May result in inadvertent disclosure of sensitive information
+- Data Clearing and Sanitization
+    - Eradicating the data on media before reusing the media
+    - DoD 5220.22-M Standard
+
+
+pg 38:
+
+Disaster Recovery and System Backups
+
+- Need failover sites in case of natural or man-made disasters. Primary and disaster recovery data center
+- Disaster recovery tested regularly, e.g. a minimum of twice yearly
+- No service degradation; disaster recovery sites should be full duplicates of the primary sites
+- Full system backups provide additional assurance
+- System backups encrypted with AES 256 bit
+- System backups kept off site for 30 days
+- Apply the 3-2-1 rules: 3 copies, 2 different medium, 1 offsite
+
+
+pg 42:
+
+Key Takeaways
+- Security has a broad perimeter and to mitigate threats, first step is identifying and assessing all attack targets, then performing thorough risk assessment and documenting mitigation procedures
+- Clouds are not only accessed and attacked from the outside, but malicious insiders can be equally (or even more) harmful
+- Cloud layers and services (IaaS, PaaS, SaaS) and different cloud types (public, private, virtual, hybrid) have their own unique security requirements and failing to secure one can potentially make the whole system unsecure
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
