@@ -1,0 +1,68 @@
+
+
+Learning Outcome:
+1. Design and Construct Java Program according to the standard object oriented principles:
+2. Apply and demonstrate debugging processes in Java applications.
+3. Develop Strategies for efficient and effective program testing
+4. Document code according to specific programming standards
+5. identify and apply the "object-oriented" concepts of encapsulation, abstraction and polymorphism
+6. explain and apply software engineering principles.
+
+
+How to prepare?
+
+1. read through the lessens on ED, make sure you understand all the consepts presented in them
+2. Lookthrough the index of key concepts on ED
+3. Re-do workship and applied class exerciese witour looking at your previous answers
+4. Form study groups with other students, and compare/discuss each others notes and solutions
+5. practice with the mock exam to see what type of questions to expect, do not memorise the mock exam paper!
+
+
+tips:
+
+1. follow the instructions, if the question ask you to describe three things, describe three things
+2. if you cannot answer a question, answer the part you understand for all the partial marks
+3. read the question carefully, and excellent answer to a wrong question willnot score any marks
+
+
+=============================================================================
+
+1. check for error:
+
+public int largestNumber()
+{
+    Scanner = new Scanner(System.in); // Scanner scanner?
+    System.out.println("Input number:");
+    int num = scanner.nextLine(); // input mismatch: int num = scanner.nextInt();
+    int max = -999; // bad design, int_max
+    while (num == -99) // while num != -99
+    {
+        if(num > 0 & num >= max) // if num > 0 && num >= max
+        {
+            max = num;
+            System.out.println("Input number: ");  //this should be outside the branch statement
+            num = scanner.nextInt();   // same for other line
+        }
+    }
+
+    return num;
+}
+
+
+=========================================================
+
+2. why code not work:
+
+public void removeCustomer(int num)
+{
+    System.out.println("the list with customer " + num + " removed:");
+    for (Integer n:numbers)
+    {
+        if (n == num)
+            numbers.remove(n);
+        else
+            system.out.println(n);
+    }
+}
+
+when removing things you should not use an for each loop, you should use an iterator.
