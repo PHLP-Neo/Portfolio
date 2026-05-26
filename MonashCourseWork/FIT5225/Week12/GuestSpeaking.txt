@@ -1,0 +1,106 @@
+Guest Speaking:
+
+Oracle Security:
+
+Speaker: Rakesh (checf customer Architect)
+
+Topic: Security:
+
+What we are doin in security is to make it easier.
+
+at work, we are measured on ai we use, how much we use, how much we can make the most of ai
+in future, how we use ai can determine, the person who make the best use of ai...
+anyway, make best use of it, learn how to use it, etc.
+
+Secituty:
+
+33% of organization has experienced ransomware attack
+4M position cannot be filled due to cybersecurity talent shortage
+74% of data breaches involved the "human element"
+
+git repo was leaked
+
+top concerns:
+ransomware, problematic, and is public knowledge now.
+human error, a lot of times people keep simple password
+geopolitical risks (agents from differnet part of thwe world want to attakc)
+hybrid work environment, doing seneitive work at home, etc.
+
+how oracle sericuty make a difference?
+retail, epsilion, protect sensitive customer data while maintain the key of their data
+financial service, thomson routers
+public sector: role based access control, 
+healthcare:
+higher education:
+insurance:
+
+automatically apply patches.
+
+four ways oracle can address concenrns
+
+guard: against ransomware
+    - core to edge, core is where data is stored,
+        - storage and database safeguard, define policy for database based on the seneitivity of data, data that store financial information is different from data that store customer feedback, what you can do is to defien polocy that different type of data is treated, if a database is hihly seneitive, then it will block most public api access, instead of giving eatures, we need to make it automatics. Dataward, make sure no one can temper with your original information 
+        - compute and OS: automatics OS, why stop at database, lets applu it ot our linux, constantly look for and apply patches. bare metal vs virtualized environment. Bare metal on the cooud give you acess to the complete server in the cloud, no vm overhead. you make sure there is no sneaking bugs. 
+        - Network: when desigingin the system you need to congif public, private subnet, firewall secituty group, etc
+        - Identity and Operator access: controlling access to the recoures, deny all and give access on only needed
+        - Monitorng and Prevention: just like cloudwatch. define whihc to be monitored and define polocy around it. redisign how the virtualizaiton is done
+        - Internet and Edge: we moved the networking layer from the server to a different piece of hardware, in the past if you have networking and ontrol plane together,  then when network got corrupted, they will have access to every VM on the server, by moving VM to another hardware, if that VM is currupted, it will only be able to access the C< and anything on that hardware and nothing else. 
+
+deliver
+
+oracle database secutity helpps protect agianst attacks
+ensure user name and password is available, multilever access control, etc, ensure backup is encrupted, etc. ensure there will be no data loss even with ransomeware attack, the system can be brought online quickly.
+
+Isolation of vms, even when a server is underattack, it wont spread to other vms
+
+insights, logs, system access to, cloud strike, if they know attack are from specific attack range, then you can setup firewall policy, etc.
+
+
+
+accelerate:
+secure on-boarding of your workloads
+
+its all about how to secure the onboarding access
+what is available in that area:
+with cloud it becomes important how you architect the infrastures
+
+how you design your landing cloud, keep your prod envinroment from non oracle envoronment, etc
+how you manage your resources, a landingzone design, first place to start, etc
+uniform logging capability
+
+Access and manage risk
+    there is great risk when customer is across muitple id platforms, usually you have inhouse application that dont have SSO and other that does
+    define what is the seneitivee of information, and how defien secitity around it
+
+an example of a landing zone:
+    - it is best to keep your production from non-production environment, some are inductry standard, standard architecture
+
+
+
+simplify
+secrity across
+the most imprtat about seciruty is simplcity, if you make security too difficult then no one will follow it and will try to find shortcuts
+
+one way to simplify is by a uniformed access manager
+instead of having multiple solution across multiple cloud and system, oracle onoly have one, OCI IAM
+
+we have customer who for different reason want to have coud in their data center (do not want their information on public cloud), we have flavor of cloud avaibla to them as well,
+
+in any case, in order to simplify, we need to have uniformaty
+
+Deliver, 
+manage secirity to meet commplicance requirements
+
+different region and deffierenet jurisdiaation has differt requirements, how cloud help is it has a standard template about how service are delivered in acloud, and once you havve a certification on one instances, every other cloud is certified
+
+Oracle capabilitys help address core compliance needs at all levels
+    - identity and access mangement
+    - Access Govermamce
+    - Data safe
+    - Distribted cloud
+
+OCI manages 80+ compliances programs across regions and industries
+OCI distributed cloud prcides regulatoru solutions that no other provider can
+
+Address your top security concerns
