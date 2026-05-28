@@ -2,7 +2,7 @@ Guest Speaking:
 
 Oracle Security:
 
-Speaker: Rakesh (checf customer Architect)
+Speaker: Rakesh (chef customer Architect)
 
 Topic: Security:
 
@@ -104,3 +104,4 @@ OCI manages 80+ compliances programs across regions and industries
 OCI distributed cloud prcides regulatoru solutions that no other provider can
 
 Address your top security concerns
+
