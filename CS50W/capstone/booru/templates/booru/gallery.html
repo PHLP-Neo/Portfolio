@@ -1,0 +1,14 @@
+<h1>Capstone Booru</h1>
+
+<div>
+    {% for post in posts %}
+    <div>
+        <a href="{% url 'post_detail' post.id %}">
+            <img src="{{ post.image.url }}" alt="{{ post.title }}" width="200">
+        </a>
+        <p>{{ post.title }}</p>
+    </div>
+    {% empty %}
+    <p>No images yet.</p>
+    {% endfor %}
+</div>
