@@ -19,8 +19,18 @@ def gallery(request):
 
 def post_detail(request, post_id):
     post = get_object_or_404(ImagePost, id=post_id)
+
+    is_favorited = False
+
+    if request.user.is_authenticated:
+        is_favorited = Favorite.objects.filter(
+            user=request.user,
+            post=post
+        ).exists()
+
     return render(request, "booru/post_detail.html", {
-        "post": post
+        "post": post,
+        "is_favorited": is_favorited
     })
 
 @login_required
