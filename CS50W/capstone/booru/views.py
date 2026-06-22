@@ -4,8 +4,8 @@ from django.http import HttpResponseForbidden, JsonResponse
 from django.views.decorators.http import require_POST
 
 
-from .forms import ImagePostForm
-from .models import ImagePost, Tag, Favorite
+from .forms import ImagePostForm, CommentForm
+from .models import ImagePost, Tag, Favorite, Comment
 
 # Create your views here.
 
@@ -19,18 +19,19 @@ def gallery(request):
 
 def post_detail(request, post_id):
     post = get_object_or_404(ImagePost, id=post_id)
+    comments = post.comments.all().order_by("-created_at")
 
     is_favorited = False
-
     if request.user.is_authenticated:
-        is_favorited = Favorite.objects.filter(
-            user=request.user,
-            post=post
-        ).exists()
+        is_favorited = Favorite.objects.filter(user=request.user, post=post).exists()
+
+    comment_form = CommentForm()
 
     return render(request, "booru/post_detail.html", {
         "post": post,
-        "is_favorited": is_favorited
+        "is_favorited": is_favorited,
+        "comments": comments,
+        "comment_form": comment_form,
     })
 
 @login_required
