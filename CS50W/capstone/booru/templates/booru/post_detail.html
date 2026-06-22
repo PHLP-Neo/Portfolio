@@ -31,6 +31,28 @@
 <p><a href="{% url 'login' %}">Log in</a> to favorite this post.</p>
 {% endif %}
 
+<h3>Comments</h3>
+
+{% if user.is_authenticated %}
+<form method="post" action="{% url 'add_comment' post.id %}">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <button type="submit">Post comment</button>
+</form>
+{% else %}
+<p><a href="{% url 'login' %}">Log in</a> to comment.</p>
+{% endif %}
+
+{% for comment in comments %}
+<div>
+    <strong>{{ comment.user.username }}</strong>
+    <small>{{ comment.created_at }}</small>
+    <p>{{ comment.content }}</p>
+</div>
+{% empty %}
+<p>No comments yet.</p>
+{% endfor %}
+
 <h3>Tags</h3>
 {% for tag in post.tags.all %}
 <a href="{% url 'tag_detail' tag.name %}">{{ tag.name }}</a>
@@ -40,48 +62,48 @@
 {% endfor %}
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const button = document.querySelector("#favorite-button");
+document.addEventListener("DOMContentLoaded", function () {
+    const button = document.querySelector("#favorite-button");
 
-        if (!button) {
-            return;
-        }
+    if (!button) {
+        return;
+    }
 
-        button.addEventListener("click", function () {
-            const postId = button.dataset.postId;
+    button.addEventListener("click", function () {
+        const postId = button.dataset.postId;
 
-            fetch(`/api/favorite/${postId}/`, {
-                method: "POST",
-                headers: {
-                    "X-CSRFToken": getCookie("csrftoken")
-                }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    button.textContent = data.favorited ? "Unfavorite" : "Favorite";
-                    document.querySelector("#favorite-count").textContent = data.count;
-                });
+        fetch(`/api/favorite/${postId}/`, {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": getCookie("csrftoken")
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            button.textContent = data.favorited ? "Unfavorite" : "Favorite";
+            document.querySelector("#favorite-count").textContent = data.count;
         });
     });
+});
 
-    function getCookie(name) {
-        let cookieValue = null;
+function getCookie(name) {
+    let cookieValue = null;
 
-        if (document.cookie && document.cookie !== "") {
-            const cookies = document.cookie.split(";");
+    if (document.cookie && document.cookie !== "") {
+        const cookies = document.cookie.split(";");
 
-            for (let cookie of cookies) {
-                cookie = cookie.trim();
+        for (let cookie of cookies) {
+            cookie = cookie.trim();
 
-                if (cookie.substring(0, name.length + 1) === (name + "=")) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
+            if (cookie.substring(0, name.length + 1) === (name + "=")) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
             }
         }
-
-        return cookieValue;
     }
+
+    return cookieValue;
+}
 </script>
 
 {% endblock %}
