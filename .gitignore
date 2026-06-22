@@ -4,3 +4,4 @@ venv/
 CS50W/capstone/media
 
 **/__pycache__/
+*.sqlite3
