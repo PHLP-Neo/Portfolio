@@ -161,3 +161,17 @@ def toggle_favorite(request, post_id):
         "favorited": favorited,
         "count": post.favorites.count()
     })
+
+@login_required
+@require_POST
+def add_comment(request, post_id):
+    post = get_object_or_404(ImagePost, id=post_id)
+    form = CommentForm(request.POST)
+
+    if form.is_valid():
+        comment = form.save(commit=False)
+        comment.user = request.user
+        comment.post = post
+        comment.save()
+
+    return redirect("post_detail", post_id=post.id)
