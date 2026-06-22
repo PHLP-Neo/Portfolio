@@ -1,5 +1,7 @@
-from django.shortcuts import render, get_object_or_404
-from .models import ImagePost
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from .forms import ImagePostForm
+from .models import Tag
 
 # Create your views here.
 
@@ -15,4 +17,30 @@ def post_detail(request, post_id):
     post = get_object_or_404(ImagePost, id=post_id)
     return render(request, "booru/post_detail.html", {
         "post": post
+    })
+
+@login_required
+def upload_post(request):
+    if request.method == "POST":
+        form = ImagePostForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.uploader = request.user
+            post.save()
+
+            tag_string = form.cleaned_data["tag_string"]
+            tag_names = tag_string.split()
+
+            for name in tag_names:
+                tag, created = Tag.objects.get_or_create(name=name.lower())
+                post.tags.add(tag)
+
+            return redirect("post_detail", post_id=post.id)
+
+    else:
+        form = ImagePostForm()
+
+    return render(request, "booru/upload.html", {
+        "form": form
     })
