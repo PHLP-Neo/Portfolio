@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Capstone Booru</title>
+</head>
+
+<body>
+
+    <nav>
+        <a href="{% url 'gallery' %}">Home</a>
+
+        {% if user.is_authenticated %}
+        |
+        <a href="{% url 'upload_post' %}">Upload</a>
+        |
+        Logged in as {{ user.username }}
+        |
+        <form action="{% url 'logout' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+        {% else %}
+        |
+        <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </nav>
+
+    <hr>
+
+    {% block body %}
+    {% endblock %}
+
+</body>
+
+</html>

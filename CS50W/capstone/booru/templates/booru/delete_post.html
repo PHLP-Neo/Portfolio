@@ -1,3 +1,7 @@
+{% extends "booru/base.html" %}
+
+{% block body %}
+
 <h1>Delete Post</h1>
 
 <p>Are you sure you want to delete "{{ post.title }}"?</p>
@@ -8,3 +12,5 @@
 </form>
 
 <a href="{% url 'post_detail' post.id %}">Cancel</a>
+
+{% endblock %}
