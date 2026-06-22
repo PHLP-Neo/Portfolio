@@ -1,5 +1,9 @@
 <h1>Capstone Booru</h1>
-
+{% if user.is_authenticated %}
+<a href="{% url 'upload_post' %}">Upload image</a>
+{% else %}
+<p><a href="{% url 'login' %}">Log in</a> to upload images.</p>
+{% endif %}
 <div>
     {% for post in posts %}
     <div>
