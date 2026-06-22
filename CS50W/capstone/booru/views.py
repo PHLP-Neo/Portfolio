@@ -45,3 +45,31 @@ def upload_post(request):
     return render(request, "booru/upload.html", {
         "form": form
     })
+
+def tag_detail(request, tag_name):
+    tag = get_object_or_404(Tag, name=tag_name.lower())
+    posts = tag.posts.all().order_by("-created_at")
+
+    return render(request, "booru/gallery.html", {
+        "posts": posts,
+        "page_title": f"Tag: {tag.name}"
+    })
+
+
+def search_posts(request):
+    query = request.GET.get("q", "").strip().lower()
+    posts = ImagePost.objects.all().order_by("-created_at")
+
+    if query:
+        tag_names = query.split()
+
+        for tag_name in tag_names:
+            posts = posts.filter(tags__name=tag_name)
+
+        posts = posts.distinct()
+
+    return render(request, "booru/gallery.html", {
+        "posts": posts,
+        "query": query,
+        "page_title": "Search results"
+    })
