@@ -7,4 +7,6 @@ urlpatterns = [
     path("upload/", views.upload_post, name="upload_post"),
     path("tag/<str:tag_name>/", views.tag_detail, name="tag_detail"),
     path("search/", views.search_posts, name="search_posts"),
+    path("tag/<str:tag_name>/", views.tag_detail, name="tag_detail"),
+    path("search/", views.search_posts, name="search_posts"),
 ]
