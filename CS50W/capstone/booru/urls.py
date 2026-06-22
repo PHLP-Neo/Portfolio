@@ -11,4 +11,6 @@ urlpatterns = [
     path("post/<int:post_id>/delete/", views.delete_post, name="delete_post"),
     path("api/favorite/<int:post_id>/", views.toggle_favorite, name="toggle_favorite"),
     path("post/<int:post_id>/comment/", views.add_comment, name="add_comment"),
+    path("register/", views.register, name="register"),
+    path("profile/<str:username>/", views.profile, name="profile"),
 ]
