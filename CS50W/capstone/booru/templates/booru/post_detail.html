@@ -39,12 +39,49 @@
 <p>No tags</p>
 {% endfor %}
 
-<!-- {% if user == post.uploader %}
-<p>
-    <a href="{% url 'edit_post' post.id %}">Edit</a>
-    |
-    <a href="{% url 'delete_post' post.id %}">Delete</a>
-</p>
-{% endif %} -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const button = document.querySelector("#favorite-button");
+
+        if (!button) {
+            return;
+        }
+
+        button.addEventListener("click", function () {
+            const postId = button.dataset.postId;
+
+            fetch(`/api/favorite/${postId}/`, {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": getCookie("csrftoken")
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    button.textContent = data.favorited ? "Unfavorite" : "Favorite";
+                    document.querySelector("#favorite-count").textContent = data.count;
+                });
+        });
+    });
+
+    function getCookie(name) {
+        let cookieValue = null;
+
+        if (document.cookie && document.cookie !== "") {
+            const cookies = document.cookie.split(";");
+
+            for (let cookie of cookies) {
+                cookie = cookie.trim();
+
+                if (cookie.substring(0, name.length + 1) === (name + "=")) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+
+        return cookieValue;
+    }
+</script>
 
 {% endblock %}
