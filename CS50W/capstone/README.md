@@ -2,189 +2,323 @@
 
 ## Overview
 
-Capstone Booru is a tag-based image sharing and archive platform inspired by websites such as Danbooru. Users can register accounts, upload images, organize content using tags, browse images through tag-based navigation, leave comments, and save favorite posts.
+Capstone Booru is a tag-based image sharing and archive platform inspired by booru-style websites such as Danbooru. The application allows users to register accounts, upload images, organize content using tags, browse content through tag-based navigation, comment on images, and maintain personal collections of favorite posts.
 
-The project was developed using Django and JavaScript as the final project for CS50's Web Programming with Python and JavaScript.
+The project was developed as the final project for CS50's Web Programming with Python and JavaScript using Django as the backend framework and JavaScript for client-side interactivity.
 
-The primary goal of the project is to create a searchable image archive where content discovery is driven by tags rather than chronological feeds. Unlike a traditional social network, users primarily interact with images through tagging, searching, favoriting, and commenting.
+Unlike a traditional social network that focuses on chronological feeds and user relationships, Capstone Booru focuses on content discovery. Images are organized through a flexible tagging system, allowing users to search for content using one or more tags and navigate through related images.
 
-\---
+The project demonstrates full-stack web development concepts including database design, authentication, authorization, file uploads, asynchronous JavaScript communication, responsive design, and media management.
+
+---
 
 ## Distinctiveness and Complexity
 
-This project is distinct from the projects completed throughout CS50W.
+This project is substantially different from the projects completed during CS50W.
 
-Unlike Project 4 (Social Network), this application is not centered around user posts, following relationships, or activity feeds. Instead, it focuses on image management, tag organization, and content discovery through search and categorization.
+Unlike Project 4 (Social Network), this application is not centered around user posts, likes, following relationships, or activity feeds. Instead, it focuses on image management, tag organization, and content discovery through searching and categorization.
 
-Unlike Project 2 (Commerce), this application does not involve auctions, bidding, listings, or financial transactions. Instead, it implements a custom media management workflow with image uploads, tagging systems, comments, favorites, user profiles, and image lifecycle management.
+Unlike Project 2 (Commerce), this application does not involve auctions, listings, bids, or transactions. Instead, it implements a custom workflow for media storage, image management, tagging, comments, favorites, and profile organization.
 
-The application combines several interconnected features:
+Several features interact closely throughout the application:
 
-* User authentication and registration
-* Image upload and storage
-* Many-to-many tag relationships
-* Multi-tag search functionality
-* User profiles
-* Comment system
-* Favorite system using JavaScript Fetch API
-* Responsive mobile-friendly interface
-* Media file cleanup during image replacement and deletion
+- User authentication and registration
+- Image upload and storage
+- Many-to-many tag relationships
+- Multi-tag search
+- User profiles
+- Comment system
+- Favorite system using JavaScript Fetch API
+- Responsive mobile-friendly interface
+- Automatic media cleanup
+- Permission-controlled editing and deletion
 
-The project uses multiple Django models with relationships between users, posts, tags, comments, and favorites. JavaScript is used for asynchronous favorite functionality and image previews.
+The application contains multiple interconnected database models. Images can have many tags, users can comment on many images, and users can maintain personal collections of favorites. The search functionality dynamically filters images based on combinations of tags. The project also manages uploaded media files on disk and includes custom cleanup logic to prevent orphaned files from accumulating.
 
-\---
+These features require coordination between Django models, forms, views, templates, JavaScript, authentication systems, and filesystem operations, making the project significantly more complex than a basic CRUD application.
 
-## Features
+---
+
+## Core Features
 
 ### User Accounts
 
 Users can:
 
-* Register new accounts
-* Log in and log out
-* Access personal profile pages
+- Register new accounts
+- Log in and log out
+- Access profile pages
+- View their uploads
+- View their favorite images
 
-Passwords are managed using Django's built-in authentication framework and are stored as secure hashes rather than plaintext.
+Passwords are managed using Django's built-in authentication framework and are stored as secure password hashes rather than plaintext values.
 
 ### Image Upload
 
-Authenticated users can:
+Authenticated users can upload image files and provide:
 
-* Upload images
-* Add titles and descriptions
-* Assign multiple tags
+- Title
+- Description
+- Tags
 
 Uploaded images are stored using Django's ImageField and served through Django's media system.
 
 ### Tag System
 
-Images can be assigned multiple tags.
+The tagging system is the central feature of the application.
 
 Users can:
 
-* Browse tag pages
-* Search using one or more tags
-* Discover related content through tag navigation
+- Assign multiple tags to an image
+- Browse dedicated tag pages
+- Search using multiple tags simultaneously
+- Discover related content through tag navigation
 
-The search system supports multi-tag filtering where all specified tags must be present.
+Tags are implemented using a many-to-many relationship between images and tags.
+
+### Search
+
+The search system supports multiple tags in a single query.
+
+For example:
+
+- cat
+- landscape
+- cat landscape
+
+When multiple tags are entered, only images containing all specified tags are returned.
 
 ### Favorites
 
 Users can favorite and unfavorite images.
 
-This functionality is implemented using JavaScript and the Fetch API. Favorites update asynchronously without requiring a full page refresh.
+The favorite system is implemented asynchronously using JavaScript and the Fetch API, allowing favorite counts and button states to update without reloading the page.
 
 ### Comments
 
 Authenticated users can leave comments on image posts.
 
-Comments are associated with both the user and the image being commented on.
+Comments are linked to both the image and the user who created them.
 
 ### Profiles
 
-Each user has a profile page displaying:
+Every user has a profile page displaying:
 
-* Uploaded images
-* Favorited images
+- Uploaded images
+- Favorited images
+
+This allows users to revisit both their own content and content they have saved.
 
 ### Permissions
 
 Only the uploader of an image may:
 
-* Edit the image
-* Delete the image
+- Edit the image
+- Replace the image file
+- Delete the image
 
-Unauthorized users receive a forbidden response.
-
-### Media Cleanup
-
-When an image is replaced, the previous file is automatically removed from disk.
-
-When an image post is deleted, the associated image file is also deleted from the media directory. This prevents orphaned files from accumulating on the server.
+Attempts to modify another user's content are rejected.
 
 ### Responsive Design
 
-The interface adapts to smaller screen sizes using CSS media queries. The gallery layout, navigation bar, and forms remain usable on mobile devices.
+The interface adapts to different screen sizes using CSS media queries.
 
-\---
+The navigation bar, gallery layout, forms, and image views remain usable on both desktop and mobile devices.
 
-## Database Models
+---
 
-### Image Post
+## System Architecture
+
+### Upload Workflow
+
+1. User submits the upload form.
+2. Django validates the submitted data.
+3. The image is saved to the media directory.
+4. An ImagePost record is created.
+5. Tags are created if they do not already exist.
+6. Tag relationships are established.
+7. User is redirected to the post detail page.
+
+### Favorite Workflow
+
+1. User clicks the favorite button.
+2. JavaScript sends a Fetch API request.
+3. Django toggles the favorite state.
+4. Django returns a JSON response.
+5. JavaScript updates the button and count without reloading the page.
+
+### Comment Workflow
+
+1. User submits a comment.
+2. Django validates the form.
+3. Comment is linked to both the user and image.
+4. Comment is stored in the database.
+5. User is redirected back to the image page.
+
+---
+
+## Database Design
+
+### User
+
+Django's built-in User model is used for authentication and account management.
+
+### ImagePost
 
 Stores:
 
-* Title
-* Description
-* Uploaded image
-* Upload timestamp
-* Uploader
+- Title
+- Description
+- Image file
+- Upload timestamp
+- Uploader
+
+Relationship:
+
+- One user can upload many images.
 
 ### Tag
 
-Stores tag names used for categorizing images.
+Stores tag names used to categorize images.
 
-Images and tags are connected through a many-to-many relationship.
+Relationship:
+
+- One tag can belong to many images.
+- One image can contain many tags.
 
 ### Comment
 
 Stores:
 
-* Author
-* Image post
-* Comment content
-* Creation timestamp
+- Author
+- Image post
+- Comment content
+- Creation timestamp
+
+Relationship:
+
+- One image can contain many comments.
+- One user can create many comments.
 
 ### Favorite
 
-Stores user favorites and links users to image posts they have saved.
+Stores favorite relationships between users and images.
 
-\---
+Relationship:
+
+- One user can favorite many images.
+- One image can be favorited by many users.
+
+---
 
 ## Design Decisions
 
-### Tag-Based Navigation
+### Why Use Tags Instead of Categories?
 
-A tag-based system was chosen because it is the defining characteristic of booru-style websites. A single image can belong to many tags simultaneously, making a many-to-many relationship more flexible than a category-based structure.
+A booru-style website is fundamentally built around tags. Categories force an image into a single classification, while tags allow images to be associated with multiple concepts simultaneously.
 
-### AJAX Favorites
+For example, a single image may be tagged as:
 
-Favorites are implemented using JavaScript Fetch requests instead of traditional form submissions. This allows the page to update instantly without a reload and demonstrates front-end and back-end interaction.
+- cat
+- landscape
+- sunset
 
-### Media File Management
+This makes searching and discovery significantly more flexible.
 
-By default, Django does not automatically remove uploaded files when database records are deleted. Custom cleanup logic was implemented to remove old images during replacement and deletion, preventing wasted disk space and orphaned files.
+### Why Use a Many-to-Many Relationship?
 
-### User Profiles
+Tags naturally form a many-to-many relationship.
 
-Profiles provide a simple way for users to revisit both their own uploads and their favorite content, improving usability without introducing the complexity of a social network.
+A single image may contain many tags, while a single tag may appear on many images. Using Django's many-to-many relationship simplifies querying and reflects the real-world structure of tagged content.
 
-\---
+### Why Use AJAX Favorites?
+
+The favorite system was intentionally implemented using JavaScript Fetch requests rather than traditional page reloads.
+
+This provides:
+
+- Better user experience
+- Faster interactions
+- Demonstration of asynchronous client-server communication
+
+### Why Implement Media Cleanup?
+
+During testing it became clear that deleting database records did not automatically remove uploaded files from disk.
+
+Additional cleanup logic was implemented to:
+
+- Remove files when posts are deleted
+- Remove old files when images are replaced
+
+This prevents orphaned files from consuming storage space.
+
+---
 
 ## JavaScript Functionality
 
-JavaScript is used in two primary areas.
+JavaScript is used in two major features.
 
 ### Favorite System
 
-The favorite button communicates with a Django endpoint using the Fetch API. The page updates dynamically without reloading when a user favorites or unfavorites an image.
+The favorite button communicates with a Django endpoint using the Fetch API.
+
+The server returns JSON data which is processed by JavaScript to update the interface dynamically.
+
+This demonstrates asynchronous communication between frontend and backend components.
 
 ### Image Preview
 
-Users can preview selected images before submitting an upload form. The preview updates instantly when a new file is selected.
+When users select an image during upload, JavaScript generates an immediate preview before submission.
 
-\---
+This improves usability and provides instant visual feedback.
+
+---
+
+## Security Considerations
+
+Several security mechanisms are implemented:
+
+- Passwords are hashed by Django's authentication framework.
+- CSRF protection is enabled for forms and authenticated actions.
+- Uploading requires authentication.
+- Commenting requires authentication.
+- Favoriting requires authentication.
+- Editing requires ownership of the post.
+- Deletion requires ownership of the post.
+- Unauthorized modification attempts return forbidden responses.
+
+These protections help prevent unauthorized access and modification of content.
+
+---
+
+## Development Challenges
+
+### Media File Management
+
+One challenge encountered during development involved uploaded files.
+
+Deleting a database record removes the image entry but does not automatically remove the associated file from disk. Additional logic was implemented to ensure uploaded files are properly cleaned up when images are replaced or deleted.
+
+### Tag Editing
+
+Maintaining tag consistency during image editing required rebuilding tag relationships whenever tags were updated. This ensured that search results remained accurate and synchronized with user changes.
+
+### Responsive Layout
+
+Early versions of the navigation bar did not display correctly on small screens. The layout was redesigned using CSS flexbox and responsive media queries to improve mobile usability.
+
+---
 
 ## File Structure
 
-* `capstone/` – Django project configuration
-* `booru/` – Main application
-* `templates/` – HTML templates
-* `static/` – CSS and frontend assets
-* `media/` – Uploaded images
-* `requirements.txt` – Project dependencies
+- capstone/ – Django project configuration
+- booru/ – Main application
+- templates/ – HTML templates
+- static/ – CSS and frontend assets
+- media/ – Uploaded images
+- requirements.txt – Project dependencies
 
-\---
+---
 
 ## Installation
 
@@ -200,7 +334,7 @@ Apply migrations:
 python manage.py migrate
 ```
 
-Create a superuser:
+Create an administrator account:
 
 ```bash
 python manage.py createsuperuser
@@ -212,19 +346,28 @@ Run the development server:
 python manage.py runserver
 ```
 
-\---
+The application will be available at:
+
+http://127.0.0.1:8000/
+
+---
 
 ## Future Improvements
 
 Potential future enhancements include:
 
-* Image voting system
-* Tag aliases
-* Image moderation workflow
-* Pagination
-* Infinite scrolling
-* Advanced search operators
-* User avatars
-* Image collections
-* Public API
+- Image voting system
+- Tag aliases
+- Image moderation workflow
+- Pagination
+- Infinite scrolling
+- Advanced search operators
+- User avatars
+- Image collections
+- Public API
+- Image metadata extraction
+- Bulk uploads
 
+## Conclusion
+
+Capstone Booru demonstrates the use of Django and JavaScript to build a complete web application centered around image management and discovery. The project combines authentication, media storage, many-to-many relationships, asynchronous JavaScript interactions, responsive design, and permission-based access control into a single cohesive application.
