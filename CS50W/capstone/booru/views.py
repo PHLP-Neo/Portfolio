@@ -1,9 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponseForbidden
+from django.http import HttpResponseForbidden, JsonResponse
+from django.views.decorators.http import require_POST
+
 
 from .forms import ImagePostForm
-from .models import ImagePost, Tag
+from .models import ImagePost, Tag, Favorite
 
 # Create your views here.
 
@@ -126,4 +128,25 @@ def delete_post(request, post_id):
 
     return render(request, "booru/delete_post.html", {
         "post": post
+    })
+
+@login_required
+@require_POST
+def toggle_favorite(request, post_id):
+    post = get_object_or_404(ImagePost, id=post_id)
+
+    favorite, created = Favorite.objects.get_or_create(
+        user=request.user,
+        post=post
+    )
+
+    if not created:
+        favorite.delete()
+        favorited = False
+    else:
+        favorited = True
+
+    return JsonResponse({
+        "favorited": favorited,
+        "count": post.favorites.count()
     })
