@@ -1,8 +1,10 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseForbidden, JsonResponse
 from django.views.decorators.http import require_POST
-
 
 from .forms import ImagePostForm, CommentForm
 from .models import ImagePost, Tag, Favorite, Comment
@@ -175,3 +177,33 @@ def add_comment(request, post_id):
         comment.save()
 
     return redirect("post_detail", post_id=post.id)
+
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("gallery")
+    else:
+        form = UserCreationForm()
+
+    return render(request, "booru/register.html", {
+        "form": form
+    })
+
+
+def profile(request, username):
+    profile_user = get_object_or_404(User, username=username)
+
+    uploads = profile_user.posts.all().order_by("-created_at")
+    favorites = ImagePost.objects.filter(
+        favorites__user=profile_user
+    ).order_by("-created_at")
+
+    return render(request, "booru/profile.html", {
+        "profile_user": profile_user,
+        "uploads": uploads,
+        "favorites": favorites
+    })
