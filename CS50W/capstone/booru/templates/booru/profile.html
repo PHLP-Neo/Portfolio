@@ -1,0 +1,33 @@
+{% extends "booru/base.html" %}
+
+{% block body %}
+
+<h1>{{ profile_user.username }}</h1>
+
+<h2>Uploads</h2>
+
+{% for post in uploads %}
+<div>
+    <a href="{% url 'post_detail' post.id %}">
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" width="150">
+    </a>
+    <p>{{ post.title }}</p>
+</div>
+{% empty %}
+<p>No uploads yet.</p>
+{% endfor %}
+
+<h2>Favorites</h2>
+
+{% for post in favorites %}
+<div>
+    <a href="{% url 'post_detail' post.id %}">
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" width="150">
+    </a>
+    <p>{{ post.title }}</p>
+</div>
+{% empty %}
+<p>No favorites yet.</p>
+{% endfor %}
+
+{% endblock %}
