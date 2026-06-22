@@ -1,7 +1,8 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
+
 from .forms import ImagePostForm
-from .models import Tag
+from .models import ImagePost, Tag
 
 # Create your views here.
 
