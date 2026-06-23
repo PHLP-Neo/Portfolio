@@ -7,9 +7,35 @@
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
+
+    <img id="image-preview" alt="Preview" style="display:none; max-width:300px; margin-top:10px;">
+
     <button type="submit">Save changes</button>
 </form>
 
-<a href="{% url 'post_detail' post.id %}">Cancel</a>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const imageInput = document.querySelector("input[type='file']");
+        const preview = document.querySelector("#image-preview");
+
+        if (!imageInput || !preview) {
+            return;
+        }
+
+        imageInput.addEventListener("change", function () {
+            const file = imageInput.files[0];
+
+            if (!file) {
+                preview.style.display = "none";
+                preview.src = "";
+                return;
+            }
+
+            preview.src = URL.createObjectURL(file);
+            preview.style.display = "block";
+        });
+    });
+</script>
 
 {% endblock %}
+

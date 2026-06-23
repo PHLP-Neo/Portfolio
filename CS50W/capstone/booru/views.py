@@ -97,13 +97,21 @@ def edit_post(request, post_id):
     if post.uploader != request.user:
         return HttpResponseForbidden("You cannot edit this post.")
 
+    old_image = post.image
+
     if request.method == "POST":
         form = ImagePostForm(request.POST, request.FILES, instance=post)
 
         if form.is_valid():
-            post = form.save()
+            updated_post = form.save(commit=False)
+            updated_post.save()
 
-            post.tags.clear()
+            if "image" in request.FILES:
+                if old_image and old_image.name != updated_post.image.name:
+                    old_image.delete(save=False)
+
+            updated_post.tags.clear()
+
             tag_string = form.cleaned_data["tag_string"]
             tag_names = set(tag_string.split())
 
@@ -112,12 +120,13 @@ def edit_post(request, post_id):
 
                 if tag_name:
                     tag, created = Tag.objects.get_or_create(name=tag_name)
-                    post.tags.add(tag)
+                    updated_post.tags.add(tag)
 
-            return redirect("post_detail", post_id=post.id)
+            return redirect("post_detail", post_id=updated_post.id)
 
     else:
         existing_tags = " ".join(tag.name for tag in post.tags.all())
+
         form = ImagePostForm(instance=post, initial={
             "tag_string": existing_tags
         })
@@ -136,7 +145,13 @@ def delete_post(request, post_id):
         return HttpResponseForbidden("You cannot delete this post.")
 
     if request.method == "POST":
+        image = post.image
+
         post.delete()
+
+        if image:
+            image.delete(save=False)
+
         return redirect("gallery")
 
     return render(request, "booru/delete_post.html", {
