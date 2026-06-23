@@ -371,3 +371,15 @@ Potential future enhancements include:
 ## Conclusion
 
 Capstone Booru demonstrates the use of Django and JavaScript to build a complete web application centered around image management and discovery. The project combines authentication, media storage, many-to-many relationships, asynchronous JavaScript interactions, responsive design, and permission-based access control into a single cohesive application.
+
+## Use of AI Tools
+
+Generative AI tools were used during development as a programming assistant for:
+
+- Explaining Django concepts and project structure
+- Generating example code snippets and boilerplate
+- Reviewing code and identifying bugs
+- Assisting with CSS layout improvements
+- Reviewing README documentation
+
+All design decisions, feature selection, integration work, debugging, testing, and final implementation were completed by the author. AI-generated suggestions were reviewed, modified, and incorporated where appropriate.
