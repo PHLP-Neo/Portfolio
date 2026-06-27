@@ -117,8 +117,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+# based on https://medium.com/django-unleashed/working-and-configuring-media-files-in-django-0c2fa7b97a1e
+
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
