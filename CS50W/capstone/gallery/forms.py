@@ -7,8 +7,9 @@ from .models import ImagePost
 
 class ImagePostForm(forms.ModelForm):
     tag_text = forms.CharField(
+        label="Tags",
         required=False,
-        help_text="Separate tags with spaces, e.g. cat blue_eyes landscape"
+        help_text="Separate tags with spaces, e.g. tag_1 tag_2 tag_3"
     )
 
     class Meta:

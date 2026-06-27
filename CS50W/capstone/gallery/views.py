@@ -24,6 +24,29 @@ def index(request):
         "page_obj": page_obj
     })
 
+def search(request):
+    if request.method == "POST":
+        query = request.POST["q"]
+        posts = ImagePost.objects.filter(title__icontains=query).order_by("-timestamp")
+
+        return render(request, "gallery/search.html", {
+            "query": query,
+            "posts": posts
+        })
+
+    return HttpResponseRedirect(reverse("index"))
+
+
+def tag(request, tag_name):
+    try:
+        tag = Tag.objects.get(name=tag_name)
+    except Tag.DoesNotExist:
+        return HttpResponse("Tag does not exist.")
+    posts = tag.posts.all().order_by("-timestamp")
+    return render(request, "gallery/tag.html", {
+        "tag": tag,
+        "posts": posts
+    })
 
 @login_required
 def upload(request):
@@ -37,11 +60,12 @@ def upload(request):
             tag_text = request.POST["tag_text"]
             for raw_tag in tag_text.split():
                 tag_name = raw_tag.lower()
-            try:
-                tag = Tag.objects.get(name=tag_name)
-            except Tag.DoesNotExist:
-                tag = Tag(name=tag_name)
-                tag.save()
+                try:
+                    tag = Tag.objects.get(name=tag_name)
+                except Tag.DoesNotExist:
+                    tag = Tag(name=tag_name)
+                    tag.save()
+                post.tags.add(tag)
             return HttpResponseRedirect(reverse("post_detail", kwargs={"post_id": post.id}))
         return render(request, "gallery/upload.html", {
             "form": form
@@ -50,6 +74,23 @@ def upload(request):
         "form": ImagePostForm()
     })
 
+@login_required
+def delete(request, post_id):
+    try:
+        post = ImagePost.objects.get(id=post_id)
+    except ImagePost.DoesNotExist:
+        return HttpResponse("Image post does not exist.")
+    if request.user != post.owner:
+        return HttpResponse("Permission denied.")
+    if request.method == "POST":
+        if post.image:
+            post.image.delete(save=False)
+        # from Rubber Duck and https://stackoverflow.com/questions/12888318/deleting-files-associated-with-model-django
+        post.delete()
+        return HttpResponseRedirect(reverse("index"))
+    return HttpResponseRedirect(reverse("post_detail", kwargs={
+        "post_id": post.id
+    }))
 
 
 def post_detail(request, post_id):
