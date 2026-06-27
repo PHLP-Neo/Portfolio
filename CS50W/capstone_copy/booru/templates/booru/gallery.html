@@ -1,0 +1,25 @@
+{% extends "booru/base.html" %}
+
+{% block body %}
+
+<h1>{{ page_title|default:"Capstone Booru" }}</h1>
+
+<form class="search-form" method="get" action="{% url 'search_posts' %}">
+    <input type="text" name="q" value="{{ query|default:'' }}" placeholder="Search tags">
+    <button type="submit">Search</button>
+</form>
+
+<div class="gallery-grid">
+    {% for post in posts %}
+    <div class="gallery-card">
+        <a href="{% url 'post_detail' post.id %}">
+            <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        </a>
+        <p>{{ post.title }}</p>
+    </div>
+    {% empty %}
+    <p>No images yet.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}
