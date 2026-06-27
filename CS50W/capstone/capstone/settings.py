@@ -120,7 +120,7 @@ STATIC_URL = 'static/'
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
-# based on https://medium.com/django-unleashed/working-and-configuring-media-files-in-django-0c2fa7b97a1e
+# based on https://dev.to/cleverzone/a-beginner-guide-to-upload-images-in-a-rest-api-with-django-opf
 
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/"
