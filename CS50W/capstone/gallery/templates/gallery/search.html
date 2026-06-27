@@ -1,0 +1,23 @@
+{% extends "gallery/layout.html" %}
+
+{% block title %}Search{% endblock %}
+
+{% block body %}
+
+<h2>Search: {{ query }}</h2>
+
+<div class="row">
+    {% for post in posts %}
+    <div class="col-md-3">
+        <a href="{% url 'post_detail' post.id %}">
+            <img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid">
+        </a>
+
+        <h5>{{ post.title }}</h5>
+    </div>
+    {% empty %}
+    <p>No matching images.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

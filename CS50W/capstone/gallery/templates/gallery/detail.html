@@ -1,0 +1,106 @@
+{% extends "gallery/layout.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block body %}
+
+<h2>{{ post.title }}</h2>
+
+<img src="{{ post.image.url }}" alt="{{ post.title }}" class="img-fluid">
+
+<p>{{ post.description }}</p>
+
+<p>
+    Uploaded by {{ post.owner.username }} on {{ post.timestamp }}
+</p>
+
+<p>
+    Tags:
+    {% for tag in post.tags.all %}
+    <a href="{% url 'tag' tag.name %}">#{{ tag.name }}</a>
+    {% empty %}
+    No tags
+    {% endfor %}
+</p>
+
+{% if user.is_authenticated %}
+<button class="btn btn-sm btn-outline-primary" id="like-button" data-id="{{ post.id }}">
+    {% if user in post.liked_by.all %}
+    Unlike
+    {% else %}
+    Like
+    {% endif %}
+</button>
+
+<span id="like-count">{{ post.liked_by.count }}</span>
+
+<hr>
+
+{% if user == post.owner %}
+<form action="{% url 'delete' post.id %}" method="post">
+    {% csrf_token %}
+    <input class="btn btn-danger" type="submit" value="Delete">
+</form>
+{% endif %}
+
+<hr>
+
+<h3>Add Comment</h3>
+
+<form action="{% url 'comment' post.id %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <textarea class="form-control" name="body" placeholder="Write a comment"></textarea>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Comment">
+</form>
+{% endif %}
+
+<hr>
+
+<h3>Comments</h3>
+
+{% for comment in comments %}
+<div>
+    <strong>{{ comment.owner.username }}</strong>
+    <p>{{ comment.body }}</p>
+    <small>{{ comment.timestamp }}</small>
+</div>
+<hr>
+{% empty %}
+<p>No comments yet.</p>
+{% endfor %}
+
+{% endblock %}
+
+{% block script %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const button = document.querySelector('#like-button');
+
+        if (button) {
+            button.addEventListener('click', function () {
+
+                fetch(`/post/${button.dataset.id}/like`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    }
+                })
+                    .then(response => response.json())
+                    .then(result => {
+                        document.querySelector('#like-count').innerHTML = result.likes;
+
+                        if (result.liked) {
+                            button.innerHTML = 'Unlike';
+                        } else {
+                            button.innerHTML = 'Like';
+                        }
+                    });
+            });
+        }
+
+    });
+</script>
+{% endblock %}
