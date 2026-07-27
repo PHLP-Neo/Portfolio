@@ -1,0 +1,289 @@
+FIT5032 - Internet Applications Development
+Lecture 1: Administration and Introduction
+Lecturer: ABM Russel
+Source: FIT5032-Lecture1.pdf
+Slides: 28
+
+These plain-text notes preserve the slide order and wording. Important visual information is described in [Visual note] entries.
+
+========================================================================
+SLIDE 1
+========================================================================
+FIT5032
+ABM Russel
+Lecture 1: Administration and Introduction
+Internet Applications Development
+
+========================================================================
+SLIDE 2
+========================================================================
+MONASH UNIVERSITY recognises that its Australian
+campuses are located on the unceded lands of the
+people of the Kulin Nations, and pays its respects
+to their Elders, past and present.
+
+========================================================================
+SLIDE 3
+========================================================================
+Welcome!
+-
+Welcome to Monash University
+-
+Faculty of IT
+-
+FIT5032
+-
+Melbourne
+-
+Australia
+-
+…
+
+========================================================================
+SLIDE 4
+========================================================================
+Today
+-
+Getting to know
+-
+Internet
+-
+Full Stack Architecture
+-
+Internet Applications Development
+-
+JavaScript Framework
+
+========================================================================
+SLIDE 5
+========================================================================
+Getting to know
+
+========================================================================
+SLIDE 6
+========================================================================
+Teaching Team!
+ABM Russel (Russel)
+Chief Examiner
+On behalf of FIT5032 teaching
+staff from industry and academia!
+Delvin, Senior Advisor/Developer
+Amit, Admin and Lead TA
+Yiwei, Lead TA
+Afzal, Lead TA
+Vishal, Lead TA
+Varun, Lead TA
+Dicky, TA
+Nick, TA
+Miti, TA
+Yansi, TA
+Riya, TA
+Jainish, TA
+and more …
+
+========================================================================
+SLIDE 7
+========================================================================
+Unit Overview
+-
+Internet Applications Development Stack
+-
+Weekly supplementary video and readings on Ed
+-
+Lectures/seminars/consultations/quiz (non-timetabled)
+-
+Studio lab sessions (timetabled)
+-
+Individual assignments
+-
+Teaching team (CE, Lecturer, Lead TAs, TAs)
+
+========================================================================
+SLIDE 8
+========================================================================
+Assessments
+-
+A0: Six eFolios (11 points) - Formative feedback [Week 2,
+4, 5, 8, 10, and Week 12]. Max 50% cap applies to all
+assignments when failed to achieve 5.5 points combined*.
+-
+A1: Four Studio Assessments Tasks - 20% 30%* [Week
+3, 5, 7 and Week 9]
+-
+A2: Quiz - 30% [Week 12]
+-
+A3: Major Application Development Portfolio and
+Demonstration - 40% 30%*+10% [Week 11 and Week 12]
+* Change in 2026 Based on students' feedback
+
+========================================================================
+SLIDE 9
+========================================================================
+ULOs
+01 Demonstrate the impact of the history of web applications
+development on current web-technology;
+02 Design, construct and publish web-database applications;
+03 Analyse and critique the key technological issues
+confronting developers building web-database
+applications;
+04 Test the key features of programming languages which are
+commonly used for developing web-database application;
+05 Assess the MVC design pattern and construct a web-
+database application using the MVC design pattern;
+06 Apply, analyse and critique a professional approach
+towards the development of web-database applications,
+considering data privacy and cybersecurity aspects.
+
+========================================================================
+SLIDE 10
+========================================================================
+Internet
+
+========================================================================
+SLIDE 11
+========================================================================
+Internet users
+
+[Visual note] Chart: worldwide internet users increase from about 1.0 billion in 2005 to about 6.0 billion in 2025. The overall trend is strongly upward.
+
+========================================================================
+SLIDE 12
+========================================================================
+How does Internet work?
+-
+Network of networks
+-
+Client and Server
+-
+Layers and Protocols
+
+========================================================================
+SLIDE 13
+========================================================================
+Checkpoint
+
+========================================================================
+SLIDE 14
+========================================================================
+Full Stack
+Architecture
+
+========================================================================
+SLIDE 15
+========================================================================
+What is Full Stack Architecture?
+-
+Frontend
+-
+Middleware
+-
+Backend
+
+[Visual note] Full-stack architecture is introduced as three broad parts: frontend, middleware, and backend.
+
+========================================================================
+SLIDE 16
+========================================================================
+Checkpoint
+
+========================================================================
+SLIDE 17
+========================================================================
+Break: 10 mins
+
+========================================================================
+SLIDE 18
+========================================================================
+Internet
+Applications
+Development
+
+========================================================================
+SLIDE 19
+========================================================================
+Where do we start?
+-
+Project management
+-
+Version control
+-
+Developer tools
+-
+Techniques, principles and patterns
+
+========================================================================
+SLIDE 20
+========================================================================
+What are the core technologies?
+-
+HTML
+-
+CSS
+-
+JavaScript
+-
+Database
+-
+API
+
+========================================================================
+SLIDE 21
+========================================================================
+Checkpoint
+
+========================================================================
+SLIDE 22
+========================================================================
+JavaScript
+Framework
+
+========================================================================
+SLIDE 23
+========================================================================
+Modern JavaScript Framework
+-
+Progressive JavaScript Framework
+-
+UI, UX, Accessibility
+-
+Single Page Application
+
+========================================================================
+SLIDE 24
+========================================================================
+Vue
+-
+Reactive Data binding
+-
+Component-based architecture
+-
+Virtual DOM (Elements, Attributes, Contents)
+In this unit: Vue, Node, NPM, Vite, Firebase …
+
+========================================================================
+SLIDE 25
+========================================================================
+Getting started with Vue.JS
+-
+Creating Vue Application
+-
+Modules
+-
+Template, Script, Style
+
+========================================================================
+SLIDE 26
+========================================================================
+Checkpoint
+
+========================================================================
+SLIDE 27
+========================================================================
+Live Demo
+
+========================================================================
+SLIDE 28
+========================================================================
+THANK YOU
+Internet Applications Development
+Lecture 1: Administration and Introduction
