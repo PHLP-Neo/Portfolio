@@ -51,6 +51,12 @@ What's wrong with this approach?
 
 [Visual note] The hospital case highlights that one-off manual wrangling does not scale well when new extracts, errors, requirements, or staff members appear.
 
+[Note] The entire database has shifted 1 column left
+
+[Note] Data Science project usually deal with historical data, somehow the first hospital get 2021 and 2022, and hospotal 4 also get 2021.
+
+[Note] Mismatched Communication
+
 ========================================================================
 SLIDE 6
 ========================================================================
@@ -91,6 +97,8 @@ Answer: Yes and No
 Answer: Too hard, too big
 - How about quality control?
 
+[Note] Maybe a SOP?
+
 ========================================================================
 SLIDE 9
 ========================================================================
@@ -119,6 +127,8 @@ Modularization in Data Engineering
 - A separate process for data cleaning
 - A separate process for dashboard
 - And anything in between…
+
+[Note] Doesnt matter who is doing it, the quality is the same, the customer can be assured the result is the same regardless the data is different
 
 ========================================================================
 SLIDE 11
