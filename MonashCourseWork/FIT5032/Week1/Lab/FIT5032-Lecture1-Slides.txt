@@ -4,7 +4,8 @@ Lecturer: ABM Russel
 Source: FIT5032-Lecture1.pdf
 Slides: 28
 
-These plain-text notes preserve the slide order and wording. Important visual information is described in [Visual note] entries.
+These plain-text notes preserve the slide order and wording. Important 
+visual information is described in [Visual note] entries.
 
 ========================================================================
 SLIDE 1
@@ -106,45 +107,76 @@ Assessments
 A0: Six eFolios (11 points) - Formative feedback [Week 2,
 4, 5, 8, 10, and Week 12]. Max 50% cap applies to all
 assignments when failed to achieve 5.5 points combined*.
+[Notes] You need to have at least 6 points.
 -
-A1: Four Studio Assessments Tasks - 20% 30%* [Week
+A1: Four Studio Assessments Tasks - 30%* [Week
 3, 5, 7 and Week 9]
 -
 A2: Quiz - 30% [Week 12]
 -
 A3: Major Application Development Portfolio and
-Demonstration - 40% 30%*+10% [Week 11 and Week 12]
+Demonstration - 30%*+10% [Week 11 and Week 12]
 * Change in 2026 Based on students' feedback
+[Portfolio is the final implementation].
+But overall we have only ONE ASSESSMENT!!
+
+LLM: When you interact with the code, do you understand what the code is
+about? If so, then do them.
+
+[It is very easy to get HD is you pay attention]
 
 ========================================================================
 SLIDE 9
 ========================================================================
 ULOs
+
 01 Demonstrate the impact of the history of web applications
 development on current web-technology;
+
 02 Design, construct and publish web-database applications;
+
+[You are asked to do this]
+
 03 Analyse and critique the key technological issues
 confronting developers building web-database
 applications;
+
 04 Test the key features of programming languages which are
 commonly used for developing web-database application;
+
 05 Assess the MVC design pattern and construct a web-
 database application using the MVC design pattern;
+
+[The first thing when doing app dev is define the requirements]
+[The first part of the A1 is to designing]
+
 06 Apply, analyse and critique a professional approach
 towards the development of web-database applications,
 considering data privacy and cybersecurity aspects.
+
+[Define the users, this is also part of the first assignemnt]
+[You are allowed to use LLM to a certain extent]
 
 ========================================================================
 SLIDE 10
 ========================================================================
 Internet
 
+[You have the client, you have the server, you send the request, you get
+the response, you can improve the performance, like a cache, server side
+or client side, in this unit we are focusing on the client side, and
+some part of the server side as well.]
+
+{What is DOM?}
+
 ========================================================================
 SLIDE 11
 ========================================================================
 Internet users
 
-[Visual note] Chart: worldwide internet users increase from about 1.0 billion in 2005 to about 6.0 billion in 2025. The overall trend is strongly upward.
+[Visual note] Chart: worldwide internet users increase from about 1.0   
+billion in 2005 to about 6.0 billion in 2025. The overall trend is 
+strongly upward.
 
 ========================================================================
 SLIDE 12
@@ -176,10 +208,14 @@ What is Full Stack Architecture?
 Frontend
 -
 Middleware
+[API, or "endpoints"]
 -
 Backend
+[Database, relational|NonRelational, serveless, etc]
+[We are using Firebase as backend]
 
-[Visual note] Full-stack architecture is introduced as three broad parts: frontend, middleware, and backend.
+[Visual note] Full-stack architecture is introduced as three broad parts: 
+frontend, middleware, and backend.
 
 ========================================================================
 SLIDE 16
@@ -204,12 +240,17 @@ SLIDE 19
 Where do we start?
 -
 Project management
+[This is individual project, make sure you are up to date with the
+content]
 -
 Version control
+[GitLab Account]
 -
 Developer tools
+[IDE, I will use VS Code]
 -
 Techniques, principles and patterns
+[Good coding practice, LLM, structure, etc, SOLID, etc]
 
 ========================================================================
 SLIDE 20
@@ -224,7 +265,7 @@ JavaScript
 -
 Database
 -
-API
+API(RESTful)
 
 ========================================================================
 SLIDE 21
@@ -256,6 +297,7 @@ Vue
 Reactive Data binding
 -
 Component-based architecture
+[For maintability]
 -
 Virtual DOM (Elements, Attributes, Contents)
 In this unit: Vue, Node, NPM, Vite, Firebase …
@@ -270,6 +312,8 @@ Creating Vue Application
 Modules
 -
 Template, Script, Style
+[The three components]
+[Vue use single file components]
 
 ========================================================================
 SLIDE 26
