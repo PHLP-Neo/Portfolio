@@ -50,7 +50,7 @@ Transformation, and Load).
 ========================================================================
 SLIDE 7
 ========================================================================
-7
+Data Warehouse Design
 The need for a new modelling technique to support multi-dimensional
 views of a collection of data.
 Data Warehouse -
@@ -60,29 +60,27 @@ The underlying schema
 (eg. Star schema)
 Data
 Warehouse
-Data Warehouse Design
 
 [Visual note] Diagram: a data warehouse requires a multidimensional modelling technique, commonly represented by an underlying star schema.
 
 ========================================================================
 SLIDE 8
 ========================================================================
-8
+OLAP Query
 The nature of the new Data Warehouse storage structure requires a tool
 that supports the retrieval of large number of records from very large data
-sets and summarizes them "on the fly"  Þ OLAP (On-Line Analytical
+sets and summarizes them "on the fly" => OLAP (On-Line Analytical
 Processing) tool.
 Data
 Warehouse
 Data Warehouse Design
-OLAP Query
 
 [Visual note] Diagram: OLAP supports retrieval and on-the-fly summarisation of large numbers of records from very large datasets.
 
 ========================================================================
 SLIDE 9
 ========================================================================
-9
+Business Intelligence
 Get some insights from data
 warehouses using various tools,
 such as:
@@ -90,50 +88,45 @@ such as:
 - Charts
 - Dashboards
 - Interactive data navigation
-Business Intelligence
 
 ========================================================================
 SLIDE 10
 ========================================================================
-10
+Summary
 The need for an effective decision support system has
 motivated the emergence of the new data storage facility
 called Data Warehouse.
-Summary
 
 ========================================================================
 SLIDE 11
 ========================================================================
-11
+Query
 The need for an effective decision support system has
 motivated the emergence of the new data storage facility
 called Data Warehouse.
 Summary
 OLAP
-Query
 
 ========================================================================
 SLIDE 12
 ========================================================================
-12
+BI Reports
 The need for an effective decision support system has
 motivated the emergence of the new data storage facility
 called Data Warehouse.
 Summary
 OLAP
 Query
-BI Reports
 
 ========================================================================
 SLIDE 13
 ========================================================================
-13
+Analytics
 The need for an effective decision support system has
 motivated the emergence of the new data storage facility
 called Data Warehouse.
 Summary
 Data
-Analytics
 
 ========================================================================
 SLIDE 14
