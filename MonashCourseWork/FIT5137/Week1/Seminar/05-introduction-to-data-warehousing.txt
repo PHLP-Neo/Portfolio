@@ -1,0 +1,248 @@
+FIT5137 - Week 1 Notes
+Source deck: Week-1e-Intro-Data-Warehousing.pdf
+Slides: 25
+
+These notes preserve the slide order and wording while converting visual slide content into searchable plain text.
+
+========================================================================
+SLIDE 1
+========================================================================
+Data Warehousing:
+An Introduction
+Assoc. Prof. David Taniar
+
+========================================================================
+SLIDE 2
+========================================================================
+A. Data Warehousing
+
+========================================================================
+SLIDE 3
+========================================================================
+Operational Databases
+
+[Visual note] Diagram: an operational retail database records detailed transactions across related tables such as customer, sales, sales item, product, stock, supplier, and staff.
+
+========================================================================
+SLIDE 4
+========================================================================
+Multidimensional data view
+Data Warehouses
+
+[Visual note] Diagram: a multidimensional sales cube organised by dimensions such as product, location, and time; facts are stored at their intersections.
+
+========================================================================
+SLIDE 5
+========================================================================
+From Operational to Data Warehouses
+
+[Visual note] Diagram: operational data is extracted, filtered, transformed, integrated, classified, aggregated, and summarised before entering a data warehouse. The warehouse is integrated, subject-oriented, time-variant, and non-volatile.
+
+========================================================================
+SLIDE 6
+========================================================================
+From Operational to Data Warehousing
+ETL
+The whole process of extracting data from the Operational Databases
+and to transform them into a Data Warehouse is called  ETL (Extraction,
+Transformation, and Load).
+
+========================================================================
+SLIDE 7
+========================================================================
+7
+The need for a new modelling technique to support multi-dimensional
+views of a collection of data.
+Data Warehouse -
+a cube with multiple
+dimensions
+The underlying schema
+(eg. Star schema)
+Data
+Warehouse
+Data Warehouse Design
+
+[Visual note] Diagram: a data warehouse requires a multidimensional modelling technique, commonly represented by an underlying star schema.
+
+========================================================================
+SLIDE 8
+========================================================================
+8
+The nature of the new Data Warehouse storage structure requires a tool
+that supports the retrieval of large number of records from very large data
+sets and summarizes them "on the fly"  Þ OLAP (On-Line Analytical
+Processing) tool.
+Data
+Warehouse
+Data Warehouse Design
+OLAP Query
+
+[Visual note] Diagram: OLAP supports retrieval and on-the-fly summarisation of large numbers of records from very large datasets.
+
+========================================================================
+SLIDE 9
+========================================================================
+9
+Get some insights from data
+warehouses using various tools,
+such as:
+- Reports
+- Charts
+- Dashboards
+- Interactive data navigation
+Business Intelligence
+
+========================================================================
+SLIDE 10
+========================================================================
+10
+The need for an effective decision support system has
+motivated the emergence of the new data storage facility
+called Data Warehouse.
+Summary
+
+========================================================================
+SLIDE 11
+========================================================================
+11
+The need for an effective decision support system has
+motivated the emergence of the new data storage facility
+called Data Warehouse.
+Summary
+OLAP
+Query
+
+========================================================================
+SLIDE 12
+========================================================================
+12
+The need for an effective decision support system has
+motivated the emergence of the new data storage facility
+called Data Warehouse.
+Summary
+OLAP
+Query
+BI Reports
+
+========================================================================
+SLIDE 13
+========================================================================
+13
+The need for an effective decision support system has
+motivated the emergence of the new data storage facility
+called Data Warehouse.
+Summary
+Data
+Analytics
+
+========================================================================
+SLIDE 14
+========================================================================
+B. Star Schema
+
+========================================================================
+SLIDE 15
+========================================================================
+Star Schema
+The Star Schema is a data modeling technique used to map
+multidimensional decision support data into a relational database.
+The reason for the star schema's development is that existing relational
+modeling techniques: ER and normalization, did not yield a database
+structure that served the advanced data analysis requirements well.
+There are Three main components of the Star Schema:
+1. Facts
+2. Dimensions
+3. Attributes
+
+========================================================================
+SLIDE 16
+========================================================================
+Star Schema
+1. Facts
+Facts are numeric measurements (values) that represent a specific
+business aspect or activity.
+For example, sales figures are numeric measurements that represent
+product and/or service sales.
+2. Dimensions
+Dimensions are qualifying characteristics that provide additional
+perspectives to a given fact.
+For example, sales might be viewed from specific dimension(s), such as
+sales location, sales period, sales product, etc.
+
+========================================================================
+SLIDE 17
+========================================================================
+Star Schema
+
+========================================================================
+SLIDE 18
+========================================================================
+Star Schema
+
+========================================================================
+SLIDE 19
+========================================================================
+Star Schema
+3. Attributes
+
+========================================================================
+SLIDE 20
+========================================================================
+Star Schema
+
+========================================================================
+SLIDE 21
+========================================================================
+C. First Case Study
+An International College
+
+========================================================================
+SLIDE 22
+========================================================================
+Case Study: An International College
+The admission office handles enrolment, payment, and marketing campaigns to
+international students, often through educational agents located overseas. This
+admission office has an operational system that maintains all the details of international
+students enrolled in the College. Payment details are also handled by this office. The
+operational system has the following features:
+Every student details are kept in the database. This includes the courses that the
+students enroll in. As the College is a multi-campus university, some courses are
+offered in a different campus. The admission office handles international students of all
+campuses. Some international students coming to the College are handled by an
+educational agent. This is particularly common for the first course that a student enrols
+in. Subsequent courses are not normally handled by an agent, because the students
+themselves deal directly with the College. International students pay tuition fees
+several times, normally once every semester, for each course they are doing.
+
+========================================================================
+SLIDE 23
+========================================================================
+Case Study
+The College now requires a data
+warehouse for analysis purposes. The
+analysis is needed to identify at least the
+following questions:
+1. What is the total income coming from
+certain countries?
+2. What is the total income for certain
+postgraduate courses in a certain year?
+3. What is the total income as a result of
+each agent?
+4. How many payments are generated
+each year?
+
+========================================================================
+SLIDE 24
+========================================================================
+Case Study
+Using the provided data in the tables, complete the following problems.
+1. Define the main fact to be analyzed,
+2. Define and describe the possible dimensions,
+3. Draw the student enrollment star schema, and
+4. Define the attributes for each of the dimensions in question 2 above.
+Your task is to design the data warehouse and to implement it in the lab.
+
+========================================================================
+SLIDE 25
+========================================================================
+Star Schema

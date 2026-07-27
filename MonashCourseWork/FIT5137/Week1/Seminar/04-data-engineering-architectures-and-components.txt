@@ -1,0 +1,92 @@
+FIT5137 - Week 1 Notes
+Source deck: Week-1d-DE-Architectures.pdf
+Slides: 10
+
+These notes preserve the slide order and wording while converting visual slide content into searchable plain text.
+
+========================================================================
+SLIDE 1
+========================================================================
+Data Engineering:
+Architectures and Components
+Assoc. Prof. David Taniar
+
+========================================================================
+SLIDE 2
+========================================================================
+Data Engineering
+Architectures
+
+========================================================================
+SLIDE 3
+========================================================================
+Model 1 – DW model (local databases)
+
+[Visual note] Architecture: operational/transactional databases -> ETL -> data warehouse -> OLAP -> final analytical data (such as a data cube, data mart, or extended fact table) -> dashboards or ML models.
+
+========================================================================
+SLIDE 4
+========================================================================
+Model 2 – DW model (external sources)
+
+[Visual note] Architecture variation: external data sources are incorporated into the data-warehouse pipeline before analytical use.
+
+========================================================================
+SLIDE 5
+========================================================================
+Model 3 – DW model (other data producers)
+
+[Visual note] Architecture variation: other data producers, such as applications, sensors, public datasets, and similar sources, feed the data-engineering pipeline.
+
+========================================================================
+SLIDE 6
+========================================================================
+Data Engineering
+Components
+
+========================================================================
+SLIDE 7
+========================================================================
+Data Engineering Components
+1. Databases
+- Based on a simple model: relational model (tables, data integrity)
+- Transaction Management (DB vs. File Systems)
+- ACID Transactions (Atomicity, Consistency, Isolation, Durability)
+2. Data Warehouse
+- Precomputed values
+- Granularity
+- Also based on relational technology
+- But must pre-designed
+
+========================================================================
+SLIDE 8
+========================================================================
+Data Engineering
+Tools and Processes
+
+========================================================================
+SLIDE 9
+========================================================================
+Data Engineering Tools
+1. Data technologies
+- Database technologies
+- Data warehousing technologies
+2. Big data technologies
+- Big data tools
+- System tools (sensors, cloud, …)
+- Programming tools
+- Visualization tools
+You need to master these
+technologies to work in the
+Data Engineering field.
+
+========================================================================
+SLIDE 10
+========================================================================
+Methodologies and Processes
+1. ETL
+2. Data warehouse modelling
+3. Data analytics
+4. Storage and optimization
+These are the theoretical foundations
+you need to know to work in DE.

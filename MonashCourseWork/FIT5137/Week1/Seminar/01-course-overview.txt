@@ -1,0 +1,183 @@
+FIT5137 - Week 1 Notes
+Source deck: Week-1a-Overview-2026.pdf
+Slides: 21
+
+These notes preserve the slide order and wording while converting visual slide content into searchable plain text.
+
+========================================================================
+SLIDE 1
+========================================================================
+FIT5137
+Advanced Database Technology
+Assoc. Prof. David Taniar
+
+========================================================================
+SLIDE 2
+========================================================================
+Teaching Team
+Lecturer and Tutors
+
+========================================================================
+SLIDE 3
+========================================================================
+Teaching Team
+Lecturer
+- Assoc. Prof. David Taniar: David.Taniar@monash.edu
+Tutors
+- Arthur Lyu (Head Tutor): Arthur.Lyu@monash.edu
+- Jay Zhou (Head Tutor): Jay.zhao@monash.edu
+- For more information about tutors, please refer to the Moodle site under
+[Learning Section ->Additional Information and Resources Page]
+
+========================================================================
+SLIDE 4
+========================================================================
+Topics
+Data Engineering and Geospatial Databases
+
+========================================================================
+SLIDE 5
+========================================================================
+Topics
+Part I: Data Engineering (Week 1-7)
+- Introduction to Data Engineering
+- Data Transformation and Data Warehousing
+- Data Cleaning and Data Preparation
+- Data Granularity
+Part II: Geospatial Data Processing (Week 8-12)
+- Overview of Spatial Databases
+- Spatial Querying and Functions
+- Maps, Roads and Trajectories
+
+========================================================================
+SLIDE 6
+========================================================================
+Topics
+Week 1: Overview
+- Introduction to data engineering
+- Data transformation and data warehousing
+- SQL revision
+Week 2: Data Transformation and Data Warehousing
+- Star schema modelling and implementation
+- More advanced dimension modelling
+
+========================================================================
+SLIDE 7
+========================================================================
+Topics
+Week 3: Data Warehousing and Data Cleaning
+- Case studies of data cleaning in data warehousing
+- Pre and post data warehousing
+- Extended fact tables and pivot tables
+Week 4: Bridge Tables and Hierarchies
+- Concepts of bridge tables in data warehousing
+- Snowflake schemas
+- Hierarchy dimension modelling
+
+========================================================================
+SLIDE 8
+========================================================================
+Topics
+Week 5: Multi-Fact and Multi-Input
+- How to use multi-fact schema modelling
+- How to use multi-input data warehousing
+Week 6: Data Architecture and Granularity
+- Concepts of granularity in data warehousing
+- Designing high and low granularity data warehousing
+Week 7: Reverse Engineering
+- Concepts of reverse engineering in data engineering
+- Understanding old schemas
+End of Part I (Data Engineering)
+
+========================================================================
+SLIDE 9
+========================================================================
+Topics
+Week 8: Introduction to Spatial Databases
+- Spatial DBMS (PostGIS)
+- Spatial concepts
+- Spatial objects
+Week 9: Spatial Functions
+- Spatial SQL
+- Spatial functions
+- Spatial distances
+
+========================================================================
+SLIDE 10
+========================================================================
+Topics
+Week 10: Spatial visualisation
+- Advanced Spatial SQL
+- QGIS visualisation
+Week 11: Spatial index and catchment
+- Spatial Indexing
+- Catchment analysis
+Week 12: Roads and trajectories
+- Roads structure
+- Trajectories and Trajectory tracker apps
+End of Part II (Geospatial Data Processing)
+
+========================================================================
+SLIDE 11
+========================================================================
+Assessments
+No Exam, but …
+
+========================================================================
+SLIDE 12
+========================================================================
+Assessments
+Assessment 1 (10%) – Data Engineering Online Quiz
+- Design and implementation of a simple star schema
+- Materials: lectures and labs from week 1-3
+Assessment 2 (40%) – Data Engineering Assignment (Individual)
+- Report and video presentation
+- Materials: lectures and labs from week 1-6
+
+========================================================================
+SLIDE 13
+========================================================================
+Assessments
+Assessment 3 (35%) – Geospatial Assignment (Individual)
+- Geospatial data analysis
+- Report and video presentation
+- Materials: lectures and labs from week 8-12
+Assessment 4 (15%) – Reverse Engineering (Individual)
+- Reverse Engineering
+- Materials: lectures and labs for week 7
+
+========================================================================
+SLIDE 14
+========================================================================
+Sample work on geospatial analysis
+
+========================================================================
+SLIDE 15
+========================================================================
+Sample work on geospatial analysis
+
+========================================================================
+SLIDE 16
+========================================================================
+Sample work on geospatial analysis
+
+========================================================================
+SLIDE 20
+========================================================================
+Resources and Tools
+
+========================================================================
+SLIDE 21
+========================================================================
+Resources and Tools
+Data Warehousing Book
+- The tutors will guide you in the first lab
+on how to access the book from the
+library.
+Tools
+- Oracle DBMS
+- Any SQL client (e.g. DBeaver, VS
+Code, or SQL Developer)
+- PostGIS, DBeaver, QGIS
+- Docker
+- Trajectory Apps

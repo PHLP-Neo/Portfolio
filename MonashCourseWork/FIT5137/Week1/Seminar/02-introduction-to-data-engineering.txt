@@ -1,0 +1,127 @@
+FIT5137 - Week 1 Notes
+Source deck: Week-1b-Intro-Data-Engineering.pdf
+Slides: 13
+
+These notes preserve the slide order and wording while converting visual slide content into searchable plain text.
+
+========================================================================
+SLIDE 1
+========================================================================
+Data Engineering:
+An Introduction
+Assoc. Prof. David Taniar
+
+========================================================================
+SLIDE 2
+========================================================================
+[Visual note] Visual example: an article claiming that a large proportion of data-science project effort goes into data cleanup.
+
+========================================================================
+SLIDE 3
+========================================================================
+[Visual note] Visual slide reinforcing that raw data preparation and cleanup are major parts of practical data work.
+
+========================================================================
+SLIDE 4
+========================================================================
+[Visual note] Visual transition into the comparison between software engineering and data engineering.
+
+========================================================================
+SLIDE 5
+========================================================================
+What is Data Engineering?
+Software Engineering vs. Data Engineering
+
+========================================================================
+SLIDE 6
+========================================================================
+[Visual note] Visual comparison slide: the same engineering questions are applied to software products and data products.
+
+========================================================================
+SLIDE 7
+========================================================================
+Software Engineering
+1. What is the product we are building?
+2. What is it for?
+3. Who will use it?
+4. What are the tools?
+5. What are the methodologies or processes?
+6. What are the raw materials?
+7. What are the requirements?
+
+========================================================================
+SLIDE 8
+========================================================================
+Data Engineering
+1. What is the product we are building?
+2. What is it for?
+3. Who will use it?
+4. What are the tools?
+5. What are the methodologies or processes?
+6. What are the raw materials?
+7. What are the requirements?
+
+========================================================================
+SLIDE 9
+========================================================================
+Data Engineering
+1. What is the product we are building?
+Answer: data
+We are designing and building data!!
+But why? Isn't the data already there?
+
+========================================================================
+SLIDE 10
+========================================================================
+Data Engineering
+2. What is it for?
+Answer: data analysis, covering a wide range of aspects:
+Data modelling, prediction, trends, clustering/categorization,
+dashboards, descriptive/prescriptive, causal analysis, etc.
+3. Who will use it?
+Answer: data scientists, data miners, data analysts, machine
+learning specialists, etc.
+
+========================================================================
+SLIDE 11
+========================================================================
+Data Engineering
+6. What are the raw materials?
+Answer: data (raw data)
+Data to build Data
+What is the difference?
+The raw data is not ready
+Where do we get the raw data? Who are the data producers?
+
+========================================================================
+SLIDE 12
+========================================================================
+Data Engineering
+Where do we get the raw data? Who are data producers?
+Answer:
+-
+Transactions, Databases
+-
+Public dataset, Third party data
+-
+Data producing devices (sensors, measurements, …)
+-
+Software applications, apps, crawlers, …
+-
+Maps
+And, there are many different kinds of formats of raw data:
+text or unstructured, structured, semi-structured, csv,
+specialized structures, and other multimedia data.
+
+========================================================================
+SLIDE 13
+========================================================================
+Data Engineering
+4. What are the tools?
+5. What are the methodologies or processes?
+Answers:
+-
+Data engineering architecture
+-
+Data engineering components
+In the next lectures…

@@ -1,0 +1,141 @@
+FIT5137 - Week 1 Notes
+Source deck: Week-1c-Why We Need DW.pdf
+Slides: 12
+
+These notes preserve the slide order and wording while converting visual slide content into searchable plain text.
+
+========================================================================
+SLIDE 1
+========================================================================
+Data Warehousing:
+Why do we need it?
+Assoc. Prof. David Taniar
+
+========================================================================
+SLIDE 2
+========================================================================
+Building dashboards or ML models…
+
+[Visual note] Diagram: databases behind a firewall produce CSV extracts; these extracts must be processed before they can support dashboards, analytics, or machine-learning models.
+
+========================================================================
+SLIDE 3
+========================================================================
+What would you do?
+1. Explore the data, try to understand the data
+2. Find data errors, data inconsistencies, and missing data
+3. Fix the errors
+4. Prepare the dashboard or the ML models
+5. Build the dashboard or train the ML models
+
+========================================================================
+SLIDE 4
+========================================================================
+A hospital case study...
+1. Surgery patient data from 5 hospitals in Victoria (2 years of
+data) in csv files.
+2. Build a dashboard to compare:
+- Number of "xxxx" in each hospital and compare with other hospitals
+- Show the progression on each month
+3. The process:
+- Combine all extracts
+- Find the mistakes, fix the errors
+- Build the dashboard
+
+========================================================================
+SLIDE 5
+========================================================================
+A hospital case study
+Findings during the data wrangling:
+What's wrong with this approach?
+
+[Visual note] The hospital case highlights that one-off manual wrangling does not scale well when new extracts, errors, requirements, or staff members appear.
+
+========================================================================
+SLIDE 6
+========================================================================
+A more likely scenario…
+1. Before discussing this further, let's assume that this is not a
+once-off process.
+2. In the future, there potentially be more data coming from
+behind the firewall.
+3. The data may come periodically… (or may not necessarily be
+periodic, e.g. once in a while when needed).
+4. Potentially, the new data extracts may have different kind of
+data problems.
+5. The new data extracts might be different (slightly) due to new
+requirements, new metrics, new needs, etc.
+
+========================================================================
+SLIDE 7
+========================================================================
+What will we do next time?
+1. Do the same process, like in the first instance
+- Explore the data
+- Clean the data
+- Build the dashboard
+- etc
+2. But potentially, new people will build (or rebuild) the
+dashboard for this new data extracts.
+3. How about the quality of the product (i.e. quality assurance)?
+
+========================================================================
+SLIDE 8
+========================================================================
+Lessons from Software Development
+1. Do you build a software by yourself?
+Answer: Yes and No
+- Yes, if it is a small project
+- No, otherwise
+2. If the project is large, why can't you do everything by yourself?
+Answer: Too hard, too big
+- How about quality control?
+
+========================================================================
+SLIDE 9
+========================================================================
+Modularization in Software Development
+1. Modularization on many different levels
+- Project level, program level, function/procedure level (e.g. API, black box)
+- printf() or scanf() is a function call
+- A=B+C => the plus process is a function/operator (A=plus(B,C))
+- There is a hierarchy of process (e.g. We don't need to write program in the
+assembly language all the time).
+2. No need to write programs at the lowest level:
+- Abstraction, quality control, process hierarchy
+3. Why do we need to modularize?
+- Specialization
+- Quality assurance
+
+========================================================================
+SLIDE 10
+========================================================================
+Modularization in Data Engineering
+1. Provide a framework
+- For specialization
+- For quality assurance
+- For abstraction
+2. Separating each part of the entire data flow (or data pipeline)
+- A separate process for data cleaning
+- A separate process for dashboard
+- And anything in between…
+
+========================================================================
+SLIDE 11
+========================================================================
+Data Engineering Framework
+
+[Visual note] Framework idea: divide the data pipeline into separate, reusable stages so each stage can be specialised, tested, and quality-controlled.
+
+========================================================================
+SLIDE 12
+========================================================================
+Conclusion
+1. Process/data quality assurance
+2. We need a framework
+3. We need to be specialized
+4. It is a big job, and that's why Data Engineering = 80%
+5. But if the project is so small, of course you can do everything
+by yourself and there is no need for a data warehousing
+6. But still, data warehousing will give you a framework (that's
+why it is very important)

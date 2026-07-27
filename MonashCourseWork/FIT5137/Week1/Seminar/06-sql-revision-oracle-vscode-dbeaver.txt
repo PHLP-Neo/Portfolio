@@ -1,0 +1,1169 @@
+FIT5137 - Week 1 Notes
+Source deck: Week-1f-SQL-revision-VSCode-DBeaver-new2025_V2.pdf
+Slides: 74
+
+These notes preserve the slide order and wording while converting visual slide content into searchable plain text.
+
+========================================================================
+SLIDE 1
+========================================================================
+SQL Revision
+Assoc. Prof. David Taniar
+
+========================================================================
+SLIDE 2
+========================================================================
+Topics
+A. Connection to the ORACLE database
+B. Create tables
+C. Insert into
+D. Simple query retrieval
+E. Updating and deleting records
+F. Commit
+G. Joining multiple tables
+H. Aggregate functions and group by
+I.
+Alter tables
+
+========================================================================
+SLIDE 3
+========================================================================
+A. Connection to ORACLE database
+using Visual Studio Code
+Download VS code depending on your system
+from https://code.visualstudio.com/Download
+Double-click on the
+download file icon
+You can leave all the settings as default, so you
+can just click 'Next' and 'Install'
+For more detailed information, refer to the lab exercise: FIT5137_2025_S2_Database Setup
+
+========================================================================
+SLIDE 4
+========================================================================
+A. Connection to ORACLE database
+using Visual Studio Code
+1
+Click Extensions
+2
+Type ‘SQL'
+3
+Install ‘Oracle Developer Tools for vs code'
+4
+S12345678
+student
+Username S followed by your student ID
+Password student
+For more detailed information, refer to the lab exercise: FIT5137_2025_S2_Database Setup
+
+========================================================================
+SLIDE 5
+========================================================================
+A. Connection to ORACLE database: DBeaver
+Download DBeaver
+1.
+Download DBeaver.zip fromDBeaver community edition from https://dbeaver.io/download/
+2.
+Extract the archive file or install the application
+3.
+Run "dbeaver"
+•If it asks to create a sample database, click "No"
+For more detailed information, refer to the lab exercise: FIT5137_2025_S2_Database Setup
+
+========================================================================
+SLIDE 6
+========================================================================
+A. Connection to ORACLE database: DBeaver
+Connecting DBeaver to Oracle server
+1.
+Click "New Database Connection" on the left corner.
+Note: You may have a different version of dbeaver than the demo image
+2.    Select Oracle from the popular options
+3. Use the connection parameters as described.
+•
+Host: fit-oracle-pt01.mpc.monash.edu
+•
+Port:1521
+•
+Database: FIT5137.fit-oracle-pt01.mpc.monash.edu
+•
+Username: Starts with S and followed by your student ID.
+•
+Passwords: student
+4. Click " Test Connection ". You must get the following response
+For more detailed information, refer to the lab exercise: FIT5137_2025_S2_Database Setup
+
+========================================================================
+SLIDE 7
+========================================================================
+B. Create Tables
+General Syntax:
+CREATE TABLE <table_name>
+  (attribute1           data_type    <NOT NULL>,
+   attribute2           data_type,
+         …
+  PRIMARY KEY (attribute1),
+  FOREIGN KEY (attribute1)
+
+REFERENCES <references table_name> (key_attribute));
+
+========================================================================
+SLIDE 8
+========================================================================
+B. Create Tables: Data Types
+Data type denotes a kind of data of an attribute value
+Character data types: VARCHAR2 and CHAR
+Make VARCHAR2(20)
+Model VARCHAR2(30)
+Number data types: NUMBER
+Year NUMBER(4)
+StampDuty NUMBER(8,2)
+Date data type: DATE
+Salesdate DATE
+
+========================================================================
+SLIDE 9
+========================================================================
+B. Create Tables: Data Types
+DATE Data Type
+Date stores dates from 1/1/4712 BC to 12/31/4712 AD
+Default date format:  DD-MON-YYYY
+salesDate DATE
+DATE data type also stores time values.
+
+========================================================================
+SLIDE 10
+========================================================================
+B. Create Tables: Time
+Default TIME format:  HH:MI:SS A.M.
+1. If no time value is given when a date is inserted, default value is
+12:00:00 A.M.
+2. If no date value is given when a time is inserted, default date is first
+day of current month
+salesDate field: 07-JUN-2016 12:00:00 A.M.
+
+========================================================================
+SLIDE 11
+========================================================================
+B. Create Tables: Constraints
+Integrity Constraints
+1. Primary Key attribute
+2. NOT NULL constraints
+Field_name    data_type    NOT NULL
+3. Foreign Key attribute in a table refers to another record in
+another table
+
+========================================================================
+SLIDE 12
+========================================================================
+B. Create Tables: Example 1
+Example: create CAR, CARSALES and CUSTOMER tables
+CREATE TABLE Car
+(carID           NUMBER(5) NOT NULL,
+ make            VARCHAR2(20) NOT NULL,
+ model           VARCHAR2(30),
+ year            NUMBER(4),
+ colour          VARCHAR2(25),
+ advertisedPrice NUMBER(10),
+ PRIMARY KEY (carID)
+);
+
+========================================================================
+SLIDE 13
+========================================================================
+B. Create Tables: Example 1
+Example: create CAR, CARSALES and CUSTOMER tables
+CREATE TABLE Customer
+(customerID NUMBER(5) NOT NULL,
+ cNAME      VARCHAR2(20) NOT NULL,
+ cPhone     VARCHAR2(10),
+ address    VARCHAR2(50),
+ PRIMARY KEY (customerID)
+);
+
+========================================================================
+SLIDE 14
+========================================================================
+B. Create Tables: Example 1
+Example: create CAR, CARSALES and CUSTOMER tables
+CREATE TABLE Carsales
+(carID           NUMBER(5) NOT NULL,
+ customerID      NUMBER(5) NOT NULL,
+ salesDate       DATE NOT NULL,
+ purchasedPrice  NUMBER(10) NOT NULL,
+ stampDuty       NUMBER(8,2) NOT NULL,
+ PRIMARY KEY (carID,customerID),
+ FOREIGN KEY (carID) REFERENCES Car(carID),
+ FOREIGN KEY (customerID) REFERENCES Customer(customerID)
+);
+
+========================================================================
+SLIDE 15
+========================================================================
+B. Create Tables: by Copying
+You can create a new table by copying from an existing table:
+CREATE TABLE <table_name> AS
+ SELECT *
+FROM …    ;
+For example:
+CREATE TABLE car AS
+ SELECT *
+FROM dtaniar.car;
+Notes:
+1. It creates and copy the records from the existing table
+2. However, it does not copy the PK and FK
+3. In the above example, it copies the table from dtaniar account.
+
+========================================================================
+SLIDE 16
+========================================================================
+B. Create Tables: View Tables
+Viewing Information about Tables
+•
+To view all tables in the database, the general syntax is:
+SELECT * FROM TAB;
+•
+For example:
+ SELECT * FROM tab;
+
+TNAME                            TABTYPE  CLUSTERID
+
+------------------------------   -------  ----------
+
+CAR                              TABLE
+
+CARSALES                         TABLE
+
+CUSTOMER                         TABLE
+
+========================================================================
+SLIDE 17
+========================================================================
+B. Create Tables: Describe Tables
+• To view the table structure, the general syntax is:
+DESCRIBE <table_name>
+• For example:
+ DESC car;
+Name            Null     Type
+--------------- -------- ------------
+CARID           NOT NULL NUMBER(5)
+MAKE            NOT NULL VARCHAR2(20)
+MODEL                    VARCHAR2(30)
+YEAR                     NUMBER(4)
+COLOUR                   VARCHAR2(25)
+ADVERTISEDPRICE          NUMBER(10)
+
+========================================================================
+SLIDE 18
+========================================================================
+B. Create Tables: Drop Tables
+• To drop an unwanted table, the general syntax is:
+DROP TABLE <table_name>;
+• For example:
+DROP TABLE Car;
+• If the table that you want to delete (e.g. table Car) is being used as a FK by another
+table (e.g. table CarSales), then you cannot delete table Car.
+• In this case, you need to delete table CarSales first, before deleting table Car.
+
+========================================================================
+SLIDE 19
+========================================================================
+General Syntax
+• To insert values for every single attribute in a record:
+INSERT INTO <table_name>
+VALUES (attribute1_value, attribute2_value,….);
+• Example:
+INSERT INTO Car
+VALUES (1, 'Holden', 'Cruze', 2015, 'Black', 25780);
+Strings are enclosed in single quotes  (‘) and are case-sensitive (e.g. ‘General Practice' is
+different from ‘general practice')
+C. Insert Into
+
+========================================================================
+SLIDE 20
+========================================================================
+To insert a value of selected attributes:
+INSERT INTO <table_name> (attribute1,attribute2,…)
+VALUES (attribute1_value, attribute2_value,….);
+Example:
+INSERT INTO Car (carID, make) VALUES ('16', 'Audi');
+C. Insert Into
+
+========================================================================
+SLIDE 21
+========================================================================
+General Syntax:
+TO_DATE (‘date_value', 'format mask');
+Example:
+INSERT INTO Carsales
+VALUES (1,4, TO_DATE('04/Feb/2015', 'DD/MON/YYYY'),25780,824.96);
+C. Insert Into: TO_DATE Function
+
+========================================================================
+SLIDE 22
+========================================================================
+The common DATE format masks
+Format Mask
+
+Formatted Data
+DD-MON-YYYY
+
+                 05-FEB-2007
+MM/DD/YYYY
+
+ 02/05/2007
+HH:MI AM
+
+ 02:30 PM
+MONTH DAY, YYYY
+
+ FEB 5, 2007
+MM/DD/YYYY HH:MI AM
+
+ 02/05/2007 02:30 PM
+Sample DATE format masks
+C. Insert Into
+
+========================================================================
+SLIDE 23
+========================================================================
+Insert multiple records one-by-one:
+INSERT INTO Car VALUES (2, 'BMW', '520d', 2016, 'Grey', 98800);
+INSERT INTO Car VALUES (3, 'Audi', 'A5', 2016, 'Black', 68200);
+INSERT INTO Car VALUES (4, 'Holden', 'Commodore', 2008, 'Grey', 12650);
+Insert multiple records at once:
+INSERT ALL
+INTO Car VALUES (2, 'BMW', '520d', 2016, 'Grey', 98800)
+INTO Car VALUES (3, 'Audi', 'A5', 2016, 'Black', 68200)
+INTO Car VALUES (4, 'Holden', 'Commodore', 2008, 'Grey', 12650)
+SELECT * FROM DUAL;
+C. Insert Into
+
+========================================================================
+SLIDE 24
+========================================================================
+If we can insert multiple records at once (using one SQL command to
+insert all), then when do we still need to insert records one-by-one?
+Question Time…
+
+========================================================================
+SLIDE 25
+========================================================================
+Retrieve all Records
+General Syntax :
+SELECT *
+FROM <table_name>;
+Example: retrieve everything from
+the CAR table:
+ SELECT * FROM car;
+D. Query Retrieval
+
+========================================================================
+SLIDE 26
+========================================================================
+Retrieve Specific Fields
+General Syntax:
+SELECT <attribute1, attribute2…>
+FROM <table_name>;
+Example: select only the model from the CAR table
+      SELECT model FROM car;
+D. Query Retrieval
+
+========================================================================
+SLIDE 27
+========================================================================
+Eliminating Duplicated Records (DISTINCT qualifier)
+General Syntax:
+SELECT DISTINCT <attribute1,attribute2,…>
+FROM <table_name>;
+Example: Eliminates duplicates for the MAKE values:
+SELECT DISTINCT make
+FROM car;
+D. Query Retrieval: Distinct
+
+========================================================================
+SLIDE 28
+========================================================================
+Output (with DISTINCT):
+
+Original Output (without DISTINCT):
+
+D. Query Retrieval: Distinct
+
+========================================================================
+SLIDE 29
+========================================================================
+DISTINCT Multiple Attributes
+Example: Eliminates duplicates for the MAKE and YEAR
+values.
+SELECT DISTINCT make, year
+FROM car;
+MAKE                       YEAR
+-------------------- ----------
+Volkwagen
+2015
+Toyota                     2013
+Mini                       2009
+Holden
+2015
+BMW                        2016
+Honda                      2012
+Subaru                     2014
+Holden
+2008
+Jeep                       2006
+Mazda                      2011
+Audi                       2016
+Lexus                      2009
+Honda                      2010
+Nissan                     2010
+Mercedes Benz              2006
+15 rows selected
+Notes: Distinct works at the record level (of the
+query results), and not at an attribute level.
+D. Query Retrieval: Distinct
+
+========================================================================
+SLIDE 30
+========================================================================
+Search Conditions specified for more complex data retrieval in the WHERE clause using
+the following operators:
+• equal (=)
+• greater than (>)
+• less than (<)
+• greater than or equal to (>=)
+• less than or equal to (<=)
+• not equal (<>)
+D. Query Retrieval: Where Clause
+
+========================================================================
+SLIDE 31
+========================================================================
+General Syntax:
+
+SELECT <attribute1,attribute2,…>
+
+FROM <ownername.table_name1>
+
+WHERE <search condition>;
+Example:
+
+ SELECT year, model, advertisedPrice
+   FROM car
+   WHERE make='Holden'
+
+YEAR
+MODEL           ADVERTISEDPRICE
+----------
+------------
+---------------
+2015          Cruze
+25780
+2008          Commodore       12650
+D. Query Retrieval: Where Clause
+
+========================================================================
+SLIDE 32
+========================================================================
+Example: List the carid, salesDate and purchasedPrice after 2014 and before 2016
+SELECT carid, salesdate, purchasedPrice
+FROM carsales
+WHERE salesdate
+BETWEEN TO_DATE('01-JAN-2014', 'DD-MON-YYYY')
+AND TO_DATE('31-DEC-2015','DD-MON-YYYY');
+
+     CARID SALESDATE   PURCHASEDPRICE
+---------- ----------- --------------
+         1 04-FEB-2015          25780
+         8 12-DEC-2015          13999
+D. Query Retrieval: Between
+
+========================================================================
+SLIDE 33
+========================================================================
+Example: List the carid, salesDate and purchasedPrice after 2014 and before 2016.
+SELECT carid, salesdate, purchasedPrice
+FROM carsales
+WHERE TO_CHAR(salesdate, ‘YYYYMMDD') >'20140101'
+AND TO_CHAR(salesdate, ‘YYYY'MMDD') < ‘20151231';
+
+     CARID SALESDATE   PURCHASEDPRICE
+---------- ----------- --------------
+         1 04-FEB-2015          25780
+         8 12-DEC-2015          13999
+D. Query Retrieval: String Comparison
+
+========================================================================
+SLIDE 34
+========================================================================
+SELECT carid, salesdate, purchasedPrice
+FROM carsales
+WHERE TO_CHAR(salesdate, ‘YYYYMMDD') > '20140101'
+AND TO_CHAR(salesdate, ‘YYYY'MMDD') < ‘20151231';
+How to use TO_DATE (instead of TO_CHAR) in the above query?
+Question Time…
+
+========================================================================
+SLIDE 35
+========================================================================
+AND: both conditions must be true
+SELECT make, model, year
+FROM car
+WHERE  year>2014  AND  make='Holden';
+MAKE
+MODEL
+YEAR
+--------- ---------------- ----------
+Holden
+Cruze
+2015
+D. Query Retrieval: AND and OR
+
+========================================================================
+SLIDE 36
+========================================================================
+OR: Either one of the condition must be true
+ SELECT make, model, colour, year, advertisedPrice
+ FROM car
+ WHERE colour='Red' OR year>2014;
+MAKE      MODEL      COLOUR          YEAR  ADVERTISEDPRICE
+--------- ---------- ---------- ---------- ----------------
+Holden    Cruze
+Black            2015            25780
+BMW       520d       Grey
+2016            98800
+Audi      A5         Black            2016            68200
+Honda     Civic
+Red              2012            13488
+Lexus     RX350      Red              2009            33500
+Volkwagen Golf       White            2015            39888
+6 rows selected
+D. Query Retrieval: OR
+
+========================================================================
+SLIDE 37
+========================================================================
+The LIKE operator
+Example: Display all MAKE from car table that has their first character as ‘M'.
+SELECT make
+FROM CAR
+WHERE make LIKE 'M%';
+MAKE
+----------------
+Mazda
+Mercedes Benz
+Mini
+D. Query Retrieval: LIKE
+
+========================================================================
+SLIDE 38
+========================================================================
+The IN operator:
+It is suitable to perform a set member search
+Example: displaying all MODEL that its MAKE is either  ‘Holden' or ‘Honda'
+SELECT make, model
+FROM car
+WHERE make IN ('Holden', 'Honda');
+MAKE                 MODEL
+-------------------- -------------
+Holden               Cruze
+Holden               Commodore
+Honda                Civic
+Honda                City
+D. Query Retrieval: IN
+
+========================================================================
+SLIDE 39
+========================================================================
+NOT IN: Display make, model and colour of cars that are not ‘Black' and ‘White'.
+SELECT make, model, colour
+FROM car
+WHERE colour  NOT IN ('Black', 'White');
+MAKE           MODEL        COLOUR
+-------------- ------------ ------------
+BMW            520d         Grey
+Holden         Commodore    Grey
+Honda          Civic        Red
+Lexus          RX350        Red
+Mazda          3Series      Blue
+Mercedes Benz  C200         Blue
+Honda          City         Grey
+D. Query Retrieval: NOT IN
+
+========================================================================
+SLIDE 40
+========================================================================
+The NULL Operator:
+SELECT carid, make
+FROM car
+WHERE colour IS NULL;
+CARID  MAKE
+------ ---------
+    12 Subaru
+D. Query Retrieval: NULL
+
+========================================================================
+SLIDE 41
+========================================================================
+The NOT NULL Operator:
+
+SELECT carid, make
+FROM car
+WHERE colour IS NOT NULL;
+      CARID MAKE
+ ------- --------------------
+       1 Holden
+       2 BMW
+       3 Audi
+       4 Holden
+       5 Honda
+       6 Jeep
+       7 Lexus
+       8 Mazda
+       9 Nissan
+      10 Volkwagen
+      11 Mercedes Benz
+      13 Honda
+      14 Mini
+      15 Toyota
+ 14 rows selected
+D. Query Retrieval: NOT NULL
+
+========================================================================
+SLIDE 42
+========================================================================
+Example: List cars make starts with ‘M' and was made before 2016.
+SELECT year, make, model
+FROM car
+WHERE make LIKE 'M%'
+AND year<2016;
+YEAR MAKE             MODEL
+---- ---------------- -------------
+2011 Mazda            3Series
+2006 Mercedes Benz    C200
+2009 Mini             Cooper
+D. Query Retrieval: Multiple Operators
+
+========================================================================
+SLIDE 43
+========================================================================
+Specify to sort the output by using ORDER BY.
+General Syntax:
+SELECT <attribute1,attribtue2,..>
+FROM <table_name>
+ORDER BY <attribute_name> [DESC];
+D. Query Retrieval: Sorting
+
+========================================================================
+SLIDE 44
+========================================================================
+Example: Retrieve all make, model, advertisedPrice and colour in a descending order of the
+advertisedPrice.
+SELECT make, model, advertisedPrice, colour
+FROM car
+ORDER BY advertisedPrice DESC;
+MAKE            MODEL              ADVERTISEDPRICE  COLOUR
+--------------- ------------------ ---------------
+--------
+BMW             520d               98800
+Grey
+Audi            A5                 68200
+Black
+Volkwagen       Golf               39888
+White
+Subaru          Outback
+33950            NULL
+Lexus
+RX350              33500
+Red
+Holden          Cruze
+25780
+Black
+Toyota          Corolla
+23888
+White
+Jeep            Grand Cherokee
+21999
+Black
+Mini            Cooper             19750
+Black
+Nissan          Dualis             18888
+White
+Mercedes Benz   C200               16995
+Blue
+Mazda           3Series            13999
+Blue
+Honda           Civic
+13488
+Grey
+Holden          Commodore          12650
+Grey
+Honda           City                7490
+Grey
+15 rows selected
+D. Query Retrieval: Sorting
+
+========================================================================
+SLIDE 45
+========================================================================
+AS: to rename a column
+Example: List all SalesDate, PurchasedPrice, StampDuty and TotalPrice  (TotalPrice =
+PurchasedPrice + StampDuty )
+SELECT salesdate, purchasedPrice, stampduty, (purchasedPrice+StampDuty) as TotalPrice
+FROM carSales;
+SALESDATE   PURCHASEDPRICE  STAMPDUTY TOTALPRICE
+----------- -------------- ---------- ----------
+04-FEB-2015          25780     824.96   26604.96
+13-JUL-2016          12650        506      13156
+12-DEC-2015          13999     559.96   14558.96
+14-JUN-2016          39888    1276.42   41164.42
+18-MAY-2016          98800     5631.6   104431.6
+D. Query Retrieval: AS
+
+========================================================================
+SLIDE 46
+========================================================================
+How to create a table by copying the existing attributes from various
+tables, plus with a new calculated attribute?
+Question Time…
+
+========================================================================
+SLIDE 47
+========================================================================
+1. The UPDATE command – updating
+2. The DELETE command – deleting
+E. Updating and Deleting Records
+
+========================================================================
+SLIDE 48
+========================================================================
+General Syntax:
+UPDATE <table_name>
+SET <attribute_name> = <new_value>
+WHERE <expression> <operator> <expression>;
+• Records can be updated in only one table at a time;
+• Update multiple fields that are within the same table;
+• WHERE clause: make the command updates specific records only.
+E. Updating Records
+
+========================================================================
+SLIDE 49
+========================================================================
+Example: Update colour of carID ‘5' from ‘Red' to ‘Grey'
+UPDATE car
+SET colour = 'Grey'
+WHERE carID = 5;
+E. Updating Records
+
+========================================================================
+SLIDE 50
+========================================================================
+General Syntax:
+DELETE FROM <table_name>
+WHERE <search_condition>;
+• Remove specific records from a database table;
+• Use the WHERE clause to delete multiple records at one time;
+• If the search condition is omitted, all records in the table are deleted.
+E. Deleting Records
+
+========================================================================
+SLIDE 51
+========================================================================
+Examples:
+•
+Delete a single record from the CAR table
+DELETE FROM car
+WHERE carID = 5;
+•
+Delete multiple records from the CAR table that contain MAKE starting with ‘M'
+DELETE FROM car
+WHERE make LIKE ‘M%';
+•
+Delete all records from the CAR table
+DELETE FROM car;
+E. Deleting Records
+
+========================================================================
+SLIDE 52
+========================================================================
+Notice:
+• not allowed to delete a primary key record that has its corresponded foreign key
+somewhere else in another table
+• Example: Delete a primary key CarID is 5 in the CAR table that has a foreign key
+record that CarID is 5 in the CARSALES table
+DELETE FROM car WHERE carid=5;
+DELETE FROM car
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (SYSTEM.SYS_C005453) violated - child record found
+E. Deleting Records
+
+========================================================================
+SLIDE 53
+========================================================================
+When Inserting data by issuing the INSERT command:
+• The changes are only saved in the local database buffer;
+• They are are not saved in the database; and
+• The changes will only be saved when you COMMIT the transaction.
+It is important to remember to COMMIT whenever you have finished
+inserting values or make changes to the database values
+F. Commit
+
+========================================================================
+SLIDE 54
+========================================================================
+Effect of Inserting New Record with Commit
+Insert a new record
+‘16' with commit
+All original records
+are currently in
+CAR table
+F. Commit
+
+========================================================================
+SLIDE 55
+========================================================================
+Don't forget to COMMIT your work regularly
+Don't forget to EXIT from SQL Developer properly
+If not,
+The consequences are…
+Warning…
+
+========================================================================
+SLIDE 56
+========================================================================
+56
+56
+Join query is to join multiple database tables together using join
+conditions, which contain attributes from the tables involved.
+SELECT <attribute1,attribute2,… >
+FROM <table_name1,table_name2,…>
+WHERE <table_name1.join_attribute> = <table_name2.join_attribute>
+AND <search_condition>
+G. Join
+
+========================================================================
+SLIDE 57
+========================================================================
+Join CAR, CARSALES and CUSTOMER tables:
+SELECT customer.cname,
+
+customer.cphone,
+
+carsales.salesdate,
+
+carsales.purchasedPrice,
+
+carsales.stampDuty,
+
+car.make,
+
+car.model
+FROM
+customer, carsales, car
+WHERE customer.customerID = carsales.customerID
+AND
+car.carID = carsales.carID;
+G. Join
+
+========================================================================
+SLIDE 58
+========================================================================
+Join using prefix when joining tables.
+When more than one table is involved, a prefix for each attribute is
+recommended to avoid ambiguity
+SELECT
+ct.cname,
+
+ct.cphone,
+
+cs.salesdate,
+
+cs.purchasedPrice,
+
+cs.stampDuty,
+
+c.make,
+
+c.model
+FROM
+customer ct, carsales cs, car c
+WHERE
+ct.customerID = cs.customerID
+AND
+c.carID = cs.carID;
+G. Join
+
+========================================================================
+SLIDE 59
+========================================================================
+•
+If the JOIN condition is missing, your query becomes a PRODUCT,
+instead of a JOIN.
+•
+Consequently, you will run out of quota, and your account will be
+locked.
+Warning…
+
+========================================================================
+SLIDE 60
+========================================================================
+Example: retrieve the make, model and advertisedPrice of cars that
+are not sold.
+SELECT make, model, advertisedPrice
+FROM car
+WHERE carID NOT IN
+        (SELECT carID FROM carsales);
+MAKE              MODEL             ADVERTISEDPRICE
+----------------- ----------------- ---------------
+Subaru            Outback           33950
+Lexus             RX350             33500
+Mini              Cooper            19750
+Nissan            Dualis            18888
+Mercedes Benz     C200              16995
+Jeep              Grand Cherokee    21999
+6 rows selected
+G. Join: Subquery
+
+========================================================================
+SLIDE 61
+========================================================================
+Aggregate Functions
+• Summarize input table, often use to include:
+• COUNT - count number of records in the input table
+• SUM - calculate the sum of a numerical attribute
+• MIN and MAX - find the smallest and the largest value of a certain attribute
+H. Aggregate Functions and Group By
+
+========================================================================
+SLIDE 62
+========================================================================
+Example: returning the number of records that is available from the
+CAR table
+
+SELECT COUNT(*)
+
+FROM car;
+
+COUNT(*)
+
+------------------
+
+15
+H. Aggregate Functions: Count
+
+========================================================================
+SLIDE 63
+========================================================================
+SELECT COUNT(colour)
+SELECT COUNT(DISTINCT colour)
+FROM car;
+
+FROM car;
+COUNT(COLOUR)
+
+COUNT(DISTINCTCOLOUR)
+-------------
+
+-------------------
+14
+
+5
+
+Cause by a
+record with null
+value
+15 records include
+one NULL value
+Output:
+H. Aggregate Functions: Count
+
+========================================================================
+SLIDE 64
+========================================================================
+Example: calculate the minimum and maximum advertisedPrice of the cars
+SELECT MIN(advertisedPrice) AS "Lowest Price",
+
+MAX(advertisedPrice) AS "Highest Price"
+FROM car;
+
+Lowest Price Highest Price
+------------ --------------
+        7490          98800
+
+H. Aggregate Functions: MIN and MAX
+
+========================================================================
+SLIDE 65
+========================================================================
+Group an input table into a number of groups based on one or more nominated
+attributes; often used in conjunction with aggregate functions
+Example: group by Make in the CAR table
+
+SELECT make, COUNT(*)
+
+FROM car
+
+GROUP BY make;
+
+MAKE                   COUNT(*)
+-------------------- ----------
+Holden                        2
+Lexus                         1
+Subaru                        1
+BMW                           1
+Mazda                         1
+Nissan                        1
+Audi                          1
+Volkwagen
+1
+Toyota                        1
+Honda                         2
+Mercedes Benz                 1
+Jeep                          1
+Mini                          1
+H. Group By
+
+========================================================================
+SLIDE 66
+========================================================================
+Example: In the CAR table, group by Make with combination of getting only the
+record groups that contain the count value greater than 1 is as follows
+
+SELECT make, COUNT(DISTINCT model)
+FROM car
+GROUP BY make
+HAVING COUNT(DISTINCT model)>1;
+
+MAKE
+COUNT(DISTINCTMODEL)
+-------------------- --------------------
+Holden
+2
+Honda
+2
+H. Group By: Having
+
+========================================================================
+SLIDE 67
+========================================================================
+Example of multiple tables: Select number of sold cars for each colour
+
+SELECT colour, COUNT(DISTINCT customerId)
+FROM car c, carsales cs
+WHERE c.carid=cs.carid
+GROUP BY colour;
+
+COLOUR      COUNT(DISTINCTCUSTOMERID)
+----------- -------------------------
+White                               2
+Grey                                4
+Blue                                1
+Black                               2
+Red                                 1
+H. Group By: with Join
+
+========================================================================
+SLIDE 68
+========================================================================
+COUNT: counts number of records in the input table
+SUM: calculates the sum of a numerical attribute
+SELECT  <attribute1, attribute2>, COUNT(*)
+FROM <table_name>
+GROUP BY <attribute1, attribute2>;
+SELECT  <attribute1, attribute2>, SUM (attribute3)
+FROM <table_name>
+GROUP BY <attribute1, attribute2>;
+H. Aggregate Functions: COUNT, SUM
+
+========================================================================
+SLIDE 69
+========================================================================
+Sum without Group By
+Example: Calculate the sum of purchasedPrice
+ SELECT SUM(purchasedPrice) AS totalsales
+ FROM carsales;
+
+TOTALSALES
+
+----------
+
+    402983
+H. Aggregate Functions: SUM
+
+========================================================================
+SLIDE 70
+========================================================================
+Sum with Group By
+Example: Calculate the sum of purchasedPrice for each make in carsales table
+SELECT c.make, SUM(cs.purchasedPrice) AS totalsales
+FROM carsales cs, car c
+WHERE c.CARID=cs.CARID
+GROUP BY c.make;
+MAKE                 TOTALSALES
+-------------------- ----------
+Holden
+38430
+BMW                      197600
+Mazda                     13999
+Audi                      68200
+H. Aggregate Functions: SUM
+
+========================================================================
+SLIDE 71
+========================================================================
+SUM with Calculations
+Example: List all Cname, SalesDate and calculate the TotalPrice for each customer (TotalPrice =
+PurchasedPrice+StampDuty)
+SELECT ct.cname, cs.salesdate, SUM(purchasedPrice+StampDuty) as TotalPrice
+FROM carSales cs, customer ct
+WHERE cs.customerid=ct.customerid
+GROUP BY ct.cname, cs.salesdate;
+
+CNAME                SALESDATE   TOTALPRICE
+
+-------------------- ----------- ----------
+
+Jones                14-JUN-2016   14027.52
+
+Rex                  12-DEC-2015   14558.96
+
+Lily                 13-JUL-2016      13156
+H. Aggregate Functions: SUM
+
+========================================================================
+SLIDE 72
+========================================================================
+ALTER TABLE <table_name>
+ADD (attribute_name data_type_declare constraints_declare);
+attribute name: refers to the new attribute that you want to add into the existing table
+data type: defines the data type and the size of the new attribute
+constraint: defines the constraints that the new attribute might be enforced by certain constraints
+Example: add a transmission attribute to the CAR table
+ALTER TABLE car
+ADD (transmission VARCHAR2(10));
+I. Alter Tables: Add New Fields
+
+========================================================================
+SLIDE 73
+========================================================================
+ALTER TABLE <table_name>
+MODIFY (attribute_name new_data_type);
+attribute name: refers to the attribute that you want to modify
+new data: defines the new data type that you want to use replacing the old one
+Example: change the data type of the transmission to CHAR with a size of 30
+ALTER TABLE car
+MODIFY (transmission CHAR(30));
+I. Alter Tables: Modify Fields
+
+========================================================================
+SLIDE 74
+========================================================================
+ALTER TABLE <table_name>
+DROP COLUMN attribute_name;
+attribute name: refers to the attribute that you want to modify
+new data: defines the new data type that you want to use replacing the old one
+Example: delete the attribute transmission from the CAR table
+ALTER TABLE car
+DROP COLUMN transmission;
+I. Alter Tables: Drop Columns
