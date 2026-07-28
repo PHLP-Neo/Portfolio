@@ -33,7 +33,7 @@ def main() -> None:
 
         writer.writeheader()
 
-        for index, url in enumerate(creature_urls[:20], start=1):
+        for index, url in enumerate(creature_urls, start=1):
             sentence = None
             status = "success"
             error_message = ""
