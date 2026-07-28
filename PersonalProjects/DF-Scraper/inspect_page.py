@@ -2,57 +2,57 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
-URL = "https://dwarffortresswiki.org/index.php/Adder_man"
-
-headers = {
+HEADERS = {
     "User-Agent": ("DwarfWikiResearchScript/1.0 " "(personal educational project)")
 }
 
-response = requests.get(
-    URL,
-    headers=headers,
-    timeout=20,
-)
 
-response.raise_for_status()
+def get_creature_urls(index_url: str) -> list[str]:
+    response = requests.get(
+        index_url,
+        headers=HEADERS,
+        timeout=20,
+    )
+    response.raise_for_status()
 
-print("Status code:", response.status_code)
-print("Downloaded characters:", len(response.text))
+    soup = BeautifulSoup(response.text, "html.parser")
 
-soup = BeautifulSoup(response.text, "html.parser")
+    creature_table = None
 
-infoboxes = soup.select(".collapsible.collapsed.infobox")
+    for infobox in soup.select(".collapsible.infobox"):
+        text = infobox.get_text(" ", strip=True)
 
-print("\nInfobox count:", len(infoboxes))
+        if "Creatures" in text and "Races" in text:
+            creature_table = infobox
+            break
 
-# for number, infobox in enumerate(infoboxes, start=1):
-#     print(f"\n--- Infobox {number} ---")
-#     print(infobox.get_text(" ", strip=True)[:500])
+    if creature_table is None:
+        raise RuntimeError("Creature navigation table not found.")
 
-creature_table = None
+    urls: set[str] = set()
 
-for infobox in infoboxes:
-    text = infobox.get_text(" ", strip=True)
-
-    if "Creatures" in text and "Races" in text:
-        creature_table = infobox
-        break
-
-if creature_table is None:
-    print("\nNo element found with id='collapsibleTable1'")
-else:
-    print("\nFound collapsibleTable1")
-    print(creature_table.get_text(" ", strip=True)[:1000])
-
-if creature_table is not None:
-    links = creature_table.select("a[href]")
-
-    print("\nNumber of links:", len(links))
-
-    for link in links[:30]:
-        link_text = link.get_text(" ", strip=True)
+    for link in creature_table.select("a[href]"):
         href = link.get("href")
 
-        full_url = urljoin(URL, href)
+        if not href:
+            continue
 
-        print(repr(link_text), "->", full_url)
+        full_url = urljoin(index_url, href)
+
+        if "/index.php/" not in full_url:
+            continue
+
+        urls.add(full_url)
+
+    return sorted(urls)
+
+
+if __name__ == "__main__":
+    start_url = "https://dwarffortresswiki.org/index.php/Adder_man"
+
+    creature_urls = get_creature_urls(start_url)
+
+    print(f"Found {len(creature_urls)} URLs")
+
+    for url in creature_urls[:20]:
+        print(url)

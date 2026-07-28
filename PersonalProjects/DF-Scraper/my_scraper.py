@@ -1,40 +1,59 @@
 import re
+
 import requests
 from bs4 import BeautifulSoup
 
-headers = {"User-Agent": "DwarfWikiResearchScript/1.0"}
+HEADERS = {
+    "User-Agent": ("DwarfWikiResearchScript/1.0 " "(personal educational project)")
+}
 
 
-def find_sentence(url, prefix):
-    response = requests.get(url, headers=headers, timeout=20)
+def extract_matching_sentence(
+    url: str,
+    prefix: str,
+) -> str | None:
+    response = requests.get(
+        url,
+        headers=HEADERS,
+        timeout=20,
+    )
     response.raise_for_status()
 
     soup = BeautifulSoup(response.text, "html.parser")
 
     article = soup.find(id="mw-content-text")
 
-    print(article is not None)
+    if article is None:
+        raise RuntimeError(f"Article content not found: {url}")
+
+    for unwanted in article.select("script, style, noscript, table.infobox, .navbox"):
+        unwanted.decompose()
 
     text = article.get_text(" ", strip=True)
 
-    # remove repeated whitespace
     text = re.sub(r"\s+", " ", text)
     text = re.sub(r"\s+([.,!?;:])", r"\1", text)
 
     pattern = re.compile(
-        rf"\b{re.escape(prefix)}\b.*?[.!?]",
-        re.IGNORECASE,
+        rf"\b{re.escape(prefix.strip())}\b.*?[.!?]",
+        flags=re.IGNORECASE,
     )
 
     match = pattern.search(text)
 
-    if match:
-        return match.group(1)
+    if match is None:
+        return None
 
-    return None
+    return match.group(0).strip()
 
-url = "https://dwarffortresswiki.org/index.php/Adder_man"
 
-sentence = find_sentence(url, "Some dwarves like")
+if __name__ == "__main__":
+    test_url = "https://dwarffortresswiki.org/index.php/Adder_man"
+    test_prefix = "Some dwarves like"
 
-print(sentence)
+    sentence = extract_matching_sentence(
+        test_url,
+        test_prefix,
+    )
+
+    print(sentence)
