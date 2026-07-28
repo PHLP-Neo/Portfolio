@@ -1,0 +1,1089 @@
+FIT5145 - Foundations of Data Science
+Seminar Week 1
+Source: FIT5145_Seminar_Week1.pdf
+Slides: 81
+
+These plain-text notes preserve slide order and wording. Important visual content is summarised in [Visual note] entries.
+
+========================================================================
+SLIDE 1
+========================================================================
+FIT5145
+Foundations of data science
+Clayton cohort:
+Dr. Guanliang Chen and Dr. Chris Yun
+Faculty of Information Technology, Monash University (Australia)
+Malaysia Cohort:
+Dr. Chern Hong Lim
+School of Information Technology, Monash University (Malaysia)
+
+========================================================================
+SLIDE 2
+========================================================================
+About me (Chris Yun)
+- Ph.D. in Machine Learning at Monash University
+- Now an Assistant Lecturer in the Department of Data
+Science and AI, Faculty of Information Technology,
+Monash University.
+- Industry experience: predictive modelling and
+Generative AI
+
+========================================================================
+SLIDE 3
+========================================================================
+About Guanliang Chen
+- Ph.D. in Computer Science at Delft University of
+Technology
+- Now a Senior Lecturer in the Faculty of Information
+Technology
+- Core member at the Centre for Learning Analytics at
+Monash University
+- Research interests: Data Science, AI, Natural
+Language Processing, the application of these
+techniques in the field of education
+
+========================================================================
+SLIDE 4
+========================================================================
+Let us know you better …
+What is your background?
+(e.g., IT, commerce)
+PollEv.com /fit5145chris
+
+========================================================================
+SLIDE 5
+========================================================================
+Let us know you better …
+What do you think data science is?
+Can you describe as one or two
+words?
+PollEv.com /fit5145chris
+
+========================================================================
+SLIDE 6
+========================================================================
+About This Unit
+
+========================================================================
+SLIDE 7
+========================================================================
+Why this unit?
+Data Science is fast developing:
+- every academic & industry community wants to claim credit
+- huge community of (self proclaimed) "leading international
+experts", "highly sought-after consultants", and "thought
+leaders" to confuse you with advice, blogs, guidelines, …
+- huge growth in software and services
+We will try to cover the full extent of what makes Data
+Science:
+- background and context
+- leading review articles, lectures, introductions
+- academic surveys and national programmes
+
+========================================================================
+SLIDE 8
+========================================================================
+Unit Schedule
+Week
+Content
+Lecturer
+1
+Overview of data science
+Chris Yun
+2
+History and impact of data science
+Chris Yun
+3
+Data business models
+Chris Yun
+4
+Data sources and standards
+Chris Yun
+5
+Characterising data and "big" data
+Chris Yun
+6
+Big Data and data science
+Chris Yun
+7
+Supervised data analysis (1)
+Chris Yun
+8
+Supervised data analysis (2)
+Chris Yun
+9
+Unsupervised data analysis
+Chris Yun
+10
+Data management
+Chris Yun
+11
+Issues in data science
+Chris Yun
+12
+Future of data science
+Guest Lecturer
+
+[Visual note] Table: the 12-week unit schedule, covering overview, history and impact, business models, data sources and standards, big data, supervised and unsupervised analysis, data management, issues, and the future of data science.
+
+========================================================================
+SLIDE 9
+========================================================================
+Resources for this Unit
+- Seminars & Applied classes
+- Moodle: unit information, assessments, discussion forum, etc.
+- Textbook on Ed Lesson: an online textbook, which contains
+lots of useful exercises and resources.
+- Materials adapted from Data Science Microcredential on
+Moodle
+- Additional textbook: The Art of Data Science by Peng & Matsui
+- Please notice that:
+- Library services available
+- Special consideration policies
+- Disability support available
+
+========================================================================
+SLIDE 10
+========================================================================
+Data Science tools
+In addition to the lectures, we will have practical
+introductions to various Data Science tools along the way:
+- Brief Introduction to R for Data Science
+- Brief Introduction to the Shell Scripting for Data
+Science
+- Brief Introduction to machine learning algorithms
+(e.g.: regression, decision trees)
+
+========================================================================
+SLIDE 11
+========================================================================
+Instructions on setting up your own laptop/desktop are
+on Moodle in the sections Unit Information and Week 0.
+- You need at least access to
+✓R and R Studio
+- These can be accessed via
+✓Anaconda - a programming package that also
+includes Python Notebooks
+✓MoVE - a Monash virtual desktop environment
+that simulates you being in a campus lab
+Technical requirements
+
+========================================================================
+SLIDE 12
+========================================================================
+Prerequisites
+You will need:
+- high school level of mathematics and statistics
+- basic programming and database skills
+- a "critical mindset":
+✓you will read/view a variety of materials
+✓different levels of quality and standards
+- basic exposure to information technology and internet
+businesses:
+✓software, science, and business computing
+✓Amazon, Google, X (formerly Twitter), ...
+
+========================================================================
+SLIDE 13
+========================================================================
+Suggestion
+The online textbook contains a LOT of content:
+- videos, blogs, articles, …
+- there is way too much for you to read it all in detail
+- not all of content examinable
+Strategy:
+- limit your time per week
+- get the big picture from articles/videos
+- find out what is out there
+- focus in on the details you need for assessment or
+your own development
+
+========================================================================
+SLIDE 14
+========================================================================
+Meet the Teaching Team
+Clayton
+Dr. Guanliang Chen
+Chief Examiner
+Dr. Chang Joo Yun (Chris)
+Lecturer, Unit Coordinator
+Dr. Jesmin Nahar
+Tutor
+Ahmad Ari Aldino
+Tutor
+Leila Mahmoodi
+Tutor
+Kaixun Yang
+Tutor
+Jiameng Wei
+Tutor
+Zhiping Liang
+Tutor
+Sehrish Iqbal
+Tutor
+Shenzhou (Stephen) Zhang
+Tutor
+Malaysia
+Dr. Lim Chern Hong
+Lecturer
+Li Conghui
+Tutor
+
+========================================================================
+SLIDE 15
+========================================================================
+Contacts
+1. Ask questions whenever you need
+- Please feel free to interrupt me during a seminar
+lecture
+2. Check the Discussions Forum on Ed
+- Particularly the "Assignments" category
+- Please do NOT post your solutions to assignments
+3. Attend the consultation sessions
+- Consultation Times on Moodle
+
+========================================================================
+SLIDE 16
+========================================================================
+Assessments
+-
+Coding tasks based on the R and Shell scripting covered in
+applied classes
+-
+No final exam
+-
+The use of Generative AI like ChatGPT?
+GPTZero: how to use the ChatGPT detection tool
+Assignment
+Content
+Percent
+Week due
+A1
+Project proposal
+15%
+Friday, Week 5
+A3
+Project report, presentation,
+and interview
+30%
+Friday, Week 11
+A2
+R coding
+15%
+Friday, Week 8
+A4
+R & Shell scripting and
+interview
+40%
+Friday, Week 13
+
+[Visual note] Assessment table: A1 project proposal 15% due Friday Week 5; A2 R coding 15% due Friday Week 8; A3 project report, presentation and interview 30% due Friday Week 11; A4 R and shell scripting plus interview 40% due Friday Week 13.
+
+========================================================================
+SLIDE 17
+========================================================================
+Getting Started
+-
+Set up your computer
+-
+Work through the materials in Week 1 to familiarise
+yourself with R, R-Studio and R Markdown
+-
+Each week, please attend the seminar lecture & read
+background materials between classes
+-
+Prepare for and attend the applied classes
+-
+Check out any additional activities for the week on Moodle
+-
+Complete the readings for Week 1
+
+========================================================================
+SLIDE 18
+========================================================================
+You're More than a Knowledge Worker
+- As a knowledge worker:
+you're applying your knowledge to do non-
+routine problem solving.
+- But now you also have to be a learning worker:
+you're learning new skills as you go,
+continually adapting.
+
+========================================================================
+SLIDE 19
+========================================================================
+Unit Schedule
+Week
+Content
+Lecturer
+1
+Overview of data science
+Chris Yun
+2
+History and impact of data science
+Chris Yun
+3
+Data business models
+Chris Yun
+4
+Data sources and standards
+Chris Yun
+5
+Characterising data and "big" data
+Chris Yun
+6
+Big Data and data science
+Chris Yun
+7
+Supervised data analysis (1)
+Chris Yun
+8
+Supervised data analysis (2)
+Chris Yun
+9
+Unsupervised data analysis
+Chris Yun
+10
+Data management
+Chris Yun
+11
+Issues in data science
+Chris Yun
+12
+Future of data science
+Guest Lecturer
+
+========================================================================
+SLIDE 20
+========================================================================
+Lecture 1:
+Overview of Data Science
+
+========================================================================
+SLIDE 21
+========================================================================
+Learning Outcomes (Week 1)
+By the end of this week, you should be able to:
+- Learn about data science.
+- Explore the roles and responsibilities of a data
+scientist.
+- Explain different data science roles and skills and
+comprehend the differences between them.
+- Explain the data science value chain and our
+standard model for the data science process.
+
+========================================================================
+SLIDE 22
+========================================================================
+Topics for Lecture 1
+1. What is Data Science?
+2. What is the Data Science Process?
+3. Roles of a Data Scientist
+
+========================================================================
+SLIDE 23
+========================================================================
+Overview
+of Data Science
+01
+(Textbook section 1.1+1.3)
+
+========================================================================
+SLIDE 24
+========================================================================
+Question: Who are the Data Scientists?
+Person D
+Person A
+Person C
+Person B
+PollEv.com /fit5145chris
+PollEv.com
+/fit5145chris
+
+[Visual note] Poll slide showing four example people in different professions and asking which of them should be considered data scientists.
+
+========================================================================
+SLIDE 25
+========================================================================
+Defining Data Science
+What is Data Science?
+- "data science is the technology of handling and
+extracting value from data"
+- "machine learning on big data"
+- useful, but too narrow!
+
+========================================================================
+SLIDE 26
+========================================================================
+Different definitions
+Source
+Definition
+Wikipedia
+… is the extraction of knowledge from data, which is a
+continuation of the field data mining and predictive analytics.
+Pivotal
+The use of statistical and machine learning techniques on big
+multi-structured data in a distributed computing environment
+to identify correlations and causal relationships, classify and
+predict events, identify patterns and anomalies and infer
+probabilities, interest and sentiment.
+NIST Big
+Data
+Working
+Group
+… is the empirical synthesis of actionable knowledge from raw
+data through the complete data lifecycle process.
+Journal of
+Data
+Science
+… is almost everything that has something to do with data:
+collecting, analysing, modelling …. yet the most important part
+is its applications - all sorts of applications.
+
+[Visual note] Comparison table showing definitions of data science from Wikipedia, Pivotal, the NIST Big Data Working Group, and the Journal of Data Science.
+
+========================================================================
+SLIDE 27
+========================================================================
+Definitions: Summary
+Broad: extraction of knowledge/value from data
+through the complete data lifecycle process
+- broad concern with the different stages
+- focus on the learning/knowledge discovery
+
+========================================================================
+SLIDE 28
+========================================================================
+Definitions: Summary
+Narrow: machine learning on big data
+Broad: extraction of knowledge/value from data
+through the complete data lifecycle process
+- broad concern with the different stages
+- focus on the learning/knowledge discovery
+** Big data is a broad term for data sets so large or complex that
+traditional data processing applications are inadequate.
+
+========================================================================
+SLIDE 29
+========================================================================
+Definitions: Summary
+Why Data Science, Not Just Data Analysis?
+
+========================================================================
+SLIDE 30
+========================================================================
+Definitions: Summary
+- Big data and machine learning
+Data analysis
+Data science
+Often asks, "What happened?" and "Why
+did it happen?"
+Asks, "What will happen?" and "What
+action should we take?"
+Uses statistics, spreadsheets, SQL and
+visualisation
+Uses statistics, programming, machine
+learning, databases and data engineering
+Usually works with organised, structured
+data
+Can work with structured and
+unstructured data, such as text, images
+and audio
+Produces reports, dashboards and
+insights
+Can produce insights, predictive models
+and automated systems
+
+[Visual note] Comparison table: data analysis focuses more on explaining what happened using structured data and reporting tools, while data science also includes prediction, programming, machine learning, data engineering, unstructured data, and automated systems.
+
+========================================================================
+SLIDE 31
+========================================================================
+The Rise of Big Data
+in Foreign Affairs, by Cukier and Mayer-Schoenberger
+Data Science interest is related to the arrival of "Big Data".
+- Data collection has changed:
+- lots of data, but more messy
+- don't look for perfect models - settle for finding patterns
+- examples: Google's language translation and flu trends
+- Datafication:
+- taking all aspects of life and turning them into data
+- e.g. NYC using big data to improve public services and lower
+costs
+
+========================================================================
+SLIDE 32
+========================================================================
+Defining Machine Learning
+Unlike Data Science, the definition for Machine Learning
+is better understood and more agreed upon:
+Machine Learning is concerned with the development of
+algorithms and techniques that allow computers to learn.
+- concerned with building computational artifacts,
+i.e., computer programs that can learn, oftentimes
+with computational output
+- but the underlying theory is statistics
+
+========================================================================
+SLIDE 33
+========================================================================
+Why use Machine Learning?
+Machine learning is useful when:
+- Human expertise is not available,
+e.g., Martian exploration
+- Humans cannot explain their
+expertise (as a set of rules), or their
+explanation is incomplete and needs
+tuning, e.g., speech recognition
+- Many solutions need to be adapted
+automatically, e.g., user
+personalisation.
+- Complex pattern
+image src: theconversation.com, meduim.com,
+
+========================================================================
+SLIDE 34
+========================================================================
+Why use Machine Learning?
+image src: lifewire.com, clrealyexplained.com, meduim.com
+Machine learning is useful when:
+- Situation changes over time, e.g.,
+junk email
+- There are large amounts of data,
+e.g., discover astronomical
+objects
+- Humans are expensive to use for
+the work, e.g., handwritten zip
+code recognition
+
+========================================================================
+SLIDE 35
+========================================================================
+Why use Machine Learning?
+Other reasons for needing Machine Learning:
+- information society
+- information warfare
+- information overload
+- information access
+Exercise: Google these or discuss with GenAI to find
+out about them!
+
+========================================================================
+SLIDE 36
+========================================================================
+Question
+Which of the following definitions best describes data
+science?
+Data Science is
+A.
+the design of machine learning models that automatically learn
+patterns from large datasets to make predictions
+B.
+the extraction of extraction of knowledge/value from data
+through the complete data lifecycle process
+C.
+the process of inspecting, analysing, and visualising structured
+data to discover useful information
+D.
+the practice of building scalable systems to store, process, and
+manage very large, fast-moving datasets
+PollEv.com /fit5145chris
+
+========================================================================
+SLIDE 37
+========================================================================
+Question
+Which of the following is not an application of Machine
+Learning?
+A. Filtering spam from millions of emails
+B. Recommending products based on what similar customers
+bought
+C. Sorting a list of customer names into alphabetical order
+D. Detecting fraudulent transactions from historical spending
+patterns
+E. Transcribing spoken audio into written text
+PollEv.com /fit5145chris
+
+========================================================================
+SLIDE 38
+========================================================================
+Data Science Examples
+Which data science applications have you used since
+this morning, and how many have you used?
+
+========================================================================
+SLIDE 39
+========================================================================
+Data Science Examples: GenAI
+
+[Visual note] Example of generative AI used as a data-science application.
+
+========================================================================
+SLIDE 40
+========================================================================
+Data Science Examples: GoogleMap
+
+[Visual note] Google Maps example showing route calculation and travel-time estimation.
+
+========================================================================
+SLIDE 41
+========================================================================
+Data Science Examples: Recommendation
+
+[Visual note] Netflix example showing personalised recommendations.
+
+========================================================================
+SLIDE 42
+========================================================================
+What else:
+-
+Google's spam filtering
+-
+Weather forecasting
+-
+Public health: "saturated fat is not bad for you after all"
+-
+Microsoft's predictive analytics for traffic
+Data Science Examples
+
+========================================================================
+SLIDE 43
+========================================================================
+Data Science Examples: Bushfires
+
+[Visual note] Bushfire mapping example showing incidents and warnings across southeastern Australia.
+
+========================================================================
+SLIDE 44
+========================================================================
+Data Science: Hype vs Reality
+The Hype
+-
+Throw data at an algorithm, it
+finds the answer
+-
+More data is always better
+-
+Models are objective and
+unbiased
+-
+DS predicts the future reliably
+-
+It replaces domain experts
+The Reality
+-
+Garbage in ->garbage out; ~60-
+80% of work is cleaning
+-
+Quality beats quantity - noise
+actively hurts
+-
+Models inherit the biases in their
+data
+-
+Correlation != causation; every
+prediction has uncertainty
+-
+It augments experts - domain
+knowledge decides what matters
+DS is powerful, but not magic.
+
+========================================================================
+SLIDE 45
+========================================================================
+How GenAI Changed the Data Science
+Workflow?
+Before - done by hand
+-
+Wrangling: write every
+cleaning script yourself
+-
+Analysis: hand-code each
+chart, look up syntax
+-
+Reporting: write summaries
+from scratch
+Now - LLM-assisted
+-
+Wrangling: LLM drafts the
+code, you verify
+-
+Analysis: describe the plot
+you want ->get code
+-
+Reporting: draft &
+summarise automatically
+THE HUMAN'S JOB SHIFTS
+-
+writing code ->asking the right question
+-
+recalling syntax ->verifying the output
+Then why do we still need to learn data science and coding?
+
+========================================================================
+SLIDE 46
+========================================================================
+Check the following materials:
+-
+watch Cukier's TED talk on "Big Data"
+-
+watch the CERN video "Big Data" from Tim Smith
+-
+read "What is Data Science?" by Mike Loukides of
+O'Reilly
+Homework
+
+========================================================================
+SLIDE 47
+========================================================================
+The Data
+Science Process
+02
+(Textbook section 1.2)
+What happens in a Data Science
+project?
+- illustrating the process:
+-
+a quick walkthrough illustrating the
+steps
+- the standard value chain
+-
+our model of the process
+
+========================================================================
+SLIDE 48
+========================================================================
+Let us know you better …
+In what order does a real data
+science project happen? Rank the
+7 stages.
+PollEv.com /fit5145chris
+
+========================================================================
+SLIDE 49
+========================================================================
+1. Pitching ideas for data science projects to
+investors/managers.
+
+========================================================================
+SLIDE 50
+========================================================================
+by Stephen Ausmus acquired from USDA ARS, public domain.
+2. Collecting data: researchers preparing to x-ray a patient.
+
+========================================================================
+SLIDE 51
+========================================================================
+3. Monitoring: Scientists watch over data collected by the
+gravimeter & magnetometer instruments.
+
+========================================================================
+SLIDE 52
+========================================================================
+Note that some of the best data is Open (publicly
+available and machine readable) Data.
+
+========================================================================
+SLIDE 53
+========================================================================
+4. Wrangling: Inspecting and cleaning the data.
+
+========================================================================
+SLIDE 54
+========================================================================
+5. Integration: Data can come from many different sources.
+
+========================================================================
+SLIDE 55
+========================================================================
+6. Analysis/Modelling: Analysing data and building models
+with their favourite tool.
+
+========================================================================
+SLIDE 56
+========================================================================
+7. Visualisation: Visualising data to interpret it and present
+results.
+
+========================================================================
+SLIDE 57
+========================================================================
+7. Visualisation: Choosing appropriate visualizations for the
+data. Many different options exist!
+
+========================================================================
+SLIDE 58
+========================================================================
+8. Interpretation: Interpreting analysis result which
+provides insights and helps make decisions.
+
+========================================================================
+SLIDE 59
+========================================================================
+Governance: managing data standards and formats.
+
+========================================================================
+SLIDE 60
+========================================================================
+Engineering: Data engineers make the back-end work.
+
+========================================================================
+SLIDE 61
+========================================================================
+Operationalization: putting the results to work.
+
+========================================================================
+SLIDE 62
+========================================================================
+Putting it all together: Designing a data science
+process flowchart.
+
+========================================================================
+SLIDE 63
+========================================================================
+Question
+Using a short phrase or word, which activity
+in data science process is the most
+interesting to you.
+PollEv.com /fit5145chris
+
+========================================================================
+SLIDE 64
+========================================================================
+Our Standard Value Chain: Parts of a Data
+Science Project
+from Doing Data Science by Schutt and O'Neil, 2013 (available digitally through library)
+Chapter 1 of the book provides the following visualisation
+of the standard value chain for a data science project:
+
+========================================================================
+SLIDE 65
+========================================================================
+Our Standard Value Chain: Parts of a Data
+Science Project
+- Collection: getting the data;
+- Wrangling: data preprocessing, cleaning;
+- Analysis: discovery (learning, visualisation, etc.);
+- Presentation: arguing the case that the results are significant
+and useful;
+- Engineering: storage and computational resources across full
+lifecycle;
+- Governance: overall management of data across full lifecycle;
+- Operationalisation: putting the results to work, so as to gain
+benefits or value.
+from Doing Data Science by Schutt and O'Neil, 2013 (available digitally through library)
+
+========================================================================
+SLIDE 66
+========================================================================
+Question
+Which data science step(s) do you think is/are
+most time-consuming and challenging?
+A. Collection
+B. Wrangling
+C. Analysis
+D. Presentation
+E. Engineering
+F. Governance
+G. Operationalisation
+
+========================================================================
+SLIDE 67
+========================================================================
+Useful materials
+- 7 Challenges Faced by Data Scientists in Your
+Organization and How They Can Be Resolved
+- Cleaning Big Data: Most Time-Consuming, Least
+Enjoyable Data Science Task, Survey Says
+
+========================================================================
+SLIDE 68
+========================================================================
+Interpreting Roles in a Project
+Following Jeff Hammerbacher's UC Berkeley 2012
+course notes, we will interpret these four entities: we
+will interpret these
+- business analyst
+- programmer
+- enterprise
+- web company
+
+========================================================================
+SLIDE 69
+========================================================================
+Interpretations: the Business Analyst
+Collection: copy and paste into Excel
+Engineering: use Excel to store and retrieve
+Wrangling: use Excel functions, VBA
+Analysis: charts
+
+========================================================================
+SLIDE 70
+========================================================================
+Interpretations: the Programmer
+Collection: web APIs, scraping, database queries
+Engineering: flat files
+Wrangling: Python and Perl, etc.
+Analysis: Matplotlib in Python, R
+
+========================================================================
+SLIDE 71
+========================================================================
+Interpretations: the Enterprise
+Collection: application databases, intranet files, server
+logs
+Engineering: Teradata, Oracle, MS SQL Server
+Wrangling: Talend, Informatica
+Analysis: Cognos, Business Objects, SAS, SPSS
+
+========================================================================
+SLIDE 72
+========================================================================
+Interpretations: the Web Company
+Collection: application databases, server logs, crawl data
+Engineering: Hadoop/Hive, Flume, HBase
+Wrangling: Pig, Oozie
+Analysis: dashboards, R
+
+========================================================================
+SLIDE 73
+========================================================================
+Roles of a Data
+Scientist
+03
+A better understanding the different
+kinds of data scientists:
+- reviewing different writings:
+… from What is Data Science? from O'Reilly
+- interviews
+… from Data Analytics Handbook
+(Textbook Section 1.4)
+
+========================================================================
+SLIDE 74
+========================================================================
+… from the article, "What is Data Scientist?"
+by O'Reilly
+-
+"gathering data, massaging it into a tractable form, making
+it tell its story, and presenting that story to others."
+(Loukides)
+-
+"Design a hypothesis test, perform a regression analysis
+over data samples with R, design and implement an
+algorithm for service in Hadoop, or communicate the
+results" (Jeff Hammerbacher)
+-
+"The ability to take data - to be able to understand it, to
+process it, to extract value from it, to visualize it, to
+communicate it - that's going to be a hugely important
+skill in the next decades." (Hal Varian)
+from What is Data Science? from O'Reilly
+
+========================================================================
+SLIDE 75
+========================================================================
+The Data Analytics Handbook is a set of long interviews from
+industry and academic professionals in the field:
+1. Communication skills are underrated.
+2. The biggest challenge is the Collection and Wrangling steps.
+3. A data scientist is better at statistics than a software
+engineer and better at software engineering than a
+statistician.
+4. The data industry is still nascent and the roles less well
+defined so you get to interact with many parts of the
+company from engineering to business intelligence to
+product managers.
+From Data Analytics Handbook
+
+========================================================================
+SLIDE 76
+========================================================================
+A quote from Jason Widjaja in Quora:
+-
+Data analysts are primarily people who
+develop insights with data ….
+-
+Data scientists are primarily people who
+develop data models and products, that in
+turn produce insights ...
+-
+Data engineers are primarily people who
+manage data infrastructure, automate data
+processing and deploy models at scale …
+What is the Difference Between ...
+from What is Data Science? from O'Reilly
+
+========================================================================
+SLIDE 77
+========================================================================
+A quote from Jason Widjaja in Quora:
+-
+Data analysts are primarily people who develop
+insights with data ….
+-
+Data scientists are primarily people who
+develop data models and products, that in turn
+produce insights ...
+-
+Data engineers are primarily people who manage
+data infrastructure, automate data processing
+and deploy models at scale …
+See also Job Comparison - Data Scientist vs Data Engineer vs
+Statistician in 2015 & Data Engineer, Data Analyst, Data Scientist -
+What's the Difference? In 2021
+What is the Difference Between ...
+from What is Data Science? from O'Reilly
+
+========================================================================
+SLIDE 78
+========================================================================
+See Udacity on data careers
+Data Scientists vs. Data Engineers
+
+========================================================================
+SLIDE 79
+========================================================================
+Different roles: Neflix recommendation
+Role
+Description
+Product manager
+"Let's add a personalised recommendation row to the
+home screen. Goal: increase watch time." Decides what
+and why
+Data analyst
+"Users drop off after 3 titles, but people who watch
+comedy come back more often." Digs through data,
+reports insights
+Data scientist
+Builds the recommendation model that predicts what
+each user is most likely to watch next
+Data engineer
+Builds pipelines that move billions of clicks, plays, and
+pauses from millions of users so the model can use them
+ML engineer
+Ships that model into the live Netflix service so it
+responds to millions of users in milliseconds
+Software engineer,
+designer
+Builds the actual recommendation row, thumbnails, and
+scrolling UI that users see and tap
+
+========================================================================
+SLIDE 80
+========================================================================
+To become a specialist you need:
+- solid machine learning and statistics
+- related mathematics (1st+2nd year in many degrees)
+- solid prototyping (R, Python, Java)
+- perhaps Unix experience (Linux, Mac OSX)
+See also:
+- The infamous Metromap: Becoming a data scientist
+- And Modern Data Scientist on Pinterest
+This unit provides an introduction and background only.
+Career as Data Scientist
+
+========================================================================
+SLIDE 81
+========================================================================
+Thank you!
