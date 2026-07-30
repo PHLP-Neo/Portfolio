@@ -56,6 +56,8 @@ Each node logically equal to each other
 -
 Each node can act as a client or a server
 
+[Client-Server Model, so this is a frontend course]
+
 ========================================================================
 SLIDE 5
 ========================================================================
@@ -72,6 +74,8 @@ data, applications and network
 Mobile computing is possible because of wireless communication
 technologies: Cellular networks (4G, 5G), WiFi, WiMAX, Bluetooth,
 ZigBee, NFC, RFID, …
+
+[We are not making API in this course]
 
 ========================================================================
 SLIDE 6
@@ -227,6 +231,9 @@ Limited access to platform-specific features
 -
 A demo: https://docs.flutter.dev/development/ui/widgets-intro
 https://flutter.dev/
+
+[Recently introduce special language and dev tool for people who does 
+not have programming background]
 
 ========================================================================
 SLIDE 14
@@ -693,6 +700,8 @@ onStop(): the activity is no longer visible
 -
 onDestroy(): the activity is about to be terminated
 https://developer.android.com/guide/components/activities/activity-lifecycle
+
+[We are only interested in onCreate()]
 
 ========================================================================
 SLIDE 29
