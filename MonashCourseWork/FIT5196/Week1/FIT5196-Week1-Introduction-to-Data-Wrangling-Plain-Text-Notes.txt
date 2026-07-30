@@ -1,0 +1,1182 @@
+FIT5196 - Data Wrangling
+Week 1: Introduction to Data Wrangling
+Lecturer: Jackie Rong
+Source: Week 1 Introduction to DW.pdf
+Slides: 59
+
+These plain-text notes preserve slide order and wording. Important visual content is summarised in [Visual note] entries.
+
+========================================================================
+SLIDE 1
+========================================================================
+Week 1
+Introduction to Data Wrangling
+By Jackie Rong
+Faculty of Information Technology
+FIT5196 DATA WRANGLING
+Monash University
+
+========================================================================
+SLIDE 2
+========================================================================
+Outline
+- What is Data Wrangling?
+- Why need to do Data Wrangling?
+- Challenges in Data Wrangling
+- Data Wrangling Process & Tasks
+- Programming Language & Environments
+
+========================================================================
+SLIDE 3
+========================================================================
+Data Wrangling
+-
+Data wrangling is a critical step in the data analysis process.
+-
+Data wrangling is a preparatory step for data analysis.
+-
+Data wrangling is essential for ensuring that data analysis
+leads to accurate and actionable insights.
+-
+Data wrangling is the process of making data useful.
+?
+Problem
+Identification
+Data
+Collection
+Data
+Cleaning
+Result
+Interpretation
+Data
+Analysis
+Data Wrangling
+
+[Visual note] Process diagram: problem identification -> data collection -> data cleaning -> data analysis -> result interpretation. Data wrangling mainly covers the preparation stages before analysis.
+
+========================================================================
+SLIDE 4
+========================================================================
+Data Wrangling
+-
+Data Wrangling is the process of acquiring, cleaning, structuring, and enriching raw data into a format
+that is directly usable for analysis.
+?
+Problem
+Identification
+Data
+Collection
+Data
+Cleaning
+Result
+Interpretation
+Data
+Analysis
+Data Wrangling
+
+[Visual note] The same process diagram highlights data wrangling as acquiring, cleaning, structuring, and enriching raw data into analysis-ready form.
+
+========================================================================
+SLIDE 5
+========================================================================
+Why need to do Data Wrangling?
+-
+Data wrangling is essential for ensuring that data analysis leads to accurate and actionable insights.
+The "census income" data set from UCI machine learning data repository
+
+[Visual note] Example table: the UCI census income dataset, showing mixed categorical and numerical fields and missing-value markers.
+
+========================================================================
+SLIDE 6
+========================================================================
+Why need to do Data Wrangling?
+-
+Data wrangling is essential for ensuring that data analysis leads to accurate and actionable insights.
+The "credit approval" data set from UCI machine learning data repository
+
+[Visual note] Example table: the UCI credit approval dataset, with abbreviated fields that are difficult to interpret without metadata.
+
+========================================================================
+SLIDE 7
+========================================================================
+Why need to do Data Wrangling?
+-
+What does raw data really look like?
+Posts extracted from Twitter
+https://dev.twitter.com/rest/reference/get/blocks/list
+Airline Crash dataset from Wikipedia
+https://en.wikipedia.org/wiki/List_of_accidents_and_incidents_invol
+ving_commercial_aircraft#2001
+Fungal disease CT report
+
+[Visual note] Examples of raw data in different forms: JSON from Twitter, semi-structured airline crash records, and an unstructured medical CT report.
+
+========================================================================
+SLIDE 8
+========================================================================
+Goals of Data Wrangling
+-
+The goals of data wrangling are multifaceted, aiming to simplify data analysis and maximize the value
+extracted from the data.
+-Improving Data Quality
+-Data Formatting and Standardization
+-Simplifying Access to Data
+-Enriching Data
+-Reducing Data Complexity
+-Facilitating Data Integration
+-Increasing Analytical Efficiency
+-Supporting Decision Making
+Raw data
+?
+Problem
+Identification
+Data
+Collection
+Data
+Cleaning
+Result
+Interpretation
+Data
+Analysis
+Data Wrangling
+Tidy data
+Data + Wrangling + Analysis
+= Data Product (Knowledge)
+
+[Visual note] Workflow diagram: raw data -> data wrangling -> tidy data -> data analysis -> result interpretation. The slide summarises this as Data + Wrangling + Analysis = Data Product (Knowledge).
+
+========================================================================
+SLIDE 9
+========================================================================
+Challenges in Data Wrangling
+-
+Challenges arise from
+-the nature of the data itself,
+-the complexity of data sources, and
+-the goals of the data analysis projects.
+
+========================================================================
+SLIDE 10
+========================================================================
+Challenges in Data Wrangling
+-
+Challenges arise from the nature of the data itself, the complexity of data sources, and the goals of
+the data analysis projects.
+-Volume of Data & Scalability
+Source: https://infogram.com/the-volume-of-data-created-worldwide-from-2010-to-2025-1h7k2303eevdg2x?utm_source=chatgpt.com
+
+[Visual note] Visuals illustrate rapid growth in global data volume and the large amount of online data generated every 60 seconds.
+
+========================================================================
+SLIDE 11
+========================================================================
+Challenges in Data Wrangling
+-
+Challenges arise from the nature of the data itself, the complexity of data sources, and the goals of
+the data analysis projects.
+-Volume of Data & Scalability
+-Data Quality Issues
+The Switzerland heart disease data set from
+UCI machine learning data repository
+Where the data problems come from?
+-
+Manual entry errors
+-
+Malfunction of measurement
+devices
+-
+Data sources follow different
+conventions, formats, or data
+models
+
+[Visual note] Examples of data-quality problems include missing values, invalid entries, inconsistent conventions, and outliers.
+
+========================================================================
+SLIDE 12
+========================================================================
+Challenges in Data Wrangling
+-
+Challenges arise from the nature of the data itself, the complexity of data sources, and the goals of
+the data analysis projects.
+-Volume of Data & Scalability
+-Data Quality Issues
+-Data from Diverse Sources
+JavaScript Object Notation (JSON):
+Extensible Markup Language (XML)
+Other formats: CSV, Excel, PDF, PNG, JPGE, ……
+
+[Visual note] Examples compare JSON, XML, CSV, Excel, PDF, PNG, JPEG, and other data formats.
+
+========================================================================
+SLIDE 13
+========================================================================
+Challenges in Data Wrangling
+-
+Challenges arise from the nature of the data itself, the complexity of data sources, and the goals of
+the data analysis projects.
+-Volume of Data & Scalability
+-Data Quality Issues
+-Data from Diverse Sources
+-Complexity of Data Structures
+https://blog.kensho.com/structured-vs-unstructured-data-what-you-need-to-know-f1e7ce61cd1e
+
+[Visual note] Diagram contrasts unstructured data such as text, audio, video, and web content with structured tabular data.
+
+========================================================================
+SLIDE 14
+========================================================================
+Challenges in Data Wrangling
+-
+Challenges arise from the nature of the data itself, the complexity of data sources, and the goals of
+the data analysis projects.
+-Volume of Data & Scalability
+-Data Quality Issues
+-Data from Diverse Sources
+-Complexity of Data Structures
+-Lack of Standardization & Interpretability
+icons created by Flat Icons - Flaticon, https://www.flaticon.com/free-icons/iso
+
+[Visual note] Diagram illustrates many incompatible input conventions being processed into multiple outputs, highlighting standardisation and interpretability problems.
+
+========================================================================
+SLIDE 15
+========================================================================
+Challenges in Data Wrangling
+-
+Challenges arise from the nature of the data itself, the complexity of data sources, and the goals of
+the data analysis projects.
+-Volume of Data & Scalability
+-Data Quality Issues
+-Data from Diverse Sources
+-Complexity of Data Structures
+-Lack of Standardization & Interpretability
+-Highly Time-Consuming
+3%
+5%
+4%
+9%
+19%
+60%
+What Data Scientists spend thee most time doing?
+Buildinig training sets 3%
+Others 5%
+Refining algorithms 4%
+Mining data for patterns 9%
+Collecting data set 19%
+Cleaning & organising data 60%
+Sarih, Houda & Tchangani, Ayeley & Medjaher, Kamal & PERE, Eric. (2019). Data preparation and preprocessing for
+broadcast systems monitoring in PHM framework. 1444-1449. 10.1109/CoDIT.2019.8820370.
+
+[Visual note] Pie chart: cleaning and organising data accounts for 60%, collecting data 19%, mining patterns 9%, refining algorithms 4%, building training sets 3%, and other work 5%.
+
+========================================================================
+SLIDE 16
+========================================================================
+Challenges in Data Wrangling
+-
+Challenges arise from the nature of the data itself, the complexity of data sources, and the goals of
+the data analysis projects.
+-Volume of Data & Scalability
+-Data Quality Issues
+-Data from Diverse Sources
+-Complexity of Data Structures
+-Lack of Standardization & Interpretability
+-Highly Time-Consuming
+-Skill and Tool Requirements
+Advanced
+Statistics
+Discrete
+Math
+Programming
+Python
+R
+Data
+Visualisation
+Machine
+Learning
+Documentation
+Business Savvy
+Computer
+Vision
+Natural Language
+Processing
+Database
+11 Data Scientist Skills Employers Want to See in 2022, https://bootcamp.berkeley.edu/blog/data-scientist-skills/
+
+========================================================================
+SLIDE 17
+========================================================================
+Challenges in Data Wrangling
+-
+Challenges arise from the nature of the data itself, the complexity of data sources, and the goals of
+the data analysis projects.
+-Volume of Data & Scalability
+-Data Quality Issues
+-Data from Diverse Sources
+-Complexity of Data Structures
+-Lack of Standardization & Interpretability
+-Highly Time-Consuming
+-Skill and Tool Requirements
+-Data Privacy and Security
+Andrew Kamau, https://blog.google/products/chrome/5-tips-to-stay-safer-online-with-chrome/
+
+========================================================================
+SLIDE 18
+========================================================================
+Data Wrangling Tasks
+-
+Data Wrangling is the process of acquiring, cleaning, structuring, and enriching raw data into a
+format that is directly usable for analysis.
+Data
+Discovery
+Data
+Collection
+Data
+Cleaning
+Data Pre-
+processing
+Data
+Transformation
+Data
+Enrichment
+Data
+Storing
+Data
+Validation
+
+[Visual note] Process overview lists data discovery, data collection, data cleaning, data preprocessing, data transformation, data enrichment, data storing, and data validation.
+
+========================================================================
+SLIDE 19
+========================================================================
+Overview of Data Wrangling Process
+Data Discovery
+The initial step where data scientists
+identify and access various data
+sources relevant to the analytical
+objectives.
+This includes determining the
+availability, suitability, and quality of
+data.
+Data
+Discovery
+Data
+Collection
+Data
+Cleaning
+Data Pre-
+processing
+Data
+Transformation
+Data
+Enrichment
+Data Storing
+Data
+Validation
+Data wrangling is the process of making data useful.
+
+========================================================================
+SLIDE 20
+========================================================================
+Example - Data Discovery
+Project: Predictive Analysis for Patient Readmissions
+-
+Objective - Aims to develop a predictive model to
+identify patients at high risk of readmission within
+30 days of discharge
+-
+Goal - To improve patient outcomes and reduce
+healthcare cost
+-
+Your tasks in a healthcare analytics team
+-Identifying relevant data sources
+-Understanding data availability and accessibility
+-Assessing data quality and suitability
+John Russell, 2021, Hospitals face big fines for frequent readmission,
+https://www.ibj.com/articles/hospitals-face-big-fines-for-frequent-readmissions
+
+========================================================================
+SLIDE 21
+========================================================================
+Example - Data Discovery (cont.)
+Your tasks
+-Identifying relevant data sources
+Electronic Health
+Records
+Hospital Admission,
+Discharge and
+Transfer Systems
+Insurance Claim
+Data
+Wearable Device
+Data
+Patient Health
+Histories
+Treatment
+plans
+Medications
+Outcomes
+Diagnoses
+Dates and reasons for
+admissions,
+discharges, and
+transfers within the
+hospital
+Patient claims
+Procedure
+performed
+Billing
+items
+Reimburse
+ment rates
+Patient-generated
+health data tracking
+vital signs like heart
+rate and activity
+levels.
+
+========================================================================
+SLIDE 22
+========================================================================
+Example - Data Discovery (cont.)
+Your tasks
+-Identifying relevant data sources
+-Understanding data availability and accessibility
+Hospital IT Department
+Doctors, Nurses, other
+Clinicians or Health
+worker
+Insurance Companies
+Health Monitoring Programs
+
+========================================================================
+SLIDE 23
+========================================================================
+Example - Data Discovery (cont.)
+Your tasks
+-Identifying relevant data sources
+-Understanding data availability and accessibility
+-Assessing data quality and suitability
+Electronic Health
+Records
+Hospital Admission,
+Discharge and
+Transfer Systems
+Insurance Claim
+Data
+Wearable Device
+Data
+Completeness
+Accuracy
+Electronic health record, Wikipedia,
+https://en.wikipedia.org/wiki/Electronic_health_record
+Formatting
+Structuring
+Multi-data sources
+Zhou, Shengyao & He, Jie & Yang, Hui & Chen, Donghua & Zhang, Runtong. (2020). Big Data-Driven Abnormal Behavior
+Detection in Healthcare Based on Association Rules. IEEE Access. PP. 1-1. 10.1109/ACCESS.2020.3009006.
+Quality
+Coverage
+
+========================================================================
+SLIDE 24
+========================================================================
+Overview of Data Wrangling Process
+Data Collection
+This phase involves gathering the
+identified data from its sources.
+The data can be collected from
+multiple sources like databases,
+spreadsheets, APIs, and external
+datasets.
+Data
+Discovery
+Data
+Collection
+Data
+Cleaning
+Data Pre-
+processing
+Data
+Transformation
+Data
+Enrichment
+Data Storing
+Data
+Validation
+Data wrangling is the process of making data useful.
+
+========================================================================
+SLIDE 25
+========================================================================
+Data Collection
+-
+To collect data that is relevant, accurate and robust for data analysis needs, we need to consider
+-Define objective - what to achieve with the data collection?
+-Data requirements - what the specific data needed to meet the objective?
+-Data sources - where to obtain the data?
+-Data quality - ensure the data collected is of high quality
+-Data volume - assess the volume of data needed and the capacity of handling
+-Ethics - ensure ethical practices complying with legal standards and permissions
+-Data format - what format to be used?
+-Collection methods and tools - choose appropriate methods and right tools
+-Timeframe and budget - align with project deadlines and budget constraints
+-Data privacy and security - protect privacy from individuals and secure storage and handling of data
+-Documentation - keep detailed documentation of the data collection process
+-Pilot test - validate data collection process and instruments
+-Review and adaptation - regularly review the process for any necessary adjustments
+
+========================================================================
+SLIDE 26
+========================================================================
+Overview of Data Wrangling Process
+Data Pre-processing
+At this stage, preliminary data
+preparation tasks are performed to
+make raw data more suitable for
+analysis.
+It involves selecting, and formatting
+datasets to ensure they are in a
+usable state.
+Data
+Discovery
+Data
+Collection
+Data
+Cleaning
+Data Pre-
+processing
+Data
+Transformation
+Data
+Enrichment
+Data Storing
+Data
+Validation
+Data wrangling is the process of making data useful.
+
+========================================================================
+SLIDE 27
+========================================================================
+Data Pre-Processing
+-
+Selection
+-Subsetting
+o Choosing a subset of data that is relevant to the analysis, which may involve filtering rows
+or columns based on certain criteria.
+
+========================================================================
+SLIDE 28
+========================================================================
+Example - Subsetting
+AirCrashes
+-
+Airline_flight
+-
+Casualties
+-
+Circumstances
+-
+Country
+-
+Crew
+-
+Data
+-
+Ground
+-
+Latitude
+-
+Longitude
+-
+Passengers
+-
+Dead
+Objective: To analyse accidents happened from 2000 to 2010.
+2000 -
+2010
+
+========================================================================
+SLIDE 29
+========================================================================
+Data Pre-Processing
+-
+Selection
+-Subsetting
+o Choosing a subset of data that is relevant to the analysis, which may involve filtering rows
+or columns based on certain criteria.
+-Sampling
+o If the dataset is too large to process or if you want to perform initial exploratory analysis,
+you might draw a representative sample of the data.
+
+========================================================================
+SLIDE 30
+========================================================================
+Example - Sampling
+-
+Objective: To analyse Facebook active customers' behaviours in December 2023
+Facebook monthly active users:
+3.05 billion monthly users access
+Facebook's platform, a 7.18%
+increase year-over-year.
+- India has the most Facebook
+users with over 385.65 million
+- US (188.6 million)
+- Indonesia (136.35 million)
+- Brazil (111.75 million)
+- Mexico (94.8 million)
+- …
+12.64%
+6.18%
+Brian Dean, Facebook User & Growth Statistics, Backlinko, https://backlinko.com/facebook-users
+4.47%
+3.66%
+3.11%
+Sampled dataset of 3.05
+million users
+0.1% of original dataset
+
+========================================================================
+SLIDE 31
+========================================================================
+Data Pre-Processing
+-
+Selection
+-
+Formatting
+-Date formatting
+-DD/MM/YYYY
+-MM/DD/YYYY
+-YYYY/MM/DD
+-…
+-Numeric formatting
+-Decimal points
+-Thousands separators
+-Text formatting
+-Upper, lower, title case, whitespace, symbols
+-Categorical data formatting
+-'Male' vs 'M'; 'Female' vs 'F'
+-Currency conversion
+-USD, AUD, EUR, CNY…
+-Unit conversion
+-Miles to kilometres
+-Fahrenheit to Celsius
+-Text encoding standardisation
+-UTF-8
+-Time zone alignment
+-Address formatting
+-File format conversion
+-XML -> CSV
+-JSON -> XML
+
+========================================================================
+SLIDE 32
+========================================================================
+Overview of Data Wrangling Process
+Data Cleaning:
+A critical step focused on removing
+or correcting inaccuracies,
+inconsistencies, duplicates, or
+irrelevant data points within
+datasets.
+This step ensures the quality and
+reliability of data for analysis.
+Data
+Discovery
+Data
+Collection
+Data
+Cleaning
+Data Pre-
+processing
+Data
+Transformation
+Data
+Enrichment
+Data Storing
+Data
+Validation
+Data wrangling is the process of making data useful.
+
+========================================================================
+SLIDE 33
+========================================================================
+Data Cleaning
+-
+Data anomalies
+-Items within a dataset that deviate from a typical pattern or expectation.
+-They can indicate errors.
+-They can also reveal insights or new patterns.
+The Switzerland heart disease data set from
+UCI machine learning data repository
+Missing Values
+Outliers
+
+========================================================================
+SLIDE 34
+========================================================================
+Data Cleaning
+-
+Data anomalies
+-Items within a dataset that deviate from a typical pattern or expectation.
+-They can indicate errors.
+-They can also reveal insights or new patterns.
+Duplicate Data
+Employer Database
+Staff Database
+Consistency Issue
+
+========================================================================
+SLIDE 35
+========================================================================
+Overview of Data Wrangling Process
+Data Transformation
+This involves converting data from its
+original form into a format or
+structure that is more appropriate
+for analysis.
+Transformation can include
+normalization, aggregation, and
+feature engineering to enhance data
+analysis.
+Data
+Discovery
+Data
+Collection
+Data
+Cleaning
+Data Pre-
+processing
+Data
+Transformation
+Data
+Enrichment
+Data Storing
+Data
+Validation
+Data wrangling is the process of making data useful.
+
+========================================================================
+SLIDE 36
+========================================================================
+Data Transformation
+-
+Numeric data
+-Normalisation
+o Rescales numeric data to fall within a specified range, often between 0 and 1, to ensure that no
+variable dominates due to its scale.
+
+========================================================================
+SLIDE 37
+========================================================================
+Data Transformation (cont.)
+-
+Numeric data
+-Normalisation
+-Standardization
+o Adjusts the distribution of data so that it has
+a mean of 0 and a standard deviation of 1.
+This is useful for algorithms that assume
+data is normally distributed.
+
+========================================================================
+SLIDE 38
+========================================================================
+Data Transformation (cont.)
+-
+Numeric data
+-Normalisation
+-Standardization
+-Aggregation
+o Summarizing or aggregating data, such as
+computing summary statistics (mean,
+median, sum) for groups of data. This can
+be particularly useful in reducing data
+dimensionality and extracting insights from
+the data.
+
+========================================================================
+SLIDE 39
+========================================================================
+Data Transformation (cont.)
+-
+Numeric data
+-Normalisation
+-Standardization
+-Aggregation
+-Discretisation
+o Converts continuous variables into
+discrete ones by creating a set number
+of equal-width or equal-frequency
+intervals, which can be useful for
+certain types of models.
+Discretisation
+
+========================================================================
+SLIDE 40
+========================================================================
+Data Transformation (cont.)
+-
+Numeric data
+-Normalisation
+-Standardization
+-Aggregation
+-Discretisation
+-Binning/Bucketing
+o Converts numeric variables into
+categorical counterparts by grouping
+values into bins or categories, which
+can simplify the model and help in
+identifying trends.
+Binning/Bucketing
+
+========================================================================
+SLIDE 41
+========================================================================
+Data Transformation (cont.)
+-
+Text data
+-Tokenisation
+o Breaking text into individual words or
+phrases
+Utkarsh Kant, Tokenization - A complete guide, Medium, https://medium.com/@utkarsh.kant/tokenization-a-complete-guide-3f2dd56c0682
+
+========================================================================
+SLIDE 42
+========================================================================
+Data Transformation (cont.)
+-
+Text data
+-Tokenisation
+-Stemming/lemmatisation
+o Reducing words to their root form
+Botpenguin, Stemming, https://botpenguin.com/glossary/stemming
+
+========================================================================
+SLIDE 43
+========================================================================
+Data Transformation (cont.)
+-
+Text data
+-Tokenisation
+-Stemming/lemmatisation
+-Vectorisation
+o Converting text into numerical format
+for analysis
+
+========================================================================
+SLIDE 44
+========================================================================
+Data Transformation (cont.)
+-
+Image data
+-Resize
+-Chopping
+
+========================================================================
+SLIDE 45
+========================================================================
+Data Transformation (cont.)
+-
+Image data
+-Resize
+-Chopping
+-Normalization
+-Colour space conversion
+Red
+Green
+Blue
+Grayscale/
+Black & White
+Cyan
+Magenta
+Yellow
+Black
+
+========================================================================
+SLIDE 46
+========================================================================
+Data Transformation (cont.)
+-
+Image data
+-Resize
+-Chopping
+-Normalization
+-Colour space conversion
+-Rotation
+-Flipping
+-Translation
+
+========================================================================
+SLIDE 47
+========================================================================
+Data Transformation (cont.)
+-
+Image data
+-Resize
+-Chopping
+-Normalization
+-Colour space conversion
+-Rotation
+-Flipping
+-Translation
+-Noise injection
+-Brightness adjustment
+-Contrast adjustment
+Brightness +150
+Brightness -150
+Contrast +150
+Contrast -150
+Noise
+
+========================================================================
+SLIDE 48
+========================================================================
+Overview of Data Wrangling Process
+Data Enrichment
+Enhancing the data with additional
+context or merging it with other data
+sources to make it completer and
+more informative.
+This step can involve adding
+demographic information,
+geographical tags, or combining
+datasets to provide more depth.
+Data
+Discovery
+Data
+Collection
+Data
+Cleaning
+Data Pre-
+processing
+Data
+Transformation
+Data
+Enrichment
+Data Storing
+Data
+Validation
+Data wrangling is the process of making data useful.
+
+========================================================================
+SLIDE 49
+========================================================================
+Data Enrichment
+-
+Data integration
+-Combining data from different sources to create a more comprehensive dataset.
+-
+Data augmentation
+-Adding information to existing records to enhance the depth of data on each data point.
+-
+Attribute enrichment
+-Enhancing existing datasets by adding new attributes or features that were not previously
+included.
+-
+Temporal enrichment
+-Adding time-related data to datasets.
+-
+Semantic enrichment
+-Adding metadata or other semantic information to make data more understandable and usable.
+
+========================================================================
+SLIDE 50
+========================================================================
+Overview of Data Wrangling Process
+Data Validation
+Ensuring that the data is accurate,
+consistent, and usable for analysis.
+Validation checks are performed to
+verify data quality and correctness
+after cleaning and transformation.
+Data
+Discovery
+Data
+Collection
+Data
+Cleaning
+Data Pre-
+processing
+Data
+Transformation
+Data
+Enrichment
+Data Storing
+Data
+Validation
+Data wrangling is the process of making data useful.
+
+========================================================================
+SLIDE 51
+========================================================================
+Data Validation
+-
+Define Validation Rules and Criteria
+-Establish the standards that your data must meet.
+-
+Check for accuracy
+-Ensure that the data accurately reflects the real-world entities or values it represents.
+-
+Ensure consistency
+-Verify that the data is consistent within the dataset and across related datasets.
+-
+Validate data completeness
+-Ensure no critical data is missing, which could impact analysis.
+-
+Test for logical integrity
+-Confirm that the data makes logical sense and adheres to known constraints or relationships.
+-
+Validate range and constraints
+-Ensure that data values fall within acceptable ranges or constraints.
+
+========================================================================
+SLIDE 52
+========================================================================
+Data Validation (cont.)
+-
+Format validation
+-Verify that the data is in the expected format or structure, which is essential for automated
+processing.
+-
+Uniqueness checks
+-Ensure that entries that are supposed to be unique do not have duplicates.
+-
+Cross-validation
+-Use related datasets or data sources to validate the data.
+-
+Automate validation processes
+-Streamline validation to make it efficient and repeatable, especially for large datasets or
+ongoing data collection.
+-
+Document validation issues and resolutions
+-Keep track of identified issues and how they were resolved for future reference and
+accountability.
+
+========================================================================
+SLIDE 53
+========================================================================
+Overview of Data Wrangling Process
+Data Storing
+The final step involves saving the
+wrangled data in a suitable storage
+system for easy access and analysis.
+This could be databases, data
+warehouses, or cloud storage
+solutions, depending on the scale
+and purpose of the data analysis
+project.
+Data
+Discovery
+Data
+Collection
+Data
+Cleaning
+Data Pre-
+processing
+Data
+Transformation
+Data
+Enrichment
+Data Storing
+Data
+Validation
+Data wrangling is the process of making data useful.
+
+========================================================================
+SLIDE 54
+========================================================================
+Data Storing
+-
+Selection of Storage Solution
+-Choose an appropriate data storage solution that aligns with the data's nature, size, and intended use.
+-
+Data Modelling and Schema Design
+-Design a logical structure for the data that supports efficient storage, query, and retrieval.
+-
+Normalization and Denormalization
+-Organize the data to reduce redundancy and improve integrity in relational databases through
+normalization, or optimize performance and read efficiency through denormalization, especially in
+NoSQL databases or data warehouses.
+-
+Data Formatting and Encoding
+-Ensure that data is stored in a consistent and appropriate format that matches the storage system's
+requirements.
+-
+Implementing Data Security Measures
+-Protect data from unauthorized access and ensure privacy and compliance with data protection
+regulations (e.g., GDPR, HIPAA).
+
+========================================================================
+SLIDE 55
+========================================================================
+Data Storing (cont.)
+-
+Data Indexing and Optimization
+-Enhance the speed and efficiency of data retrieval.
+-
+Backup and Recovery Planning
+-Ensure data durability and the ability to recover from data loss or corruption.
+-
+Data Lifecycle Management
+-Manage the lifecycle of data from creation to deletion, aligning with data retention policies and legal
+requirements.
+-
+Documentation and Metadata Management
+-Provide context and understanding for the data and how it's stored, facilitating easier data
+management, governance, and use.
+-
+Monitoring and Maintenance
+-Ensure the storage system remains efficient, scalable, and reliable as data volume grows and access
+patterns change.
+
+========================================================================
+SLIDE 56
+========================================================================
+Programming Language & Environment
+-
+Programming language: Python 3.14
+-A scripting language that is easy to get started with and it also comes with a large number of
+libraries that can be used in data wrangling tasks
+-Major libraries used in this units include (but not limited to)
+o Pandas: a library that provides high-level data structures and manipulation tools that are designed to
+make data processing fast and easy in Python
+o NLTK: a platform for building Python programs to work with human language data
+o BeautifulSoup: a simple and efficient library for navigating, searching, and modifying HTML and XML
+documents.
+o Scipy: a fundamental library for scientific computing.
+o scikit-learn: an efficient Python library for data mining and data analysis.
+
+========================================================================
+SLIDE 57
+========================================================================
+Programming Language & Environment
+-
+Programming environment: Jupyter notebook, Anaconda (optional)
+-The Jupyter Notebook is a web application that allows you to create and share documents that
+contain live code, equations, visualisations and explanatory text.
+
+========================================================================
+SLIDE 58
+========================================================================
+Programming Language & Environment
+You can use your Monash
+account to access Google Colab
+and complete your tasks with AI
+assistant.
+
+========================================================================
+SLIDE 59
+========================================================================
+Summary & To-do List
+-
+Please please download and read materials provided on Moodle.
+-
+Set up your programming environment by installing Anaconda, Python and Jupyter Notebook or
+check out Google Colab using your Monash account.
+-
+Last but not least,
+-Choose FIT5196 wisely.
+-Use the discussion (Ed) forum in a proper way for communication and with respect!
+-
+Next Week: Data Discovery & Collection
