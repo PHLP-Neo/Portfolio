@@ -1,0 +1,795 @@
+FIT5046 - Mobile and Distributed Computing Systems
+Week 1: Introduction to Mobile and Distributed Computing (Part II)
+Lecturer: Dr Pari Delir Haghighi
+Source: FIT5046-Week1-Introduction-Part II-2026-S2.pdf
+Slides: 34
+
+These notes preserve the slide order and wording in plain text.
+
+========================================================================
+SLIDE 1
+========================================================================
+FIT5046: Mobile and Distributed Computing Systems
+Dr Pari Delir Haghighi
+Semester 2, 2026
+Introduction to Mobile and
+Distributed Computing (Part II)
+
+========================================================================
+SLIDE 2
+========================================================================
+Contents
+- An Overview of Distributed Systems
+- An Overview of Mobile and Distributed Computing
+- Mobile App Development
+- Android Studio
+- Gradle files
+- Debugging
+
+========================================================================
+SLIDE 3
+========================================================================
+Distributed Computing
+A computing paradigm where a number of autonomous
+entities (most likely heterogeneous)
+which are geographically distributed
+can communicate and exchange messages
+through a computer network
+to achieve certain related tasks (common goals)
+
+========================================================================
+SLIDE 4
+========================================================================
+Distributed Computing Models
+The client/server model
+-
+Servers offer services to clients, and clients request services
+-
+Usually there is a data storage at the backend (server side)
+-
+At the front end, a client can be an Android app
+Peer-to-peer
+-
+A decentralised system
+-
+Each node logically equal to each other
+-
+Each node can act as a client or a server
+
+========================================================================
+SLIDE 5
+========================================================================
+Mobile and Distributed Computing
+-
+It is a class of distributed computing systems
+-
+It integrates mobile and wireless devices and technologies into
+distributed systems
+-
+Mobile computing is associated with mobility of hardware, users,
+data, applications and network
+-
+Mobile computing is possible because of wireless communication
+technologies: Cellular networks (4G, 5G), WiFi, WiMAX, Bluetooth,
+ZigBee, NFC, RFID, …
+
+========================================================================
+SLIDE 6
+========================================================================
+Mobile and Distributed Computing
+
+========================================================================
+SLIDE 7
+========================================================================
+Mobile Distributed Systems and Computing
+Paradigms
+-
+Ubiquitous computing (Week 4)
+-
+Context-aware computing, situation-aware computing
+-
+IoT (Internet of Things), smart cities and digital twins
+-
+Edge-fog-cloud continuum
+-
+Wireless Sensing Technologies (Week 9)
+-
+Wireless sensors and wireless sensor networks (WSNs)
+-
+Mobile sensing
+-
+Location-aware systems (Week 10)
+
+========================================================================
+SLIDE 8
+========================================================================
+Mobile App Development
+-
+Web apps
+-
+Native apps
+-
+Hybrid apps
+-
+Progressive Web Apps (PWAs)
+-
+Flutter
+-
+Low-code or No-code apps
+
+========================================================================
+SLIDE 9
+========================================================================
+Web Apps
+-
+Web Apps are usually built with HTML, CSS and
+JavaScript
+-
+Accessed via a browser
+-
+Cross-platform
+-
+No need for installation
+-
+Lack of access to device features (e.g. sensors or
+camera)
+-
+Lack of offline operation
+-
+Low performance (in terms of speed and responsiveness)
+
+========================================================================
+SLIDE 10
+========================================================================
+Native Apps
+-
+Written in a native language like Kotlin or Swift
+-
+Distributed through native app stores (Apple App
+Store or Google Play)
+-
+Requires installation on the device
+-
+It is limited to a specific mobile platform
+-
+Provides full access to all the features and
+hardware of the device
+-
+High performance
+-
+Built-in security layers
+-
+Offline operation capability
+Delir Haghighi, P., Perera, A., Indrawan-Santiago, M., & Huynh, T. M. (2014,
+November). Situation-aware mobile health monitoring. In 11th International Conference
+on Mobile and Ubiquitous Systems: Computing, Networking and Services.
+
+========================================================================
+SLIDE 11
+========================================================================
+Hybrid Apps
+-
+Hybrid apps combine the benefits of both web
+technologies (like HTML, CSS, and JavaScript) with the
+capabilities of native apps
+-
+Supports multiple platforms via a single codebase (but
+requires platform-specific adjustments)
+-
+Limited access to advanced device features
+-
+Good performance (not quite as high as native apps)
+-
+Examples: React Native and Ionic
+https://ionicframework.com/
+Source: https://ionicframework.com/
+Sitoula, P., Rahayu, D., Delir Haghighi, P., Goodwin, S., & Ling, C. (2019). Context-
+aware smart energy recommender (caser). In Proceedings of the 17th International
+Conference on Advances in Mobile Computing & Multimedia (pp. 13-19).
+
+========================================================================
+SLIDE 12
+========================================================================
+Progressive Web App (PWA)
+-
+PWA apps extend the capabilities of hybrid apps
+-
+Native-like capabilities and performance
+-
+Platform-independent
+-
+Offline capabilities (by caching files locally)
+-
+Limited access to advanced device features
+-
+They highly rely on the capabilities of modern browsers
+-
+Installation optional
+https://web.dev/explore/progressive-web-apps
+Courtesy of Dr Jue (Grace) Xie
+(FIT5046 Guest Lecturer 2022)
+
+========================================================================
+SLIDE 13
+========================================================================
+Flutter
+-
+An open-source UI software development kit by
+Google, written in Dart language
+-
+A single codebase for building multi-platform
+apps
+-
+Good performance (not quite as high as native
+apps)
+-
+Limited access to platform-specific features
+-
+A demo: https://docs.flutter.dev/development/ui/widgets-intro
+https://flutter.dev/
+
+========================================================================
+SLIDE 14
+========================================================================
+Low-code or No-code App Development
+-
+Fast and easy development for non-developers
+-
+Drag-and-drop tools
+-
+Cross-platform
+-
+Limited scalability
+-
+Limited security
+-
+FlutterFlow: low-code app development
+https://www.flutterflow.io/
+-
+No-code app development (https://www.adalo.com/)
+https://www.microsoft.com/en-us/power-platform/products/power-apps/topics/low-
+code-no-code/low-code-no-code-development-platforms
+Difference between no-code and low-code development
+Source: https://www.flutterflow.io/
+
+========================================================================
+SLIDE 15
+========================================================================
+Why Android?
+Educational Value
+-
+Learn how mobile platforms really work, which will make you a better developer
+Deeper Access to Device Features
+-
+Important in mobile computing, where understanding context-awareness, sensing, and
+performance
+Industry Relevance
+-
+Native Android is still widely used in industry
+-
+While cross-platform frameworks are popular, many enterprise apps and tech companies
+still prefer native for stability, long-term support, and integration. They also come with
+trade-offs in performance and device support.
+We Encourage Exploring Other Tools Later
+-
+Native knowledge improves your ability to customise or extend cross-platform tools
+
+========================================================================
+SLIDE 16
+========================================================================
+2005
+- Google acquired the startup Android Inc. to start the
+Android platform
+- Work on Dalvik VM began (a VM to run applications on
+Android devices)
+2008
+-
+Android SDK 1.0 (the commercial version) was released
+in Sep 2008
+-
+Android Dev Phone 1 released which was a version of
+the HTC Dream
+Android - Where did it begin?
+Source https://commons.wikimedia.org/
+
+========================================================================
+SLIDE 17
+========================================================================
+Android Versions and APIs
+-
+2009: Android 1 API 1.5 (Cupcake), Android 1.6 (Donut)
+-
+2010: Android 2 API 2.0-2.1 (Éclair), API 2.2 (Froyo), SDK 2.3.0-2.3.7 (Gingerbread)
+-
+2011: Android 3.0, 3.1 and 3.2 Levels 11-13 (Honeycomb), Android 4.0.1-4.0.4 (Ice Cream Sandwich)
+-
+2012: Android 4.1 API 16 (Jelly Bean), Android 4.2 API 17 (Jelly Bean), Android 4.3 API 18 (Jelly Bean)
+-
+2013: Android 4.4 API 19 (KitKat)
+-
+2014: Android 5.0 API 21 and 22 (Lollipop)
+-
+2015: Android 6.0 API 23 (Marshmallow)
+-
+2016: Android 7.0 API 24 and 25 (Nougat)
+-
+2017: Android 8.0 API 26 and 27 (Oreo)
+-
+2018: Android 9.0 API 28 (Pie)
+-
+2019: Android 10 API 29 (Quince Tart)
+-
+2020 Android 11 API 30 (Red Velvet Cake)
+-
+2021: Android 12 API 31and 32 (Snow Cone)
+-
+2022: Android 13 API 33 (Tiramisu)
+-
+2023: Android 14 API 34 (Upside Down Cake)
+-
+2024: Android 15 API 35 (Vanilla Ice Cream)
+-
+2025: Android 16 API 36 (Baklava)
+-
+2026: Android 17 API 37 (Cinnamon Bun)
+8.0
+Oreo
+6.0
+Marshmallow
+7.0
+Nougat
+5.0
+Lollipop
+
+========================================================================
+SLIDE 18
+========================================================================
+Android App Development
+-
+Android Studio is the official IDE for Android applications:
+https://developer.android.com/studio
+-
+The first stable version was released in 2014
+-
+Built on IntelliJ IDEA software (developed by JetBrains), written in
+Java but used to develop Android applications in Kotlin or Groovy too
+-
+IntelliJ offers many features: code completion and analysis, refactoring
+-
+The Android emulator simulates Android devices
+-
+Flexible Gradle-based build system to configure and manage
+building projects
+-
+Tools to support for Google Cloud Platform and Firebase
+
+========================================================================
+SLIDE 19
+========================================================================
+Android Jetpack
+-
+Jetpack includes a large set of libraries for developing high quality apps
+https://developer.android.com/jetpack
+-
+One important part of Jetpack is Compose that we use to create the UI (released in 2021)
+-
+The androidx.* namespace contains the Android Jetpack libraries
+-
+All Jetpack components can be accessed in an
+Android application by including the Google
+repository. This is achieved by including google()
+in the settings.gradle.kts
+-
+The Maven Central repository hosts open source
+libraries for consumption by Java projects
+
+========================================================================
+SLIDE 20
+========================================================================
+Gradle Build File Types
+-
+Gradle files simplify importing and using external
+repositories.
+-
+A repository is where external libraries and JAR files are
+stored.
+-
+Dependencies, or external libraries, can be included from
+a repository.
+-
+Once a repository is configured, you can add
+dependencies from that repository to your project.
+-
+Gradle Version Catalogs were introduced to centralise
+the management of dependency and plugin versions,
+rather than hardcoding versions throughout the build
+scripts.
+-
+The settings.gradle.kts file defines repository locations
+https://developer.android.com/build#build-files
+https://developer.android.com/build/migrate-to-catalogs
+
+========================================================================
+SLIDE 21
+========================================================================
+Gradle Build Files
+-
+build.gradle.kts (Project: APPLICATION_NAME)
+-
+defines the default plugins for building the Android app
+-
+build.gradle.kts (Module: app): includes dependencies and
+configuration settings for this module
+-
+settings.gradle.kts: includes repositories
+-
+Google's repository
+-
+Maven central repository
+-
+libs.versions.toml: is used to implement library catalog
+declarations and includes [versions], [libraries] and [plugins]
+https://developer.android.com/build#build-files
+https://developer.android.com/build/migrate-to-catalogs
+
+========================================================================
+SLIDE 22
+========================================================================
+settings.gradle.kts
+build.gradle.kts (Project: HelloWorld)
+build.gradle.kts (Module:app)
+plugins {
+alias(libs.plugins.android.application) apply false
+alias(libs.plugins.kotlin.android) apply false
+alias(libs.plugins.kotlin.compose) apply false
+}
+libs.versions.toml
+[versions]
+agp = "8.11.1"
+kotlin = "2.0.21"
+coreKtx = "1.10.1"
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+lifecycleRuntimeKtx = "2.6.1"
+activityCompose = "1.8.0"
+composeBom = "2024.09.00"
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core",
+version.ref = "espressoCore" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-
+ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose",
+version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref
+= "composeBom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+pluginManagement {
+repositories {
+google {
+content {
+includeGroupByRegex("com\\.android.*")
+includeGroupByRegex("com\\.google.*")
+includeGroupByRegex("androidx.*")
+}
+mavenCentral()
+gradlePluginPortal()
+}
+dependencyResolutionManagement {
+repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_R
+EPOS)
+repositories {
+google()
+mavenCentral()
+}
+rootProject.name = "Test1"
+include(":app")
+plugins {
+alias(libs.plugins.android.application)
+alias(libs.plugins.kotlin.android)
+alias(libs.plugins.kotlin.compose)
+}
+android {
+namespace = "com.example.test1"
+compileSdk = 36
+defaultConfig {
+applicationId = "com.example.test1"
+minSdk = 24
+targetSdk = 36
+versionCode = 1
+versionName = "1.0"
+testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+}
+buildTypes {
+release {
+isMinifyEnabled = false
+proguardFiles(
+getDefaultProguardFile("proguard-android-optimize.txt"),
+"proguard-rules.pro"
+)
+}
+compileOptions {
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+}
+kotlinOptions {
+jvmTarget = "11"
+}
+buildFeatures {
+compose = true
+}
+dependencies {
+implementation(libs.androidx.core.ktx)
+implementation(libs.androidx.lifecycle.runtime.ktx)
+implementation(libs.androidx.activity.compose)
+implementation(platform(libs.androidx.compose.bom))
+implementation(libs.androidx.ui)
+implementation(libs.androidx.ui.graphics)
+implementation(libs.androidx.ui.tooling.preview)
+implementation(libs.androidx.material3)
+testImplementation(libs.junit)
+…
+}
+
+========================================================================
+SLIDE 23
+========================================================================
+android {
+namespace = "com.example.test1"
+compileSdk = 36
+defaultConfig {
+applicationId = "com.example.test1"
+minSdk = 24
+targetSdk = 36
+versionCode = 1
+versionName = "1.0"
+testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+}
+Android SDK Settings
+-
+The minSdk specifies the lowest version that
+app will support but using a very low version
+might cause a compatibility issue
+-
+The compileSdk determines which version of
+Android and Java APIs are used for compiling
+the code.
+-
+The targetSdk refers to the version you target
+to run the application on it
+-
+The targetSdk must be equal (or less than) to
+compileSdk
+build.gradle.kts (Module:app)
+https://developer.android.com/build#module-level
+
+========================================================================
+SLIDE 24
+========================================================================
+Create an Android Application
+
+========================================================================
+SLIDE 25
+========================================================================
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools">
+<uses-permission android:name="android.permission.INTERNET"
+/>
+<application
+android:allowBackup="true"
+android:dataExtractionRules="@xml/data_extraction_rules"
+android:fullBackupContent="@xml/backup_rules"
+android:icon="@mipmap/ic_launcher"
+android:label="@string/app_name"
+android:roundIcon="@mipmap/ic_launcher_round"
+android:supportsRtl="true"
+android:theme="@style/Theme.Test1">
+<activity
+android:name=".MainActivity"
+android:exported="true"
+android:label="@string/app_name"
+android:theme="@style/Theme.Test1">
+<intent-filter>
+<action android:name="android.intent.action.MAIN" />
+<category
+android:name="android.intent.category.LAUNCHER" />
+</intent-filter>
+</activity>
+</application>
+</manifest>
+Manifest File
+-
+All Android applications have an
+AndroidManifest.xml file under /manifests
+-
+It includes the information about the app, and
+components of the application such as the
+activities and services
+-
+For declaring the required permissions like the
+access to the internet
+-
+Examples of other permissions below when
+using maps:
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+https://developer.android.com/guide/topics/manifest/manifest-intro
+
+========================================================================
+SLIDE 26
+========================================================================
+Android Studio Environment
+
+========================================================================
+SLIDE 27
+========================================================================
+Main Activity
+-
+MainActivity.kt is a fundamental part of an
+Android application
+-
+ComponentActivity is the base class for
+activities and supports creating Compose apps
+-
+The setContent block defines the activity's
+layout where composable functions are called to
+build the UI of the application
+-
+Jetpack Compose supports a single activity
+architecture
+class MainActivity : ComponentActivity() {
+override fun onCreate(savedInstanceState: Bundle?) {
+super.onCreate(savedInstanceState)
+enableEdgeToEdge()
+setContent {
+MyApplicationTheme {
+Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+Greeting(
+name = "Android",
+modifier = Modifier.padding(innerPadding)
+)
+}
+@Composable
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+Text(
+text = "Hello $name!",
+modifier = modifier
+)
+}
+https://developer.android.com/guide/components/activities/intro-activities
+
+========================================================================
+SLIDE 28
+========================================================================
+Activity Lifecycle
+-
+onCreate(): must be implemented, and initialise
+the activity components (within setContent())
+-
+OnStart(): the activity becomes visible
+-
+onResume(): the activity is ready to accept the
+user input
+-
+onPause(): the activity loses focus, and will enter
+the stopped or resumed state
+-
+onStop(): the activity is no longer visible
+-
+onDestroy(): the activity is about to be terminated
+https://developer.android.com/guide/components/activities/activity-lifecycle
+
+========================================================================
+SLIDE 29
+========================================================================
+Virtual Device, Emulator
+-
+An Android emulator is essential to test your app
+-
+Android emulators are called Android Virtual Devices (AVDs)
+-
+You can create and manage virtual devices using the Device Manager
+-
+To create a new device, you need to install its system image through
+the Device Manager's wizard
+https://developer.android.com/studio/run/managing-avds
+
+========================================================================
+SLIDE 30
+========================================================================
+Debug
+-
+Debugging is essential to finding and fixing errors
+-
+Click on the Debug icon and add line breakpoints to pause the execution
+-
+You can then run the app normally by clicking on Resume Program
+https://developer.android.com/studio/debug
+
+========================================================================
+SLIDE 31
+========================================================================
+Logcat
+-
+Logcat is used to create logs
+-
+Each Logcat entry has a priority of FATAL, ERROR, WARNING, INFO,
+DEBUG, or VERBOSE
+-
+When errors happen, you could check Logcat for Error messages
+-
+You can see Logcat after you run the emulator
+https://developer.android.com/studio/debug/logcat
+
+========================================================================
+SLIDE 32
+========================================================================
+Material Design
+-
+Material Design was introduced by Google
+-
+It is a living document and is expandable
+-
+All in one place: https://m3.material.io/
+-
+It provides guidelines, components, and tools to support
+the best practices of user interface design for different
+devices and platforms
+-
+The guidelines are also about interactions, user behaviour,
+and accessibility and inclusion
+
+========================================================================
+SLIDE 33
+========================================================================
+Evolution of Material Design
+Material Design 1 (M1)
+Introduced in 2014. Established the
+foundational principles, visual
+language and design philosophy. It is
+now archived.
+Material Design 2 (M2)
+Launched in 2018. Refined the
+visual system and introduced more
+flexible theming, along with improved
+component implementation and code
+support.
+Material Design 3 (M3)
+Launched in 2021. Also known as
+Material 3 or Material You. It
+introduced dynamic colour, enhanced
+personalisation, updated components,
+and improved accessibility features.
+33
+
+========================================================================
+SLIDE 34
+========================================================================
+References
+https://developer.android.com/studio
+https://developer.android.com/jetpack
+https://developer.android.com/build#build-files
+https://developer.android.com/build#module-level
+https://developer.android.com/guide/topics/manifest/manifest-intro
+https://developer.android.com/guide/components/activities/intro-activities
+https://developer.android.com/develop/ui/views/layout/edge-to-edge
+https://developer.android.com/guide/components/activities/activity-lifecycle
+https://developer.android.com/studio/run/managing-avds
+https://developer.android.com/studio/debug
+https://developer.android.com/studio/debug/logcat
+https://m3.material.io/
