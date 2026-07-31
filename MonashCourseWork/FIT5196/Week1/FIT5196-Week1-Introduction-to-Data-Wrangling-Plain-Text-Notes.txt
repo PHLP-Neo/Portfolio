@@ -1180,3 +1180,18 @@ Last but not least,
 -Use the discussion (Ed) forum in a proper way for communication and with respect!
 -
 Next Week: Data Discovery & Collection
+
+
+
+
+
+
+=======================================================================
+LAB SESSION
+=======================================================================
+
+this is a simple pandas, you might have a tough time if you dont take
+data visualization.
+
+
+
