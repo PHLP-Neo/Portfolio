@@ -10,9 +10,32 @@ HEADERS = {
 }
 
 
+def get_normalized_domain(url: str) -> str:
+    """
+    Return a normalized domain name for comparison.
+
+    The leading 'www.' is removed so that:
+    - dwarffortresswiki.org
+    - www.dwarffortresswiki.org
+
+    are treated as the same domain.
+    """
+
+    domain = urlparse(url).netloc.lower()
+
+    if domain.startswith("www."):
+        domain = domain[4:]
+
+    return domain
+
+
 def is_same_domain(first_url: str, second_url: str) -> bool:
-    first_domain = urlparse(first_url).netloc.lower()
-    second_domain = urlparse(second_url).netloc.lower()
+    """
+    Return True if both URLs belong to the same domain.
+    """
+
+    first_domain = get_normalized_domain(first_url)
+    second_domain = get_normalized_domain(second_url)
 
     return first_domain == second_domain
 
@@ -23,12 +46,12 @@ def find_link_container(
     container_text: str | None,
 ) -> Tag:
     """
-    Find the HTML element from which links should be extracted.
+    Find the HTML container from which links should be extracted.
 
     Priority:
-    1. CSS selector
-    2. Container whose text contains container_text
-    3. Entire page
+    1. A supplied CSS selector.
+    2. A table or navigation container containing the supplied text.
+    3. The entire page.
     """
 
     if css_selector:
@@ -41,17 +64,25 @@ def find_link_container(
 
     if container_text:
         target = container_text.casefold()
+        matching_containers: list[Tag] = []
 
-        for container in soup.select(
-            ".collapsible.infobox, .navbox, table, section, div"
-        ):
+        for container in soup.select(".collapsible.infobox, .navbox, table"):
             text = container.get_text(" ", strip=True).casefold()
+            links = container.select("a[href]")
 
-            if target in text:
-                return container
+            if target in text and links:
+                matching_containers.append(container)
 
-        raise RuntimeError(
-            f'No suitable container contained the text "{container_text}".'
+        if not matching_containers:
+            raise RuntimeError(
+                "No suitable link container contained the text " f'"{container_text}".'
+            )
+
+        # Parent and child tables may both contain the requested text.
+        # Prefer the matching container with the largest number of links.
+        return max(
+            matching_containers,
+            key=lambda container: len(container.select("a[href]")),
         )
 
     return soup
@@ -65,6 +96,18 @@ def get_linked_urls(
     same_domain_only: bool = True,
     timeout: float = 20,
 ) -> list[str]:
+    """
+    Download a starting page and return matching linked URLs.
+
+    The result is deduplicated and sorted alphabetically.
+    """
+
+    if url_contains is not None:
+        url_contains = url_contains.strip()
+
+        if not url_contains:
+            url_contains = None
+
     response = requests.get(
         start_url,
         headers=HEADERS,
@@ -72,7 +115,10 @@ def get_linked_urls(
     )
     response.raise_for_status()
 
-    soup = BeautifulSoup(response.text, "html.parser")
+    soup = BeautifulSoup(
+        response.text,
+        "html.parser",
+    )
 
     container = find_link_container(
         soup=soup,
@@ -88,9 +134,12 @@ def get_linked_urls(
         if not href:
             continue
 
-        full_url = urljoin(start_url, href)
+        full_url = urljoin(
+            start_url,
+            href,
+        )
 
-        # Remove URL fragments such as #History.
+        # Remove fragments such as #History.
         full_url, _fragment = urldefrag(full_url)
 
         parsed = urlparse(full_url)
@@ -115,13 +164,13 @@ def get_linked_urls(
 if __name__ == "__main__":
     test_url = "https://dwarffortresswiki.org/index.php/Adder_man"
 
-    urls = get_linked_urls(
+    test_urls = get_linked_urls(
         start_url=test_url,
         container_text="Creatures",
-        url_contains="/index.php/",
+        url_contains="index.php",
     )
 
-    print(f"Found {len(urls)} URLs")
+    print(f"Found {len(test_urls)} URLs")
 
-    for url in urls[:20]:
-        print(url)
+    for test_link in test_urls[:20]:
+        print(test_link)

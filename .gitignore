@@ -9,3 +9,4 @@ CS50W/submit50-env
 
 PersonalProjects/DF-Scraper/dwarf_creature_preferences.csv
 MonashCourseWork/.env
+*.csv
