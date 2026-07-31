@@ -62,6 +62,7 @@ CREATE TABLE LECTURER
 SELECT *
 FROM TAB;
 ```
+There is a LECTURER table and a STUDENT table
 
 Write down your observations.
 
@@ -109,6 +110,8 @@ VALUES
     'O-R DB'
 );
 ```
+
+[The name is duplicated]
 
 ### 4b. Attempt to Insert a Duplicate Primary Key
 
@@ -230,6 +233,8 @@ FROM LECTURER;
 ```
 
 Write down your observations.
+
+[There are 4 entries]
 
 ---
 
@@ -363,6 +368,10 @@ MODIFY (City VARCHAR2(40));
 
 Explain the difference between `CHAR` and `VARCHAR2`.
 
+
+
+[Char and VarChar]
+
 ---
 
 ## 12. Update a Student Record
@@ -393,6 +402,7 @@ COMMIT;
 
 Explain what happens.
 
+[The operation will be saved to the database]
 ---
 
 # Part B: Querying Exercises
