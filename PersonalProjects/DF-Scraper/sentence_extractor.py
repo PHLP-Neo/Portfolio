@@ -6,7 +6,10 @@ import requests
 from bs4 import BeautifulSoup
 
 HEADERS = {
-    "User-Agent": ("DwarfWikiResearchScript/1.0 " "(personal educational project)")
+    "User-Agent": (
+        "DwarfWikiResearchScript/1.0 " 
+        "(personal educational project)"
+    )
 }
 
 
