@@ -1,57 +1,115 @@
 # PHLP Neo
 
-Master of Information Technology student at Monash University (Melbourne), focused on backend systems and cloud-based application deployment.
+Master of Information Technology student at **Monash University** with a focus on backend development, cloud-native systems, and automation.
 
-Experience implementing asynchronous APIs, handling concurrent workloads, and deploying containerised applications using Kubernetes and Infrastructure as Code.
+Building applications with **Python, Django, FastAPI, Kubernetes, and cloud platforms**, with previous experience in data analysis and database systems.
 
----
-
-## Technical Skills
-
-**Backend & Systems**
-- Python, FastAPI, REST APIs
-- Asynchronous programming, concurrency control (threadpool, batching, queues)
-
-**Cloud & Infrastructure**
-- Docker, Kubernetes, Terraform (GCP)
-- Ansible (deployment automation)
-
-**Data**
-- SQL, Oracle, database design (3NF, ERD)
-
-**Tools**
-- Git/GitHub, Linux, kubectl
+Portfolio: https://www.phlpneo.com
 
 ---
 
-## Featured Project
+## Skills
 
-### Distributed ML Inference API
-FastAPI, PyTorch, Docker, Kubernetes, Terraform
+### Backend & Software Development
+- Python, Java, SQL, JavaScript
+- Django, FastAPI, REST APIs
+- Database design and ORM
+- Authentication and authorization
+- Web scraping and automation
 
-- Implemented asynchronous API service for image inference with CPU-bound workload isolation using threadpool execution  
-- Built bounded request queue with batching to improve throughput under concurrent load  
-- Applied backpressure control to maintain stability under high traffic  
-- Deployed containerised service to Kubernetes with resource constraints (1 vCPU / 2GB per pod)  
-- Conducted load testing with Locust, achieving ~5–6 QPS per pod with stable scaling behaviour  
-- Automated infrastructure provisioning and deployment using Terraform and Ansible  
+### Cloud & Infrastructure
+- AWS (Cognito, Lambda, API Gateway, DynamoDB, S3)
+- Google Cloud Platform (Cloud Run, Firestore)
+- Docker
+- Kubernetes
+- Terraform
+- Ansible
+
+### Data
+- SQL
+- Oracle
+- Data modelling (ERD, 3NF)
+- Pandas / NumPy
+- Power BI
+
+### Tools
+- Git/GitHub
+- Linux
+- Figma
+- Jupyter Notebook
+
+---
+
+# Featured Projects
+
+## Aussie EcoLens — Multi-Cloud Wildlife Observation Platform
+
+AWS · GCP · Azure · Lambda · Cognito · Cloud Run · Firestore
+
+A multi-cloud serverless platform for wildlife observation and species identification.
+
+Highlights:
+- Implemented authentication and authorization using AWS Cognito and API Gateway
+- Built notification workflows using Cloud Run and Firestore
+- Integrated AWS and GCP services using Workload Identity Federation
+- Designed secure cloud communication without long-lived credentials
+
+---
+
+## Distributed ML Inference API
+
+FastAPI · Docker · Kubernetes · Terraform · GCP
+
+A cloud-native image inference service deployed on Kubernetes.
+
+Highlights:
+- Designed asynchronous API workflows with request batching and concurrency control
+- Containerized and deployed services using Docker and Kubernetes
+- Provisioned infrastructure using Terraform and automated deployment using Ansible
+- Performed load testing and scalability analysis using Locust
+
+---
+
+## CS50W Capstone — Django Image Gallery
+
+Django · JavaScript · SQLite
+
+A full-stack image management platform featuring:
+
+- User authentication
+- Image uploads
+- Tagging system
+- Comments and favorites
+- Search and pagination
+- Permission-based deletion
+
+---
+
+## Dwarf Fortress Wiki Scraper
+
+Python · BeautifulSoup · Regex · CLI
+
+A reusable web scraping framework originally developed for a Dwarf Fortress translation project.
+
+Features:
+- MediaWiki page discovery and extraction
+- Configurable sentence and RAW token extraction
+- CSV export pipeline
+- Modular extraction architecture supporting future extensions
 
 ---
 
 ## Other Projects
 
-### Social Network Web Application
-Django, JavaScript, SQLite  
-- Full-stack web application with authentication, pagination, and asynchronous UI updates  
-
-### Relational Database Design Project
-Oracle SQL, ERD  
-- Designed 3NF schema and implemented queries with joins and aggregation  
+- CS50 Web Programming Projects
+- Java Object-Oriented Programming Projects
+- Database Design Projects
 
 ---
 
 ## Current Focus
 
-- Strengthening backend system design and concurrency understanding  
-- Expanding cloud knowledge (Kubernetes, infrastructure automation)  
-- Preparing for AWS Solutions Architect Associate certification  
+- Backend architecture and system design
+- Cloud-native application development
+- AWS certification preparation
+- Distributed systems and database technologies
