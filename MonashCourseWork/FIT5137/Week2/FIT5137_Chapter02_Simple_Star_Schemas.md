@@ -51,6 +51,8 @@ The data warehouse is intended to answer questions such as:
 - What is the total income attributable to each agent?
 - How many payments are generated each year?
 
+*rule: 1 table per dimension*
+
 ### Facts and dimensions
 
 Fact measures derived from the questions:
@@ -115,6 +117,9 @@ group by
 
 The fact measures must be calculated from detailed operational transactions. Dimensions provide descriptive viewpoints and identifiers, but usually do not contain the transaction rows required for aggregation.
 
+**Why use E.AgentNo, not from Agent Table**
+Because it is easier.
+
 ## 3. Another Simple Case Study: A Sales Star Schema
 
 The goal is to analyse total sales by:
@@ -148,6 +153,10 @@ insert into TimeDim values (4, 'Oct-Dec');
 ### Identify the quarter through a temporary fact table
 
 Quarter is not directly available in the operational tables, so it is derived in `TempFact`.
+
+*The reason is because at least one dimension table is created manually*
+
+*sales date will be converted to quarter some times later*
 
 ```sql
 create table TempFact as

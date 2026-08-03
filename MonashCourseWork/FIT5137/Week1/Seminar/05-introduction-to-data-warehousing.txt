@@ -154,6 +154,7 @@ Star Schema
 1. Facts
 Facts are numeric measurements (values) that represent a specific
 business aspect or activity.
+[must be numberical, must be aggregated, total sales, for example]
 For example, sales figures are numeric measurements that represent
 product and/or service sales.
 2. Dimensions
@@ -239,3 +240,6 @@ Your task is to design the data warehouse and to implement it in the lab.
 SLIDE 25
 ========================================================================
 Star Schema
+
+fact: total income
+dimension: country, year, courses, agent
