@@ -10,19 +10,32 @@
       <h3>Iterating through Arrays</h3>
       <!-- Activity 3.1: Render a list containing author names and their birth years. Hint: Make use of the v-for directive to iterate through the array of authors. -->
       <!-- TODO: CODE TO RENDER LIST OF AUTHORS HERE -->
+      <ul>
+        <li v-for="author in authors" :key="author.id">
+          {{ author.name }} ({{ author.birthYear }})
+        </li>
+      </ul>
 
       <h3>Filtering Arrays</h3>
       <!-- Activity 3.2: Render a list containing authors born after 1850. Hint: Make use of the v-for directive to iterate through the array of authors that you have filtered out. -->
       <p>Authors born after 1850:</p>
       <!-- TODO: CODE TO RENDER LIST OF AUTHORS HERE -->
-
+      <ul>
+        <li v-for="author in modernAuthors" :key="author.id"> 
+          {{ author.name }} ({{ author.birthYear }})
+        </li>
+      </ul>
       <h3>Mapping Arrays</h3>
       <p>Famous works:</p>
       <ul>
         <!-- Activity 3.3: Render a list of all famous works. Hint: Use the v-for directive to iterate through the array of authors that you have filtered out. -->
         <!-- TODO: CODE TO RENDER LIST OF FAMOUS WORKS HERE -->
       </ul>
-
+      <ul>
+        <li v-for="work in allFamousWorks" :key="work">
+          {{ work }}
+        </li>
+      </ul>
       <h3>Finding in Arrays</h3>
       <p>Finding by property: {{ orwell?.name }}</p>
 
@@ -30,6 +43,11 @@
       <p>{{ austen?.name }}'s works:</p>
       <!-- [OPTIONAL - NON ASSESSED] Activity 1: Render a list of Austen's works. Hint: Use the v-for directive to iterate through the array of authors that you have filtered out. -->
       <!-- TODO: CODE TO RENDER LIST OF AUSTEN'S WORKS HERE -->
+      <ul>
+        <li v-for="work in austinFamousWorks" :key="work.title">
+        {{ work.title }}
+      </li>
+</ul>
     </section>
 
     <section class="lab-section">
@@ -71,8 +89,13 @@
       <p>Toggle visibility based on a condition.</p>
       <!-- Activity 4.1: Toggle the message visibility when the button is clicked. -->
       <!-- TODO: CODE TO TOGGLE MESSAGE VISIBILITY HERE. Hint: Use the v-if directive. -->
+       
       <button @click="showMessage = !showMessage">Toggle Message</button>
-      <p class="message success">✨ You're a Vue superstar! ✨</p>
+      <p v-if="showMessage" class="message success">
+        ✨ You're a Vue superstar! ✨
+      </p>
+      <p v-else class="message">Click the button to see a message.</p>
+
       <p>Click the button to see a message.</p>
     </section>
 
@@ -80,37 +103,44 @@
       <!-- [OPTIONAL - NON ASSESSED] Activity 6: Attribute, Class and Style Bindings -->
       <h2>Attribute, Class and Style Binding with <code>v-bind</code></h2>
       <p>Highlighting Specific Authors:</p>
-
     </section>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from "vue"
+import { ref, computed } from 'vue'
 
 // Activity 1: Import JSON files (authors.json and bookstores.json)
 // TODO: CODE TO IMPORT JSON FILES HERE
 
-import authors from "../assets/json/authors.json"
-import bookstores from "../assets/json/bookstores.json"
+import authors from '../assets/json/authors.json'
+import bookstores from '../assets/json/bookstores.json'
 
 const showMessage = ref(false)
 
 // Activity 2.1: Get authors born after 1850
 const modernAuthors = computed(() => {
   // TODO: CODE TO FILTER ARRAY OF AUTHORS HERE
-})
+    return authors.filter((author) => author.birthYear > 1850)
+});
 
 // Activity 2.2: Get all famous works
 const allFamousWorks = computed(() => {
   // TODO: CODE TO GET ALL FAMOUS WORKS HERE
+    return authors.flatMap((author) => author.famousWorks.map((work) => work.title))
 })
 
+const austinFamousWorks = computed(() => {
+  const author = authors.find(
+    (author) => author.name === "Jane Austen"
+  )
+  return author?.famousWorks ?? []
+})
 </script>
 
 <style scoped>
 .json-lab {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   max-width: 80vw;
   margin: 0 auto;
   padding: 20px;
@@ -155,7 +185,7 @@ code {
   background-color: #e0e0e0;
   padding: 2px 5px;
   border-radius: 4px;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 ul {
