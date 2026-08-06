@@ -190,6 +190,8 @@ Compose transforms data into visible UI through three main phases:
 Data → Composition → Layout → Drawing → UI
 ```
 
+*[Note] Just like html, huh*
+
 ### 6.1 Composition
 
 The Compose runtime executes composable functions and creates a tree describing what the UI should contain.
@@ -313,6 +315,7 @@ Simplified API:
 @Composable
 fun Button(
     onClick: () -> Unit,
+    ## No input, but still need ()
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     content: @Composable RowScope.() -> Unit
@@ -341,6 +344,8 @@ Reference: <https://developer.android.com/jetpack/compose/components/button>
 ## 11. Toast
 
 A Toast displays a short message in a small popup.
+
+*[Note] need context*
 
 `Toast.makeText()` requires:
 
