@@ -145,6 +145,8 @@ Rules for `lateinit`:
 
 Reference: <https://kotlinlang.org/docs/properties.html#late-initialized-properties-and-variables>
 
+*[Note] Why do we need late initialization?*
+
 ---
 
 ## 4. Null Safety
@@ -164,6 +166,8 @@ var name: String? = null
 ```
 
 Reference: <https://kotlinlang.org/docs/null-safety.html>
+
+*[note] then we need to follow some rules*
 
 ### 4.1 Working with Nullable Values
 
@@ -227,6 +231,8 @@ fun printHello(name: String?): Unit {
 }
 ```
 
+*[Note] Why do we create composable functions? to create UIs, this is the presentation layer*
+
 ### 5.1 Default Parameters
 
 A default value allows an argument to be omitted:
@@ -247,6 +253,8 @@ The last argument can be omitted:
 ```kotlin
 display("Helen", "Jones", 28)
 ```
+
+*[Note] This could appear in the quiz*
 
 ### 5.2 Named Arguments
 
@@ -349,6 +357,8 @@ class MainActivity : ComponentActivity() {
 ---
 
 ## 8. Function-Type Parameters and Lambdas
+
+*[Note] Will be in the quiz*
 
 A function-type parameter expects another function rather than an ordinary value.
 
