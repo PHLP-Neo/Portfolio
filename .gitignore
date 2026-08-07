@@ -10,3 +10,7 @@ CS50W/submit50-env
 PersonalProjects/DF-Scraper/dwarf_creature_preferences.csv
 MonashCourseWork/.env
 *.csv
+
+# FIT5196 Week 2 source material
+/MonashCourseWork/FIT5196/Week2/xml_files/
+/MonashCourseWork/FIT5196/Week2/Week 2 Data Discovery_Collection.pdf
