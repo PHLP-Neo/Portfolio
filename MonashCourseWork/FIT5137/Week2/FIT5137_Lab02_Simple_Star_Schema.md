@@ -43,6 +43,9 @@ The data warehouse must answer at least these questions:
 
 > **Important:** The star schema design, fact measures, and dimensions must follow the specific analytical questions in each lab exercise and assignment. The design should align precisely with the data and analysis required by the problem.
 
+*[Note] **Fact Table**: Total Income (IncomeDim)*
+*[Note] **Dimention Table**: CountryDim, CourseDim, AgentDim, YearDim*
+
 ### Star schema
 
 > **Diagram description:** `CollegeFact` is linked to `CountryDim`, `CourseDim`, `AgentDim`, and `YearDim`. Its dimension keys are `Country`, `AgentNo`, `CourseCode`, and `EnrolmentYear`; its measures are `Number_of_Payments` and `Total_Income`.
