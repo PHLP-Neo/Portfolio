@@ -14,7 +14,8 @@ android {
     defaultConfig {
         applicationId = "com.example.layoutlab"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 37
+        compileSdk = 37
         versionCode = 1
         versionName = "1.0"
 
@@ -40,6 +41,7 @@ android {
 dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.compose.foundation.layout)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
