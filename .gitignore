@@ -14,3 +14,16 @@ MonashCourseWork/.env
 # FIT5196 Week 2 source material
 /MonashCourseWork/FIT5196/Week2/xml_files/
 /MonashCourseWork/FIT5196/Week2/Week 2 Data Discovery_Collection.pdf
+MonashCourseWork/FIT5196/Week3/Exploratory Data Analysis.pdf
+.gitignore
+MonashCourseWork/FIT5196/Week3/Week 3 EDA  Pre-processing.pdf
+MonashCourseWork/FIT5196/Week3/parsing_csv_json/__MACOSX/parsing_csv_json/._regex1.jpg
+MonashCourseWork/FIT5196/Week3/parsing_csv_json/__MACOSX/parsing_csv_json/._json20.png
+MonashCourseWork/FIT5196/Week3/parsing_csv_json/__MACOSX/parsing_csv_json/._csv1.png
+MonashCourseWork/FIT5196/Week3/parsing_csv_json/parsing_csv_json/csv1.png
+MonashCourseWork/FIT5196/Week3/parsing_csv_json/parsing_csv_json/json20.png
+MonashCourseWork/FIT5196/Week3/parsing_csv_json/parsing_csv_json/regex1.jpg
+MonashCourseWork/FIT5196/Week3/parsing_xml_files/__MACOSX/parsing_xml_files/._parsed_xml.png
+MonashCourseWork/FIT5196/Week3/parsing_xml_files/__MACOSX/parsing_xml_files/._xml_example.png
+MonashCourseWork/FIT5196/Week3/parsing_xml_files/parsing_xml_files/parsed_xml.png
+MonashCourseWork/FIT5196/Week3/parsing_xml_files/parsing_xml_files/xml_example.png
