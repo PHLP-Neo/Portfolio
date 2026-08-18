@@ -1,0 +1,70 @@
+---
+title: 'FIT5145 Seminar Activity: Scrape it, fix it, join it'
+output: html_document
+date: "2026-08-17"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## FIT5145 Seminar Activity
+
+### Wrangling Capstone: scrape it, fix it, join it
+
+```{r}
+library(tidyverse)
+library(rvest)
+```
+
+#### 1. Web scraping  - Week 3 applied clas material code, unchanged
+```{r}
+t20i_url  <- "https://en.wikipedia.org/wiki/ICC_Men%27s_T20I_Team_Rankings"
+t20i_page <- read_html(t20i_url)
+t20i      <- t20i_page %>% html_element("table.sortable") %>% html_table()
+
+colnames(t20i) <- c("Team", "Matches", "Points", "Rating")
+t20i <- t20i[-102, ]      # remove the footnote row
+t20i <- t20i[1:3, ]      # keep the top 3 teams
+t20i$Rating <- as.integer(t20i$Rating)
+t20i
+```
+
+#### 2. READ THE MESSY CSV, team_runs_messy.csv
+```{r}
+runs <- ???
+  
+runs
+```
+
+#### 3. Convert the structure of the runs dataset
+Hint: use 'gather' function
+```{r}
+runs_long <- ???
+  
+runs_long
+```
+#### 4. Normalise the join key
+Hint: use 'recode' function
+```{r}
+runs_long <- ???
+  
+runs_long
+```
+
+#### 5. COMBINE: JOIN
+##### Bring each team's current Rating alongside its yearly runs.
+Hint: use 'join' function
+```{r}
+final <- ???
+  
+final
+```
+
+
+
+
+
+
+
+
