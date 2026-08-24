@@ -32,7 +32,7 @@ t20i
 
 #### 2. READ THE MESSY CSV, team_runs_messy.csv
 ```{r}
-runs <- ???
+runs <- read.csv("team_runs_messy.csv")
   
 runs
 ```
@@ -40,7 +40,7 @@ runs
 #### 3. Convert the structure of the runs dataset
 Hint: use 'gather' function
 ```{r}
-runs_long <- ???
+runs_long <- runs %>% gather(key="year", value = "runs")
   
 runs_long
 ```
@@ -56,7 +56,7 @@ runs_long
 ##### Bring each team's current Rating alongside its yearly runs.
 Hint: use 'join' function
 ```{r}
-final <- ???
+final <- runs_long 
   
 final
 ```

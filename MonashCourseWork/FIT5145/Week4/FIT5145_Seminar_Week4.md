@@ -40,7 +40,7 @@ _Source slide: 3_
 | 1 | Overview of data science | Chris Yun |
 | 2 | History and impact of data science | Chris Yun |
 | 3 | Data business models | Chris Yun |
-| 4 | Data sources and standards | Chris Yun |
+| **4** | **Data sources and standards** | **Chris Yun** |
 | 5 | Characterising data and "big" data | Chris Yun |
 | 6 | Big Data and data science | Chris Yun |
 | 7 | Supervised data analysis (1) | Chris Yun |
@@ -184,26 +184,19 @@ _Source slide: 12_
 
 ## Open Data and Disaster Response
 
+## Open Data Benefits
+
 Disaster Response (e.g. bushfire)
-Government
-Weather
-agency
-Emergency
-services
-Private
-companies
-Shared
-data
-Faster
-response
-+ + + → →
+Government + Weather agency + Emergency services + Private companies
+→ Shared data → Faster response
+
 What open data lets us do
-Identify high-risk areas
-Decide safe evacuation routes
-Prioritise support and
-firefighting resources
-Result: better situational awareness, efficient resources, saved lives.
-Open Data Benefits
+- Identify high-risk areas
+- Decide safe evacuation routes
+- Prioritise support and firefighting resources
+
+*Result: better situational awareness, efficient resources, saved lives.*
+
 
 _Source slide: 13_
 
@@ -861,7 +854,7 @@ Agreed rules so different systems understand each other. A standard can pin
 down five things:
 1 Representation
 How data is stored & structured
-CSV · JSON · XML
+CSV · JSON · XML · EXCEL
 2 Meaning
 What the values actually mean
 ICD-10 · SNoMed-CT
