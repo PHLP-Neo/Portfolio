@@ -1,115 +1,67 @@
 # PHLP Neo
 
-Master of Information Technology student at **Monash University** with a focus on backend development, cloud-native systems, and automation.
+I’m a Master of Information Technology student at Monash University. I build Python web applications and APIs, and my projects also cover cloud deployment, web and Android interfaces, and data analysis.
 
-Building applications with **Python, Django, FastAPI, Kubernetes, and cloud platforms**, with previous experience in data analysis and database systems.
+[Portfolio website](https://www.phlpneo.com/) · [Project case studies and demos](https://www.phlpneo.com/projects/)
 
-Portfolio: https://www.phlpneo.com
+## Featured projects
 
----
+### Cloud-Native YOLO Inference Service
 
-## Skills
+*Individual Monash project · Python, FastAPI, Docker, Kubernetes, Terraform, Ansible, Locust*
 
-### Backend & Software Development
-- Python, Java, SQL, JavaScript
-- Django, FastAPI, REST APIs
-- Database design and ORM
-- Authentication and authorization
-- Web scraping and automation
+I built an API that uses a pretrained YOLO model to detect plastic waste in images and return annotated results. I implemented request batching and a bounded queue for inference, deployed the service to a Kubernetes cluster on Google Cloud, and used Locust to compare throughput and latency across pod counts.
 
-### Cloud & Infrastructure
-- AWS (Cognito, Lambda, API Gateway, DynamoDB, S3)
-- Google Cloud Platform (Cloud Run, Firestore)
-- Docker
-- Kubernetes
-- Terraform
-- Ansible
+[Case study and report](https://www.phlpneo.com/projects/cloud-native-yolo-inference-service/) · [Code](MonashCourseWork/FeaturedProjects/CloudEco%20Scalable%20ML-Inference%20System%20%28Kubernetes%20%26%20FastAPI%29/)
 
-### Data
-- SQL
-- Oracle
-- Data modelling (ERD, 3NF)
-- Pandas / NumPy
-- Power BI
+### Aussie EcoLens — Multi-Cloud Wildlife Media Platform
 
-### Tools
-- Git/GitHub
-- Linux
-- Figma
-- Jupyter Notebook
+*Monash team project · Python, FastAPI, AWS Cognito, Cloud Run, Firestore*
 
----
+Our team built a platform for sharing wildlife observations. I worked on Cognito sign-in and API authorization, built the tag subscription and notification service on Cloud Run and Firestore, and configured Workload Identity Federation so AWS Lambda could call the GCP service without long-lived service account keys.
 
-# Featured Projects
+[Case study and report](https://www.phlpneo.com/projects/aussie-ecolens-multi-cloud-wildlife-media-platform/)
 
-## Aussie EcoLens — Multi-Cloud Wildlife Observation Platform
+### Canopy Connect — Melbourne Volunteer Opportunities
 
-AWS · GCP · Azure · Lambda · Cognito · Cloud Run · Firestore
+*Individual Monash project · Vue 3, Firebase, Mapbox*
 
-A multi-cloud serverless platform for wildlife observation and species identification.
+I built a web app for finding environmental volunteer opportunities in Melbourne. It includes map search and walking directions, sign-in, ratings stored in Firestore, and role-based tools for managing listings.
 
-Highlights:
-- Implemented authentication and authorization using AWS Cognito and API Gateway
-- Built notification workflows using Cloud Run and Firestore
-- Integrated AWS and GCP services using Workload Identity Federation
-- Designed secure cloud communication without long-lived credentials
+[Case study](https://www.phlpneo.com/projects/canopy-connect/) · [Code](MonashCourseWork/FIT5032/CanopyConnect/)
 
----
+### Capstone Gallery — Django Image Sharing Platform
 
-## Distributed ML Inference API
+*Individual CS50W capstone · Python, Django, JavaScript, SQLite*
 
-FastAPI · Docker · Kubernetes · Terraform · GCP
+I built an image-sharing app where users can upload and tag images, browse or search the gallery, and leave comments and likes. Only the owner can delete an image, and deletion removes both the database record and the uploaded file.
 
-A cloud-native image inference service deployed on Kubernetes.
+[Case study](https://www.phlpneo.com/projects/capstone-gallery-django-image-sharing-platform/) · [Code and setup](CS50W/capstone/)
 
-Highlights:
-- Designed asynchronous API workflows with request batching and concurrency control
-- Containerized and deployed services using Docker and Kubernetes
-- Provisioned infrastructure using Terraform and automated deployment using Ansible
-- Performed load testing and scalability analysis using Locust
+### MediaWiki Data Extraction Toolkit
 
----
+*Personal project · Python, Beautiful Soup, regular expressions*
 
-## CS50W Capstone — Django Image Gallery
+I built a command-line tool for a Dwarf Fortress translation project. It discovers MediaWiki pages, extracts configurable text and game data tokens, and exports the results to CSV for review.
 
-Django · JavaScript · SQLite
+[Case study](https://www.phlpneo.com/projects/mediawiki-data-extraction-toolkit/) · [Code and usage](PersonalProjects/DF-Scraper/)
 
-A full-stack image management platform featuring:
+### AquaGuard — Household Water Monitoring and Leak Detection
 
-- User authentication
-- Image uploads
-- Tagging system
-- Comments and favorites
-- Search and pagination
-- Permission-based deletion
+*Monash team project · Kotlin, Jetpack Compose, StateFlow, WorkManager*
 
----
+I built the monitoring module for our Android app. It replays historical water-meter readings, keeps the dashboard and leak monitor in sync, and runs background checks for sustained flow when the household is marked away. I integrated the module with account and settings features built by teammates.
 
-## Dwarf Fortress Wiki Scraper
+[Case study](https://www.phlpneo.com/projects/aquaguard-household-water-monitoring/)
 
-Python · BeautifulSoup · Regex · CLI
+## Data and analytics coursework
 
-A reusable web scraping framework originally developed for a Dwarf Fortress translation project.
+- **MonCity data warehouse and dashboard:** Designed an Oracle SQL warehouse for bookings, maintenance, and accidents, implemented the aggregated model, and built a Power BI dashboard for accident analysis.
+- **Public transit coverage:** Used PostgreSQL/PostGIS and QGIS to measure proximity to bus stops, map service coverage, and compare spatial query plans.
+- **Text classification in R:** Compared decision trees and random forests using precision, recall, and F1 on a validation split.
 
-Features:
-- MediaWiki page discovery and extraction
-- Configurable sentence and RAW token extraction
-- CSV export pipeline
-- Modular extraction architecture supporting future extensions
+## Browse the repository
 
----
-
-## Other Projects
-
-- CS50 Web Programming Projects
-- Java Object-Oriented Programming Projects
-- Database Design Projects
-
----
-
-## Current Focus
-
-- Backend architecture and system design
-- Cloud-native application development
-- AWS certification preparation
-- Distributed systems and database technologies
+- [Monash coursework](MonashCourseWork/) — project code, labs, and study notes.
+- [CS50W projects](CS50W/) — web applications built during CS50’s Web Programming with Python and JavaScript.
+- [Personal projects](PersonalProjects/) — tools and experiments outside coursework.
